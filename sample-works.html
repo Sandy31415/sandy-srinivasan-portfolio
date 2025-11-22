@@ -1,6 +1,7 @@
 
 
 
+
 <!DOCTYPE html lang="en-CA">
 <html>
   <head>
@@ -145,6 +146,29 @@
         align-items: center;
         text-align: center;
       }
+        .grid-item {
+        position: relative;
+      }
+      
+      .grid-item .blur-img {
+        display: block;
+      }
+      
+      .grid-item .clear-img {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+      }
+      
+      .grid-item:hover .blur-img {
+        opacity: 0;
+      }
+      
+      .grid-item:hover .clear-img {
+        opacity: 1;
+      }
   
 
       
@@ -186,27 +210,32 @@
     
     <div class="container">
        <div class="grid-item">
-         <img src="work1.png" alt="poster image">
+         <img src="work1.png" alt="poster image" class="blur-img">
+          <img src="work1_clear.png" alt="poster image clear" class="clear-img">
          Identity Through Design
       </div>
         <div class="grid-item">
-       <img src="work2.png" alt="icon image">
+       <img src="work2.png" alt="icon image" class="blur-img">
+               <img src="work2_clear.png" alt="icon image clear" class="clear-img" >
         Scented Essentials Icon Set
       </div>
         <div class="grid-item">
-      <img src="work3.png" alt="magazine image">
+      <img src="work3.png" alt="magazine image" class="blur-img">
+      <img src="work3_clear.png" alt="magazine image clear" class="clear-img">
         Evolution of Design Magazine
       </div>
         <div class="grid-item">
-       <img src="work4.png" alt="Website mockup">
+       <img src="work4.png" alt="Website mockup" class="blur-img">
+        <img src="work4_clear.png" alt="Website mockup clear" class="clear-img">
           Reimagining the Aurora Historical Society site
       </div>
-       <div class="work5">
-    <img src="work5.png" alt="digital art">
+      <div class="grid-item work5">
+    <img src="work5.png" alt="digital art" class="blur-img">
+    <img src="work5_clear.png" alt="digital art clear" class="clear-img">
          Exploring Fine Arts
-      </div>
     </div>
-
+    </div>
+    
     <div class="foot">
     sandysri0711@gmail.com         www.linkedin.com/in/sandy-srinivasan
     
