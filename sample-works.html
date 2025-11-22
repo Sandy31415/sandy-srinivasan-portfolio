@@ -123,16 +123,16 @@
       }
       .flower3{
         position:absolute;
-        top: 1050px;
+        top: 800px;
         left: 500px; 
         z-index:-1;
       }
       .flower3 img{
-        width:200px;
+        width:400px;
       }
       .container{
         display: grid;
-        grid-template-columns: auto auto;
+        grid-template-columns: 1fr 1fr;
         padding: 5px;
         margin-top: 20px;
       }
@@ -145,6 +145,13 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+      }
+      
+      .container div img{
+         transition: opacity 0.3s ease;
+  max-width: 100%;
+  width: 100%;
+
       }
         .grid-item {
         position: relative;
@@ -173,7 +180,11 @@
 
       
     .work5{
-      margin-top:-180px; 
+      margin-top:-280px; 
+      }
+      .bodytext{
+        font-family:"Bubbler One";
+        font-size: 0.8em;
       }
       
     </style>
@@ -213,26 +224,39 @@
          <img src="work1.png" alt="poster image" class="blur-img">
           <img src="work1_clear.png" alt="poster image clear" class="clear-img">
          Identity Through Design
+         <span class="bodytext"> A poster and logo built to represent a personal identity.</span>
+         
       </div>
         <div class="grid-item">
        <img src="work2.png" alt="icon image" class="blur-img">
                <img src="work2_clear.png" alt="icon image clear" class="clear-img" >
         Scented Essentials Icon Set
+         <span class="bodytext"> A set of icons representing fresh, scented products. </span>
+          
+          
       </div>
         <div class="grid-item">
       <img src="work3.png" alt="magazine image" class="blur-img">
       <img src="work3_clear.png" alt="magazine image clear" class="clear-img">
         Evolution of Design Magazine
+          <span class="bodytext"> A magazine chronicling my design story.</span>
+         
+     
       </div>
         <div class="grid-item">
        <img src="work4.png" alt="Website mockup" class="blur-img">
         <img src="work4_clear.png" alt="Website mockup clear" class="clear-img">
           Reimagining the Aurora Historical Society site
+          <span class="bodytext"> A redesign of the Aurora Historical Society website.</span>
+         
       </div>
       <div class="grid-item work5">
     <img src="work5.png" alt="digital art" class="blur-img">
     <img src="work5_clear.png" alt="digital art clear" class="clear-img">
          Exploring Fine Arts
+        <span class="bodytext"> A collection of my art done in both traditional and digital mediums.</span>
+         
+        
     </div>
     </div>
     
