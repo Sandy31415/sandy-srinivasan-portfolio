@@ -59,6 +59,7 @@
         display: flex;
         justify-content:left;
         margin-right: 55px;
+        color:#372D35;
         
       }
     .foot{position: fixed;
@@ -75,6 +76,17 @@
       word-spacing: 100px;
       text-align: center;
       }
+      .foot-item {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* space between icon and text */
+}
+
+.foot img {
+  max-width: 30px;
+  display: block;
+}
+
       p {
   font-family: 'Bubbler One';
   font-size: 1.4em;
@@ -252,7 +264,7 @@
         <img src="page8.png" alt="Back Page">
       </div>
     </div>
-  </div>
+    </div>
 
 
 
@@ -271,6 +283,19 @@
   in my journey as a designer, and I'm glad to have had the opportunity to 
   express that.
     </p>
+    
+    <div class="foot">
+  <div class="foot-item">
+    <img src="mail.png">
+    <span>sandysri0711@gmail.com</span>
+  </div>
+
+  <div class="foot-item">
+    <img src="linkedin.png">
+    <span>www.linkedin.com/in/sandy-srinivasan</span>
+  </div>
+</div>
+
 <script>
     let currentPage = 0;
     const pages = document.querySelectorAll('.page');
