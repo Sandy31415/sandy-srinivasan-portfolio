@@ -279,11 +279,11 @@
 
     function updateButtons() {
       prevBtn.disabled = currentPage === 0;
-      nextBtn.disabled = currentPage === pages.length;
+      nextBtn.disabled = currentPage === pages.length-1;
     }
 
     function flipPage(direction) {
-      if (direction === 'next' && currentPage < pages.length) {
+      if (direction === 'next' && currentPage < pages.length-1) {
         pages[currentPage].classList.add('flipped');
         currentPage++;
       } else if (direction === 'prev' && currentPage > 0) {
