@@ -26,7 +26,14 @@
         box-sizing: border-box;
       }
       
-      
+      .item {
+  opacity: 1;
+  transition: opacity 0.6s ease-out;
+}
+
+.item.fading {
+  opacity: 0.3;
+}
             
       .nav {
         position: absolute;
@@ -202,6 +209,40 @@
     
      
     </div>
+    <script>
+// Option 1: Fade based on scroll position (images fade as they move up)
+function handleScroll() {
+  const items = document.querySelectorAll('.item');
+  const windowHeight = window.innerHeight;
+  
+  items.forEach(item => {
+    const rect = item.getBoundingClientRect();
+    const itemTop = rect.top;
+    const itemHeight = rect.height;
+    
+    // Calculate opacity based on position
+    // Fades when image is in top half of viewport
+    if (itemTop < windowHeight / 2) {
+      const fadeStart = windowHeight / 4;
+      const fadeEnd = -itemHeight;
+      const fadeRange = fadeStart - fadeEnd;
+      const fadeProgress = (fadeStart - itemTop) / fadeRange;
+      
+      // Clamp between 0.3 and 1
+      const opacity = Math.max(0.3, 1 - (fadeProgress * 0.8));
+      item.style.opacity = opacity;
+    } else {
+      item.style.opacity = 1;
+    }
+  });
+}
+
+// Attach scroll listener
+window.addEventListener('scroll', handleScroll);
+// Run once on load
+handleScroll();
+</script>
+    
   </body>
   
 </html>
