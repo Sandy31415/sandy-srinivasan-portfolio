@@ -24,9 +24,10 @@
         box-sizing: border-box;
       }
       
-      .centered-div {
+      .centered_div {
   max-width: 1200px;
-  margin: 0 auto;   
+  margin: 0 auto; 
+        justify-content: center;
   
 }
       
@@ -76,9 +77,12 @@
   padding: 0 40px;
   max-width: 1400px;
 }
-      .column {
-  flex: 1;
-  padding: 0px;
+      .column:first-child {
+  flex: 0.8;   /* wider left side */
+}
+
+.column:last-child {
+  flex: 1.2;   /* wider right side */
 }
     .carousel {
       position: relative;
