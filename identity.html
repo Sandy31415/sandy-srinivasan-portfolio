@@ -24,7 +24,10 @@
         padding: 10px 40px;
         box-sizing: border-box;
       }
-      
+      .centered_div{
+        max-width:1200px;
+        margin: auto auto;
+      }
       
             
       .nav {
@@ -60,7 +63,7 @@
         font-size: 2.8em;
         display: flex;
         justify-content:left;
-        margin-right: 55px;
+        margin-left: 10px;
         margin-top:50px;
         color:#372D35;
         
@@ -89,14 +92,152 @@
   max-width: 30px;
   display: block;
 }
+      h2{
+        font-family: 'candal';
+        font-size: 2.8em;
+        margin-left:25px;
+        margin-bottom: -30px;
+      }
+      .container{
+        display: flex;
+      }
       p{
         font-family: 'Bubbler One';
         font-size: 1.8em;
         display: flex;
         justify-content: right;
-        margin-right: 200px;
+        margin-right: 100px;
+        margin-left: 25px;
         
       }
+      
+        .carousel-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .carousel {
+            display: flex;
+            overflow: visible;
+            position: relative;
+            padding: 40px 0;
+            justify-content: flex-start;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 30px;
+            transition: transform 0.5s ease-in-out;
+            padding-left: 0;
+        }
+
+        .carousel-item {
+            width: 350px;
+            height: 500px;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
+            opacity: 0.5;
+            filter: saturate(0.7);
+        }
+
+        .carousel-item.active {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+            opacity: 1;
+            filter: saturate(1);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Navigation Buttons */
+        .carousel-nav {
+            position: absolute;
+            right: 80px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-nav:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .carousel-nav svg {
+            width: 24px;
+            height: 24px;
+            fill: #372D35;
+        }
+
+        /* Pagination Dots */
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .dot {
+            width: 50px;
+            height: 8px;
+            background: #C4B5A0;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #372D35;
+            width: 80px;
+        }
+
+        .foot {
+            position: fixed;
+            background: #8A8D7A;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            padding-left: 40px;
+            font-family: 'Bubbler One', sans-serif;
+            gap: 30px;
+            z-index: 100;
+        }
+
+        .foot-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .foot img {
+            max-width: 30px;
+            display: block;
+        }
     
     </style>
   </head>
@@ -125,7 +266,8 @@
     </div>
       </div>   
      <div class="column">
-       <p>
+       <img src="logo.png" alt="logo" width="500px">
+        <p>
          This poster and logo set were created as 
          part of an assignment where I designed a  
          brand based on a personal statement that was given 
@@ -135,9 +277,40 @@
          resilience. The poster features a lotus as its central image due to 
          the fact that lotuses thrive in difficult environments. 
        </p>
-      </div>   
-        
+       </div>  
+       </div>
+    <h2>
+      Mockups
+    </h2>
+       <div class="carousel-container">
+            <div class="carousel">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="carousel-item active" style="background: #C5B8D4;">
+                        <img src="mockup1-min.png" alt="Perfume bottle mockup">
+                    </div>
+                    <div class="carousel-item" style="background: #E8C4BA;">
+                        <img src="mockup2-min.png" alt="Lotion bottle mockup">
+                    </div>
+                    <div class="carousel-item" style="background: #C4D8D3;">
+                        <img src="mockup3-min.png" alt="Diffuser mockup">
+                    </div>
+                </div>
+            </div>
+
+            <button class="carousel-nav" id="nextBtn" aria-label="Next slide">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 18l6-6-6-6"/>
+                </svg>
+            </button>
+
+            <div class="carousel-dots" id="dotsContainer">
+                <span class="dot active" data-index="0"></span>
+                <span class="dot" data-index="1"></span>
+                <span class="dot" data-index="2"></span>
+            </div>
         </div>
+
+       
      <div class="foot">
   <div class="foot-item">
     <img src="mail.png">
@@ -151,6 +324,50 @@
 </div>
      
     </div>
+  
+    <script>
+        const track = document.getElementById('carouselTrack');
+        const items = document.querySelectorAll('.carousel-item');
+        const dots = document.querySelectorAll('.dot');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        let currentIndex = 0;
+        const totalItems = items.length;
+
+        function updateCarousel() {
+            // Update track position
+            const offset = -currentIndex * (350 + 30); // item width + gap
+            track.style.transform = `translateX(${offset}px)`;
+
+            // Update active states
+            items.forEach((item, index) => {
+                item.classList.toggle('active', index === currentIndex);
+            });
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalItems;
+            updateCarousel();
+        }
+
+        // Next button click
+        nextBtn.addEventListener('click', nextSlide);
+
+        // Dot navigation
+        dots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                currentIndex = parseInt(dot.dataset.index);
+                updateCarousel();
+            });
+        });
+
+        // Auto-advance carousel
+        
+    </script>
   </body>
   
 </html>
