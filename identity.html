@@ -116,6 +116,7 @@
             max-width: 1200px;
             margin: 60px auto;
             padding: 0 20px;
+          justify-content: center;
         }
 
         .carousel {
@@ -145,7 +146,8 @@
             justify-content: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
             opacity: 0.5;
-            filter: saturate(0.7);
+            filter: saturate(0.5);
+            filter: brightness(0.55);
         }
 
         .carousel-item.active {
@@ -334,9 +336,14 @@
         let currentIndex = 0;
         const totalItems = items.length;
 
-        function updateCarousel() {
-            // Update track position
-            const offset = -currentIndex * (350 + 30); // item width + gap
+       function updateCarousel() {
+            // Calculate offset to center the active item
+            const itemWidth = 350;
+            const gap = 30;
+            const containerWidth = document.querySelector('.carousel-container').offsetWidth;
+            const centerOffset = (containerWidth - itemWidth) / 2;
+            const offset = centerOffset - (currentIndex * (itemWidth + gap));
+            
             track.style.transform = `translateX(${offset}px)`;
 
             // Update active states
