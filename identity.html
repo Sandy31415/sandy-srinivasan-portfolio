@@ -208,27 +208,7 @@
             fill: #372D35;
         }
 
-        /* Pagination Dots */
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .dot {
-            width: 50px;
-            height: 8px;
-            background: #C4B5A0;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .dot.active {
-            background: #372D35;
-            width: 80px;
-        }
+      
          hr {
   border: none;
   height: 4px;
@@ -326,17 +306,9 @@
                 </div>
             </div>
 
-            <button class="carousel-nav" id="nextBtn" aria-label="Next slide">
-                <svg viewBox="0 0 24 24">
-                    <path d="M9 18l6-6-6-6"/>
-                </svg>
-            </button>
+            
 
-            <div class="carousel-dots" id="dotsContainer">
-                <span class="dot active" data-index="0"></span>
-                <span class="dot" data-index="1"></span>
-                <span class="dot" data-index="2"></span>
-            </div>
+          
         </div>
 
        
@@ -355,51 +327,74 @@
     </div>
   
     <script>
-        const track = document.getElementById('carouselTrack');
-        const items = document.querySelectorAll('.carousel-item');
-        const dots = document.querySelectorAll('.dot');
-        const nextBtn = document.getElementById('nextBtn');
+         const itemWidth = 350;
+        const gap = 30;
+        const containerWidth = document.querySelector('.carousel-container').offsetWidth;
+        const centerOffset = (containerWidth - itemWidth) / 2;
+        const offset = centerOffset - (currentIndex * (itemWidth + gap));
         
-        let currentIndex = 0;
-        const totalItems = items.length;
+        track.style.transform = `translateX(${offset}px)`;
 
-       function updateCarousel() {
-            // Calculate offset to center the active item
-            const itemWidth = 350;
-            const gap = 30;
-            const containerWidth = document.querySelector('.carousel-container').offsetWidth;
-            const centerOffset = (containerWidth - itemWidth) / 2;
-            const offset = centerOffset - (currentIndex * (itemWidth + gap));
-            
-            track.style.transform = `translateX(${offset}px)`;
-
-            // Update active states
-            items.forEach((item, index) => {
-                item.classList.toggle('active', index === currentIndex);
-            });
-
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % totalItems;
-            updateCarousel();
-        }
-
-        // Next button click
-        nextBtn.addEventListener('click', nextSlide);
-
-        // Dot navigation
-        dots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                currentIndex = parseInt(dot.dataset.index);
-                updateCarousel();
-            });
+        // Update active states
+        items.forEach((item, index) => {
+            item.classList.toggle('active', index === currentIndex);
         });
 
-        // Auto-advance carousel
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+    }
+   function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        updateCarousel();
+    }
+
+    // AUTO-SCROLL FUNCTIONALITY
+    function startAutoScroll() {
+        // Clear any existing interval
+        if (autoScrollInterval) {
+            clearInterval(autoScrollInterval);
+        }
+        
+        // Set new interval - change slide every 3 seconds
+        autoScrollInterval = setInterval(nextSlide, 3000);
+    }
+
+    function stopAutoScroll() {
+        if (autoScrollInterval) {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = null;
+        }
+    }
+ track.addEventListener('mouseenter', stopAutoScroll);
+    track.addEventListener('mouseleave', startAutoScroll);
+    
+    // Pause auto-scroll when interacting with buttons
+    nextBtn.addEventListener('mouseenter', stopAutoScroll);
+    nextBtn.addEventListener('mouseleave', startAutoScroll);
+
+    // Event listeners for navigation
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        stopAutoScroll();
+        // Restart after a delay
+        setTimeout(startAutoScroll, 5000);
+    });
+      
+      // Initialize carousel
+    updateCarousel();
+    
+    // Start auto-scroll after a 2 second delay (so user can see initial state)
+    setTimeout(startAutoScroll, 2000);
+
+        
+
+        
         
     </script>
   </body>
