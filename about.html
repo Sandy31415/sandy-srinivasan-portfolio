@@ -1,3 +1,9 @@
+
+
+
+
+
+
 <html>
   <!DOCTYPE html lang="en-CA">
 <html>
@@ -6,12 +12,13 @@
     <title>Sandy Srinivasan-Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Candal&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <style>
-      body{
+    body{
        
         padding-bottom: 150px;
         background-image: url("grid.png");
+        
         margin-left:120px;
         margin-right:120px;
       }
@@ -50,7 +57,7 @@
       }
       
       h1{
-       font-family:'candal';
+       font-family:'lora';
         font-size: 4.5em;
         display: flex;
         justify-content:right;
@@ -95,6 +102,8 @@
         margin-right: 50px;
   
       }
+      
+      
   .container {
   display: flex;
   flex-wrap: wrap;
@@ -116,12 +125,65 @@
         
       }
       .column:first-child {
-  flex: 1; /* Left column takes 1 part */
+  flex: 1; 
 }
 
 .column:last-child {
-  flex: 3; /* Right column takes 2 parts (twice as big) */
+  flex: 3;
 }
+       }
+      .column hr {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+      #smalltext{
+        font-size: 1.3em;
+        justify-content: right;
+      } 
+      .image-wrapper {
+    position: relative;
+    width: 400px;
+    height: 450px;   
+    
+}
+.image-wrapper img {
+    position: absolute;
+    top: 250px;  /* Matches the circle's cy value */
+    left: 210px; /* Matches the circle's cx value */
+    transform: translate(-50%, -50%); /* Centers the image on the point */
+    width: 440px;  /* Matches the circle's diameter (2 * r) */
+    height: 440px;
+    border-radius: 50%;
+    display: block;
+}
+
+/* The animated circle */
+.circle-outline {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.circle-outline circle {
+  fill: none;
+  stroke: #555;
+  stroke-width: 4;
+
+  /* circumference = 2πr = ~1507 */
+  stroke-dasharray: 1507;
+  stroke-dashoffset: 1507;
+
+  animation: trace 2s ease-out forwards;
+}
+
+@keyframes trace {
+    to {
+        stroke-dashoffset: 0;   /* circle becomes fully visible */
+    }
+}
+     
+
     </style>
   </head>
   <body>
@@ -137,9 +199,16 @@
   <div class="container">
     
      <div class="column">
-  
-    <img src="linkedinphoto.png" alt="circular image of me">
-        </div>
+       <div class="image-wrapper">
+         
+  <svg class="circle-outline" width="800" height="800">
+      <circle cx="210" cy="370" r="260"></circle>
+  </svg>
+
+    <img src="linkedinphoto.png" alt="circular image of me" class="circlepic">
+    </div>
+    </div>
+       
   <div class="column">
      
 <h1>
@@ -151,13 +220,21 @@
       because it allows me to channel my creativity into projects that can 
       convey meaning and bring people together. I've worked on a variety of projects
       in graphic design, UX/UI, and web design.
-      
+    </p>
+    <p>
       When I'm not designing, you can find me at the local library with a new book! feel 
       free to check out my work and connect with me on Linkedin. 
     </p>
+    <hr>
+    <p id="smalltext">
+      connect with me on Linkedin @ www.linkedin.com/in/sandy-srinivasan<br> or 
+      by email @ sandysri-711@gmail.com! 
+    </p>
     </div>
+    
    
   </div>
+    
    <div class="foot">
   <div class="foot-item">
     <img src="mail.png">

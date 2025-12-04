@@ -9,22 +9,30 @@
     <title>Sandy Srinivasan-Portfolio</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Candal&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
     <style>
       
         body {
-          
-            background-image: url("Untitled-1.png");  /* Added missing semicolon */
-    background-size: cover;  /* Makes image cover the area */
-    background-position: center;  /* Centers the image */
-    background-repeat: no-repeat;  /* Prevents tiling */
-    background-attachment: fixed; 
             padding-bottom: 150px;
             margin: 0;
             margin-left:120px;
             margin-right: 120px;
         }
+      body::before {
+    content: "";
+    position: fixed;  /* or 'absolute' */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("Untitled-1.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.6;  
+    z-index: -1; 
+}
         
         header {
             width: 100%;
@@ -33,6 +41,8 @@
             align-items: flex-start;
             padding: 0px 40px;
             box-sizing: border-box;
+            position: relative;  /* Add this */
+    z-index: 1;     
         }
         
         .centered_div {
@@ -40,6 +50,8 @@
             margin: 0 auto;
             padding: 0 20px;
           justify-content: center;
+          z-index:0; 
+          position: relative; 
         }
         
         .nav li {
@@ -73,7 +85,7 @@
         }
         
         h1 {
-            font-family: 'candal';
+            font-family: 'lora';
             font-size: 4em;
             display: flex;
             justify-content: right;
@@ -81,6 +93,15 @@
             margin-top: 50px;
             color: #372D35;
         }
+       hr {
+  border: none;
+  height: 4px;
+  width: 90%;
+  margin: 10px auto;
+  background-color: #8A8D7A; 
+  border-radius: 100px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
         
         .foot {
             position: fixed;
@@ -119,14 +140,7 @@
         
         
         
-        .line1 {
-            position: absolute;
-            top: 200px;
-            left: 120px;
-            z-index: -1;
-        }
-        
-      
+     
         
       
         .container {
@@ -137,6 +151,8 @@
             margin-top: 70px;
             margin-left: auto;
             margin-right:auto; 
+            position: relative;  /* Add this */
+    z-index: 1;   
           
         }
         
@@ -170,37 +186,15 @@
             display: block;
         }
         
-        /* Blur → clear hover effect */
-        .blur-img { 
-            opacity: 1; 
-            transition: 0.3s ease; 
-        }
         
-        .clear-img { 
-            opacity: 0; 
-            position: absolute; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: auto; 
-            transition: 0.3s ease;
-        }
-        
-        .grid-item:hover .blur-img { 
-            opacity: 0; 
-        }
-        
-        .grid-item:hover .clear-img { 
-            opacity: 1; 
-        }
-        
+       
         /* Text content */
         .grid-item-content {
             padding: 20px;
         }
         
         .grid-item h2 {
-            font-family: 'Candal';
+            font-family: 'lora';
             font-size: 1.25em;
             margin: 0 0 10px 0;
             color: #372D35;
@@ -227,19 +221,16 @@
       <h1>
         Work Samples
       </h1>
-      <div class="line1">
-        
-      <img src="line1.png" alt="horizontal line"> 
-      </div>
+     
     </header>
-
+  <hr> 
     
     
    <div class="container">
        <div class="grid-item">
          <a href="identity.html">
-         <img src="work1.png" alt="poster image" class="blur-img">
-          <img src="work1_clear.png" alt="poster image clear" class="clear-img">
+        
+          <img src="work1_clear.png" alt="poster image clear" >
            </a>
          <div class="grid-item-content">
            <h2>Identity Through Design</h2>
@@ -249,8 +240,8 @@
       
         <div class="grid-item">
           <a href="scented-essentials.html">
-           <img src="work2.png" alt="icon image" class="blur-img">
-           <img src="work2_clear.png" alt="icon image clear" class="clear-img">
+          
+           <img src="icon.png" alt="icon image clear" >
           </a>
           <div class="grid-item-content">
             <h2>Scented Essentials Icon Set</h2>
@@ -261,8 +252,8 @@
         
       <div class="grid-item">
         <a href="fine-arts.html">
-        <img src="work5.png" alt="digital art" class="blur-img">
-        <img src="work5_clear.png" alt="digital art clear" class="clear-img">
+       
+        <img src="work5_clear.png" alt="digital art clear">
         </a>
         <div class="grid-item-content">
           <h2>Exploring Fine Arts</h2>
@@ -272,8 +263,8 @@
       
         <div class="grid-item">
           <a href="site-redesign.html">
-           <img src="Homepage-2.png" alt="Website mockup" class="blur-img">
-           <img src="Homepage.png" alt="Website mockup clear" class="clear-img">
+          
+           <img src="Homepage.png" alt="Website mockup clear" >
           </a>
           <div class="grid-item-content">
             <h2>Reimagining the Aurora Historical Society site</h2>
@@ -284,8 +275,8 @@
         
           <div class="grid-item">
           <a href="evolution.html">
-          <img src="work3.png" alt="magazine image" class="blur-img">
-          <img src="work3_clear.png" alt="magazine image clear" class="clear-img">
+         
+          <img src="work3_clear.png" alt="magazine image clear" >
           </a>
           <div class="grid-item-content">
             <h2>Evolution of Design Magazine</h2>
