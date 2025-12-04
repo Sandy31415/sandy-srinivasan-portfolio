@@ -152,7 +152,7 @@
     top: 250px;  /* Matches the circle's cy value */
     left: 210px; /* Matches the circle's cx value */
     transform: translate(-50%, -50%); /* Centers the image on the point */
-    width: 440px;  /* Matches the circle's diameter (2 * r) */
+    width: 400px;  /* Matches the circle's diameter (2 * r) */
     height: 440px;
     border-radius: 50%;
     display: block;
@@ -163,6 +163,20 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
+}
+     
+    .sparks{ position: relative;
+  
+  /* Position at the gap location (adjust these values as needed) */
+  bottom: 270px;   /* Adjust based on the gap position */
+  left: 450px;  /* Start with circle center X */
+  
+  transform: translate(-50%, -50%);
+  width: 70px;   /* Adjust size as needed */
+  height: 80px;
+  
+  /* Optional: add subtle animation */
+  animation: twinkle 1.5s ease-in-out infinite alternate;
 }
 
 .circle-outline circle {
@@ -182,6 +196,7 @@
         stroke-dashoffset: 0;   /* circle becomes fully visible */
     }
 }
+
      
 
     </style>
@@ -206,7 +221,9 @@
   </svg>
 
     <img src="linkedinphoto.png" alt="circular image of me" class="circlepic">
+   
     </div>
+        <img src="spark.png" alt="sparkles" class="sparks">
     </div>
        
   <div class="column">
