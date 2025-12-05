@@ -35,7 +35,7 @@
       .nav {
         position: absolute;
         top: 30px;
-        right: 80px;
+        right: 120px;
       }
       .nav ul{
     font-family: 'Bubbler One', sans-serif;
@@ -73,11 +73,11 @@
       
       h1{
        font-family: 'lora';
-        font-size: 2.8em;
+        font-size: 4.5em;
         display: flex;
         justify-content:left;
         margin-left: 10px;
-        margin-top:50px;
+        margin-top:80px;
         color:#372D35;
         
       }
@@ -116,6 +116,7 @@
       .container{
         display: flex;
       }
+      
       p{
         font-family: 'Bubbler One';
         font-size: 1.5em;
@@ -123,9 +124,14 @@
         justify-content: right;
         margin-right: 100px;
         margin-left: 25px;
+        background-color: 8A8D7A;
+        padding: 30px;
+        color: #FFF; 
         
       }
-      
+      /* I used Claude AI to help me style the carousel. I provided it with a div
+      of all my image links as well as a photo of a rough sketch and prompted it with "how would I
+     create and style this kind of carousel element?"*/
         .carousel-container {
             position: relative;
             max-width: 1200px;
@@ -212,7 +218,7 @@
          hr {
   border: none;
   height: 4px;
-  width: 90%;
+  width: 100%;
   margin: 50px auto;
   background-color: #8A8D7A; 
   border-radius: 100px;
@@ -291,6 +297,7 @@
     <h2>
       Mockups
     </h2>
+    <!--I used Claude AI to create the image carousel. I inserted the images into the carousel div and then asked claude how to arrange them into a carousel. I also provided a screenshot of a carousel from my mockups to show Claude the effect I wanted.-->
       <div class="carousel-container">
             <div class="carousel">
                 <div class="carousel-track" id="carouselTrack">
@@ -331,6 +338,8 @@
     </div>
   
     <script>
+      <!-- I used Claude AI to create the JavaScript. I provided it the prompt of creating an interactive carousel for the images, alongside a screenshot of the carousel from my mockups.-->
+      
         const track = document.getElementById('carouselTrack');
         const items = document.querySelectorAll('.carousel-item');
         const dots = document.querySelectorAll('.dot');
@@ -340,7 +349,7 @@
         const totalItems = items.length;
 
        function updateCarousel() {
-            // Calculate offset to center the active item
+            
             const itemWidth = 350;
             const gap = 30;
             const containerWidth = document.querySelector('.carousel-container').offsetWidth;
@@ -349,7 +358,7 @@
 
             track.style.transform = `translateX(${offset}px)`;
 
-            // Update active states
+            
             items.forEach((item, index) => {
                 item.classList.toggle('active', index === currentIndex);
             });
@@ -364,10 +373,10 @@
             updateCarousel();
         }
 
-        // Next button click
+        
         nextBtn.addEventListener('click', nextSlide);
 
-        // Dot navigation
+        
         dots.forEach(dot => {
             dot.addEventListener('click', () => {
                 currentIndex = parseInt(dot.dataset.index);

@@ -19,20 +19,7 @@
             margin-left:120px;
             margin-right: 120px;
         }
-      body::before {
-    content: "";
-    position: fixed;  /* or 'absolute' */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("Untitled-1.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.6;  
-    z-index: -1; 
-}
+      
         
         header {
             width: 100%;
@@ -69,8 +56,8 @@
         
         .nav {
             position: absolute;
-            top: 30px;
-            right: 80px;
+            top: 40px;
+            right:0px;
         }
         
         .nav ul {
@@ -162,12 +149,12 @@
             margin-top: 70px;
             margin-left: auto;
             margin-right:auto; 
-            position: relative;  /* Add this */
+            position: relative;  
     z-index: 1;   
           
         }
         
-        /* Masonry item */
+       /* I prompted Claude AI to show me how to set up my grid layout like the Pinterest grid layout, and uploaded a screenshot from Pinterest.*/
         .grid-item {
             break-inside: avoid;
             margin-bottom: 30px;
@@ -176,16 +163,16 @@
     
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+           
         }
         
-        /* Hover effect */
+       /* I prompted Claude AI to show me how to add the hover effect for each grid item*/
         .grid-item:hover {
             transform: translateY(-6px);
             box-shadow: 0 8px 24px rgba(0,0,0,0.15);
         }
         
-        /* Image wrapper */
+        
         .grid-item a {
             display: block;
             position: relative;
@@ -199,7 +186,7 @@
         
         
        
-        /* Text content */
+      
         .grid-item-content {
             padding: 20px;
         }
@@ -240,6 +227,7 @@
     
     
    <div class="container">
+     <!-- I prompted Claude AI by asking it to help me set up my grid layout to look like the Pinterest grid, and uploaded a screenshot of pinterest.-->
        <div class="grid-item">
          <a href="identity.html">
         

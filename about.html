@@ -16,21 +16,22 @@
     <style>
     body{
         padding-bottom: 150px;
-        margin-left: 120px;
-        margin-right: 120px;
+       
       background-color:#fff9e8;
        
       }
       .centered-div {
   max-width: 1200px;
+  display: flex;
+  justify-content: center;
   margin: 0 auto;   
-  padding: 0 20px; 
+  position: relative; 
 }
             
       .nav {
         position: absolute;
         top: 30px;
-        right: 80px;
+        right: 120px;
       }
       .nav ul{
     font-family: 'Bubbler One', sans-serif;
@@ -109,7 +110,7 @@
         font-family: 'Bubbler One';
         font-size: 1.5em;
         display: flex;
-        justify-content: right;
+        text-align: right;
         margin-right: 50px;
        
   
@@ -119,14 +120,14 @@
   .container {
   display: flex;
   flex-wrap: wrap;
-  gap: 120px; 
+  gap: 50px; 
   padding: 10px;
   max-width: 1200px; 
   margin: 0 auto; 
  
 }
      .column {
-    flex: 1; 
+    flex: 2; 
     min-width: 400px; 
     padding: 10px;
   
@@ -138,10 +139,11 @@
       }
       .column:first-child {
   flex: 1; 
+  margin-left: 90px;
 }
 
 .column:last-child {
-  flex: 2;
+  flex: 3;
 }
        }
       .column hr {
@@ -155,50 +157,44 @@
         font-size: 1.2em;
         justify-content: right;
       } 
+      
+      
       .image-wrapper {
     position: relative;
-    width: 400px;
-    height: 450px;   
+    width: 280px;
+    height: 330px;   
     
 }
+      /* I asked Claude AI to generate the animated circular outline for the image. 
+I prompted it by asking it to create an outline around the image that made 1 rotation. -->
+       <div class="image-wrapper*/
 .image-wrapper img {
     position: absolute;
-    top: 250px;  /* Matches the circle's cy value */
-    left: 210px; /* Matches the circle's cx value */
-    transform: translate(-50%, -50%); /* Centers the image on the point */
-    width: 400px;  /* Matches the circle's diameter (2 * r) */
-    height: 440px;
+    top: 250px;  
+    left: 210px;
+    transform: translate(-50%, -50%); 
+    width: 300px;  
+    height: 340px;
     border-radius: 50%;
     display: block;
 }
 
-/* The animated circle */
+
 .circle-outline {
   position: absolute;
   inset: 0;
   pointer-events: none;
 }
      
-    .sparks{ position: relative;
-  
-  /* Position at the gap location (adjust these values as needed) */
-  bottom: 270px;   /* Adjust based on the gap position */
-  left: 450px;  /* Start with circle center X */
-  
-  transform: translate(-50%, -50%);
-  width: 70px;   /* Adjust size as needed */
-  height: 80px;
-  
-  /* Optional: add subtle animation */
-  animation: twinkle 1.5s ease-in-out infinite alternate;
-}
-
+/* The animation for the circle was created by Claude AI. 
+      I prompted it to create an animated circle to outline the image that 
+      would make one rotation.*/
 .circle-outline circle {
   fill: none;
-  stroke: #555;
+  stroke: #ceadde;
   stroke-width: 4;
 
-  /* circumference = 2πr = ~1507 */
+
   stroke-dasharray: 1507;
   stroke-dashoffset: 1507;
 
@@ -207,7 +203,7 @@
 
 @keyframes trace {
     to {
-        stroke-dashoffset: 0;   /* circle becomes fully visible */
+        stroke-dashoffset: 0;   
     }
 }
 
@@ -225,20 +221,23 @@
         <li><a href="resume.html">Resume</a></li>
         <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
       </ul>
+      
     </div>
   <div class="container">
     
      <div class="column">
+       <!-- I asked Claude AI to generate the animated circular outline for the image. 
+I prompted it by asking it to create an outline around the image that made 1 rotation. -->
        <div class="image-wrapper">
          
-  <svg class="circle-outline" width="800" height="800">
-      <circle cx="210" cy="370" r="260"></circle>
+  <svg class="circle-outline" width="600" height="600">
+      <circle cx="210" cy="370" r="200"></circle>
   </svg>
 
     <img src="linkedinphoto.png" alt="circular image of me" class="circlepic">
    
     </div>
-        <img src="spark.png" alt="sparkles" class="sparks">
+      
     </div>
        
   <div class="column">

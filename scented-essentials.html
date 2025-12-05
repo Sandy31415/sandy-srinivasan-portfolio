@@ -29,6 +29,7 @@
       .centered_div {
   max-width: 1200px;
   margin: 0 auto; 
+        
         justify-content: center;
   
 }
@@ -38,7 +39,7 @@
       .nav {
         position: absolute;
         top: 30px;
-        right: 80px;
+        right: 120px;
       }
       .nav ul{
     font-family: 'Bubbler One', sans-serif;
@@ -80,18 +81,13 @@
         font-size: 4.5em;
         display: flex;
         justify-content:left;
-        margin-right: 55px;
+        margin-right: 120px;
+        margin-top: 80px;
         color:#372D35;}
         
-      .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 30px;
-      padding: 0 40px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
+     /* I used Claude AI for the styling for the carousel. I provided it with my image links 
+      and prompted it prompted it to 
+      show me the html and css to style them like an image carousel*/
 
     .carousel-wrapper {
       width: 100%;
@@ -102,7 +98,7 @@
     .carousel {
       position: relative;
       width: 100%;
-      overflow: visible;
+      overflow: hidden;
       padding: 40px 0;
     }
 
@@ -166,7 +162,9 @@
     .carousel-arrow {
       position: absolute;
       top: 50%;
-      transform: translateY(-50%);
+      margin-right: 50px;
+      margin-left: 50px;
+      transform: translateY(-60%);
       background: rgba(255, 255, 255, 0.9);
       color: #333;
       border: none;
@@ -291,7 +289,8 @@ p {
     <h1>
       Scented Essentials
     </h1>
-   <div class="container">
+<!-- I prompted Claude AI to help me create an image carousel. I put all my image src links into a div and
+ pasted that into Clause and prompted it to show me the html and css to style them like an image carousel.-->
       <div class="carousel-wrapper">
         <div class="carousel">
           <div class="carousel-inner" id="carouselInner">
@@ -324,7 +323,7 @@ p {
           and cohesive set of icons that captures the essence of items like perfume, diffusers, and lotions.
         </p>
       </div>
-    </div>
+    
       
 
      
@@ -354,15 +353,15 @@ p {
     
      
     </div>
-    <!-- I used GenAI to help me with the javascript. I prompted it to give me line by line instructions to create an image carousel.-->
+    <!-- I used GenAI to help me with the javascript. I prompted it to show me how to style my images in an image carousel..-->
     <script>
     const slides = [
-      { img: 'icon1.png', label: 'perfume', color: '#c4b8d1' },
-      { img: 'icon2.png', label: 'lotion', color: '#E8B4A0' },
-      { img: 'icon3.png', label: 'diffuser', color: '#A8C4BC' },
-      { img: 'icon4.png', label: 'perfume', color: '#D4A5B8' },
-      { img: 'icon5.png', label: 'lotion', color: '#C9B8A5' },
-      { img: 'icon6.png', label: 'diffuser', color: '#A5C9B8' }
+      { img: 'icon1.png', label: 'perfume', color: '#d8a48f' },
+      { img: 'icon2.png', label: 'lotion', color: '#d7ce93' },
+      { img: 'icon3.png', label: 'diffuser', color: '#efebce' },
+      { img: 'icon4.png', label: 'perfume', color: '#a3a380' },
+      { img: 'icon5.png', label: 'lotion', color: '#bb8588' },
+      { img: 'icon6.png', label: 'diffuser', color: '#a5c9b8' }
     ];
 
     let currentIndex = 0;
@@ -370,7 +369,7 @@ p {
     const carouselInner = document.getElementById('carouselInner');
 
     function initializeCarousel() {
-      // Create all slides at once
+     
       slides.forEach((slide, index) => {
         const slideElement = createSlideElement(slide);
         carouselInner.appendChild(slideElement);
@@ -401,15 +400,15 @@ p {
     }
 
     function updateCarousel() {
-      // Calculate the translation needed to center the current slide
+      
       const cardWidth = 280;
       const gap = 30;
       const offset = currentIndex * (cardWidth + gap);
       
-      // Move the entire carousel track
+      
       carouselInner.style.transform = `translateX(-${offset}px)`;
 
-      // Update card states
+      
       const items = carouselInner.querySelectorAll('.carousel-item');
       items.forEach((item, index) => {
         item.classList.remove('center', 'side');
@@ -440,7 +439,7 @@ p {
       });
     }
 
-    // Initialize carousel
+   
     initializeCarousel();
   </script>
   </body>

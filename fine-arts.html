@@ -45,7 +45,7 @@
       .nav {
         position: absolute;
         top: 30px;
-        right: 80px;
+        right: 120px;
       }
       .nav ul{
     font-family: 'Bubbler One', sans-serif;
@@ -86,14 +86,14 @@
         display: flex;
         justify-content:left;
         margin-right: 55px;
-        margin-top:50px;
+        margin-top:80px;
         color:#372D35;
         
       }
        hr {
   border: none;
   height: 4px;
-  width: 90%;
+  width: 100%;
   margin: 10px auto;
   background-color: #8A8D7A; 
   border-radius: 100px;
@@ -127,14 +127,7 @@
 
       
       
-      p{
-        font-family: 'Bubbler One';
-        font-size: 1.8em;
-        display: flex;
-        justify-content: right;
-        margin-right: 200px;
-        
-      }
+     
       
       .container{
         display: flex;
@@ -150,14 +143,19 @@
         display: flex;
         flex-direction: column;
         gap: 20px;
-      }
       
+      }
+      .item{
+        margin-bottom: 20px;
+        
+      }
       .item img{
         width: 100%;
         height: auto;
         display: block;
         border-radius: 4px;
       }
+      
     
     </style>
   </head>
@@ -239,7 +237,8 @@
      
     </div>
     <script>
-// Option 1: Fade based on scroll position (images fade as they move up)
+      
+<!-- I prompted Claude AI to give me the JavaScript to make the images fade from the top when the user scrolls down the page.-->
 function handleScroll() {
   const items = document.querySelectorAll('.item');
   const windowHeight = window.innerHeight;
@@ -249,15 +248,14 @@ function handleScroll() {
     const itemTop = rect.top;
     const itemHeight = rect.height;
     
-    // Calculate opacity based on position
-    // Fades when image is in top half of viewport
+    
     if (itemTop < windowHeight / 2) {
       const fadeStart = windowHeight / 4;
       const fadeEnd = -itemHeight;
       const fadeRange = fadeStart - fadeEnd;
       const fadeProgress = (fadeStart - itemTop) / fadeRange;
       
-      // Clamp between 0.3 and 1
+      
       const opacity = Math.max(0.3, 1 - (fadeProgress * 0.8));
       item.style.opacity = opacity;
     } else {
@@ -266,9 +264,9 @@ function handleScroll() {
   });
 }
 
-// Attach scroll listener
+
 window.addEventListener('scroll', handleScroll);
-// Run once on load
+
 handleScroll();
 </script>
     
