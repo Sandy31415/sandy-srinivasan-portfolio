@@ -303,6 +303,7 @@
 
 
       </div>
+      
 
 
       <div class="foot">
@@ -318,117 +319,39 @@
       </div>
 
     </div>
-
-    <script>
-      <!-- I used Claude AI to create the JavaScript. I provided it the prompt of creating an interactive carousel for the images, alongside a screenshot of the carousel from my mockups.
+ <!-- I used Claude AI to create the JavaScript. I provided it the prompt of creating an interactive carousel for the images, alongside a screenshot of the carousel from my mockups.
       -->
-      const
-      track
-      =
-      document.getElementById('carouselTrack');
-      const
-      items
-      =
-      document.querySelectorAll('.carousel-item');
-      const
-      dots
-      =
-      document.querySelectorAll('.dot');
-      const
-      nextBtn
-      =
-      document.getElementById('nextBtn');
-      let
-      currentIndex
-      =
-      0;
-      const
-      totalItems
-      =
-      items.length;
-      function
-      updateCarousel ()
-      {
-      const
-      itemWidth
-      =
-      350;
-      const
-      gap
-      =
-      30;
-      const
-      containerWidth
-      =
-      document.querySelector('.carousel-container').offsetWidth;
-      const
-      centerOffset
-      =
-      (containerWidth
-      -
-      itemWidth)
-      /
-      2;
-      const
-      offset
-      =
-      centerOffset
-      -
-      (currentIndex
-      *
-      (itemWidth
-      +
-      gap));
-      track.style.transform
-      =
-      `translateX(${offset}px)`;
-      items.forEach((item,
-      index)
-      =>
-      {
-      item.classList.toggle('active',
-      index
-      ===
-      currentIndex);
-      });
-      dots.forEach((dot,
-      index)
-      =>
-      {
-      dot.classList.toggle('active',
-      index
-      ===
-      currentIndex);
-      });
-      }
-      function
-      nextSlide ()
-      {
-      currentIndex
-      =
-      (currentIndex
-      +
-      1)
-      %
-      totalItems;
-      updateCarousel();
-      }
-      nextBtn.addEventListener('click',
-      nextSlide);
-      dots.forEach(dot
-      =>
-      {
-      dot.addEventListener('click',
-      ()
-      =>
-      {
-      currentIndex
-      =
-      parseInt(dot.dataset.index);
-      updateCarousel();
-      });
-      });
+    <script>
+     
+     const track = document.getElementById('carouselTrack');
+const items = document.querySelectorAll('.carousel-item');
+const nextBtn = document.getElementById('nextBtn');
+let currentIndex = 0;
+const totalItems = items.length;
 
+function updateCarousel() {
+  const itemWidth = 350;
+  const gap = 30;
+  const containerWidth = document.querySelector('.carousel-container').offsetWidth;
+  const centerOffset = (containerWidth - itemWidth) / 2;
+  const offset = centerOffset - (currentIndex * (itemWidth + gap));
+  
+  track.style.transform = `translateX(${offset}px)`;
+  
+  items.forEach((item, index) => {
+    item.classList.toggle('active', index === currentIndex);
+  });
+}
+
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % totalItems;
+  updateCarousel();
+}
+
+nextBtn.addEventListener('click', nextSlide);
+
+
+updateCarousel();
 
     </script>
   </body>
