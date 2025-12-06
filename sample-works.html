@@ -1,321 +1,317 @@
-
-
-
-
-<!DOCTYPE html lang="en-CA">
-<html>
+<!DOCTYPE html>
+<html lang="en-CA">
   <head>
     <meta charset="UTF-8">
     <title>Sandy Srinivasan-Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
     <style>
-      
-        body {
-            padding-bottom: 150px;
-            margin: 0;
-            margin-left:120px;
-            margin-right: 120px;
-        }
-      
-        
-        header {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 0px 40px;
-            box-sizing: border-box;
-            position: relative;
-    z-index: 1;     
-        }
-        
-        .centered_div {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-          justify-content: center;
-          z-index:0; 
-          position: relative; 
-        }
-        
-        .nav li {
-            cursor: pointer;
-        }
-        
-        a {
-            color: #372D35;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            color: #9E8299;
-        }
-        
-        .nav {
-            position: absolute;
-            top: 40px;
-            right:0px;
-        }
-        
-        .nav ul {
-            font-family: 'Bubbler One', sans-serif;
-            font-weight: 300;
-            font-size: 1.4em;
-            list-style: none;
-            display: flex;
-            gap: 30px;
-            margin: 0;
-            padding: 0;
-        }
-      
-       .nav img {
+      body {
+        padding-bottom: 150px;
+        margin: 0;
+        margin-left: 120px;
+        margin-right: 120px;
+      }
+
+
+      header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 0px 40px;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 1;
+      }
+
+      .centered_div {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        justify-content: center;
+        z-index: 0;
+        position: relative;
+      }
+
+      .nav li {
+        cursor: pointer;
+      }
+
+      a {
+        color: #372D35;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: #9E8299;
+      }
+
+      .nav {
+        position: absolute;
+        top: 40px;
+        right: 0px;
+      }
+
+      .nav ul {
+        font-family: 'Bubbler One', sans-serif;
+        font-weight: 300;
+        font-size: 1.4em;
+        list-style: none;
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav img {
         width: 24px;
         height: auto;
-        vertical-align:top;
+        vertical-align: top;
       }
-      .nav img:hover {
-  opacity: 0.6;
-  transform: scale(1.1);
-  transition: all 0.3s ease;
-}
-        
-        h1 {
-            font-family: 'lora';
-            font-size: 4.5em;
-            display: flex;
-            justify-content: right;
-            margin-right: 55px;
-            margin-top: 80px;
-            color: #372D35;
-        }
-       hr {
-  border: none;
-  height: 4px;
-  width: 100%;
-  background-color: #8A8D7A; 
-  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-}
-        
-        .foot {
-            position: fixed;
-            background: #8A8D7A;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 75px;
-            display: flex;
-            align-items: center;
-            padding-left: 40px;
-            font-family: 'Bubbler One', sans-serif;
-            gap: 30px;
-            word-spacing: 100px;
-            text-align: center;
-        }
-        
-        .foot-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .foot img {
-            max-width: 30px;
-            display: block;
-        }
-        
-        p {
-            font-family: 'Bubbler One';
-            font-size: 1.8em;
-            display: flex;
-            justify-content: right;
-            margin-right: 200px;
-        }
-        
-        
-        
-     
-        
-      
-        .container {
-            column-count: 2;
-            column-gap: 30px;
-            width: 100%;
-            max-width: 1200px;
-            justify-content: space-between;
-            gap:30px;
-            margin-top: 50px;
-            margin-left: auto;
-            margin-right:auto; 
-           
-            position: relative; 
-          
-    z-index: 1;   
-          
-        }
-        
-       /* I prompted Claude AI to show me how to set up my grid layout like the Pinterest grid layout, and uploaded a screenshot from Pinterest.*/
-        .grid-item {
-            break-inside: avoid;
-            margin-bottom: 50px;
-            background: #f5ebef;
-            border-radius: 12px;
-            padding-bottom: 70px;
-            overflow: hidden;
-        box-shadow: 2px 0px 8px rgba(0,0,0,0.08);
 
-           
-        }
-        
-       /* I prompted Claude AI to show me how to add the hover effect for each grid item*/
-        .grid-item:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-        }
-        
-        
-        .grid-item a {
-            display: block;
-            position: relative;
-        }
-        
-        .grid-item img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-   
-       
-      
-        .grid-item-content {
-            margin-top:30px;
-            margin-bottom: -30px;
-            padding-left: 25px;
-         
-        }
-        
-        .grid-item h2 {
-            font-family: 'lora';
-            font-size: 1.25em;
-            margin: 0 0 10px 0;
-            color: #372D35;
-        }
-        
-        .bodytext {
-            font-family: "Bubbler One";
-            font-size: 0.95em;
-            color: #666;
-        }
-      
+      .nav img:hover {
+        opacity: 0.6;
+        transform: scale(1.1);
+        transition: all 0.3s ease;
+      }
+
+      h1 {
+        font-family: 'lora';
+        font-size: 4.5em;
+        display: flex;
+        justify-content: right;
+        margin-right: 55px;
+        margin-top: 80px;
+        color: #372D35;
+      }
+
+      hr {
+        border: none;
+        height: 4px;
+        width: 100%;
+        background-color: #8A8D7A;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+      }
+
+      .foot {
+        position: fixed;
+        background: #8A8D7A;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 75px;
+        display: flex;
+        align-items: center;
+        padding-left: 40px;
+        font-family: 'Bubbler One', sans-serif;
+        gap: 30px;
+        word-spacing: 100px;
+        text-align: center;
+      }
+
+      .foot-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .foot img {
+        max-width: 30px;
+        display: block;
+      }
+
+      p {
+        font-family: 'Bubbler One';
+        font-size: 1.8em;
+        display: flex;
+        justify-content: right;
+        margin-right: 200px;
+      }
+
+
+
+
+
+
+      .container {
+        column-count: 2;
+        column-gap: 30px;
+        width: 100%;
+        max-width: 1200px;
+        justify-content: space-between;
+        gap: 30px;
+        margin-top: 50px;
+        margin-left: auto;
+        margin-right: auto;
+
+        position: relative;
+
+        z-index: 1;
+
+      }
+
+      /* I prompted Claude AI to show me how to set up my grid layout like the Pinterest grid layout, and uploaded a screenshot from Pinterest.*/
+      .grid-item {
+        break-inside: avoid;
+        margin-bottom: 50px;
+        background: #f5ebef;
+        border-radius: 12px;
+        padding-bottom: 70px;
+        overflow: hidden;
+        box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.08);
+
+
+      }
+
+      /* I prompted Claude AI to show me how to add the hover effect for each grid item*/
+      .grid-item:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      }
+
+
+      .grid-item a {
+        display: block;
+        position: relative;
+      }
+
+      .grid-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+
+
+
+      .grid-item-content {
+        margin-top: 30px;
+        margin-bottom: -30px;
+        padding-left: 25px;
+
+      }
+
+      .grid-item h2 {
+        font-family: 'lora';
+        font-size: 1.25em;
+        margin: 0 0 10px 0;
+        color: #372D35;
+      }
+
+      .bodytext {
+        font-family: "Bubbler One";
+        font-size: 0.95em;
+        color: #666;
+      }
     </style>
   </head>
   <body>
-  <div class="centered_div">
-    <header>
-    <div class="nav">
-      <ul>
-       <li><a href="about.html">About</a></li>
-        <li><a href="sample-works.html">Works</a></li>
-        <li><a href="resume.html">Resume</a></li>
-           <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
+    <div class="centered_div">
+      <header>
+        <div class="nav">
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="sample-works.html">Works</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
 
-      </ul>
-    </div>
-      <h1>
-        Work Samples
-      </h1>
-     
-    </header>
-  <hr> 
-    
-    
-   <div class="container">
-     <!-- I prompted Claude AI by asking it to help me set up my grid layout to look like the Pinterest grid, and uploaded a screenshot of pinterest.-->
-    
-     <div class="grid-item">
+          </ul>
+        </div>
+        <h1>
+          Work Samples
+        </h1>
+
+      </header>
+      <hr>
+
+
+      <div class="container">
+        <!-- I prompted Claude AI by asking it to help me set up my grid layout to look like the Pinterest grid, and uploaded a screenshot of pinterest.-->
+
+        <div class="grid-item">
           <a href="evolution.html">
 
-          <img src="work3_clear.png" alt="Magazine coverpage with drawn image of street" >
+            <img src="work3_clear.png" alt="Magazine coverpage with drawn image of street">
           </a>
           <div class="grid-item-content">
             <h2>Evolution of Design Magazine</h2>
             <span class="bodytext">A magazine chronicling my design story.</span>
           </div>
-     </div>
-    
-     <div class="grid-item">
-         <a href="identity.html">
-        
-          <img src="work1_clear.png" alt="image of a floral poster" >
-           </a>
-         <div class="grid-item-content">
-           <h2>Identity Through Design</h2>
-           <span class="bodytext">A poster and logo built to represent a personal identity.</span>
-         </div>
-      </div>
-      
-      <div class="grid-item">
-        <a href="fine-arts.html">
-      
-        <img src="work5_clear.png" alt="digital art of an abstract rollercoaster">
-        </a>
-        <div class="grid-item-content">
-          <h2>Exploring Fine Arts</h2>
-          <span class="bodytext">A collection of my art done in both traditional and digital mediums.</span>
         </div>
-     </div>
-       <div class="grid-item">
+
+        <div class="grid-item">
+          <a href="identity.html">
+
+            <img src="work1_clear.png" alt="image of a floral poster">
+          </a>
+          <div class="grid-item-content">
+            <h2>Identity Through Design</h2>
+            <span class="bodytext">A poster and logo built to represent a personal identity.</span>
+          </div>
+        </div>
+
+        <div class="grid-item">
+          <a href="fine-arts.html">
+
+            <img src="work5_clear.png" alt="digital art of an abstract rollercoaster">
+          </a>
+          <div class="grid-item-content">
+            <h2>Exploring Fine Arts</h2>
+            <span class="bodytext">A collection of my art done in both traditional and digital mediums.</span>
+          </div>
+        </div>
+        <div class="grid-item">
           <a href="site-redesign.html">
-          
-           <img src="home2.png" alt="Mockup of a website homepage" >
+
+            <img src="home2.png" alt="Mockup of a website homepage">
           </a>
           <div class="grid-item-content">
             <h2>Reimagining the Aurora Historical Society site</h2>
             <span class="bodytext">A redesign of the Aurora Historical Society website.</span>
           </div>
-     </div>
-     
+        </div>
+
         <div class="grid-item">
           <a href="scented-essentials.html">
-          
-           <img src="icon.png" alt="pink perfume icon" >
+
+            <img src="icon.png" alt="pink perfume icon">
           </a>
           <div class="grid-item-content">
             <h2>Scented Essentials Icon Set</h2>
             <span class="bodytext">A set of icons representing fresh, scented products.</span>
           </div>
-      </div>
-      
-        
-     
+        </div>
 
-    
-      
-      </div>
-    
-        
+
+
+
+
 
       
+
+
+
+
     </div>
-  
+
     </div>
-   <div class="foot">
-  <div class="foot-item">
-    <img src="mail.png">
-    <span>sandysri0711@gmail.com</span>
-  </div>
+    <div class="foot">
+      <div class="foot-item">
+        <img src="mail.png" alt="mail icon">
+        <span>sandysri0711@gmail.com</span>
+      </div>
 
-  <div class="foot-item">
-    <img src="linkedin.png">
-    <span>www.linkedin.com/in/sandy-srinivasan</span>
-  </div>
-</div>
+      <div class="foot-item">
+        <img src="linkedin.png" alt="linkedin icon">
+        <span>www.linkedin.com/in/sandy-srinivasan</span>
+      </div>
+    </div>
 
-   
-    
+
+
   </body>
-  
+
 </html>
