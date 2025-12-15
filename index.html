@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <style>
       body {
-        background-color: #F1EAD8;
+        
         padding-bottom: 150px;
 
       }
@@ -21,11 +21,31 @@
       header {
         width: 100vw;
         max-height: 100px;
-        position: relative;
+        position: relative;}
 
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
-      }
+      
 
       .duck {
         width: 100%;
@@ -92,6 +112,7 @@
         margin-right: 55px;
         margin-top: 50px;
         color: #372D35;
+        animation: slideInFromRight 1s ease-out;
 
       }
 
@@ -130,6 +151,7 @@
         margin-right: 200px;
         margin-top: 400px;
         font-weight: bold;
+        animation: slideInFromLeft 1s ease-out;
       }
     </style>
   </head>
@@ -146,7 +168,7 @@
 
             <li><a href="about.html">About</a></li>
             <li><a href="sample-works.html">Works</a></li>
-            <li><a href="resume.html">Resume</a></li>
+            <li><a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">Resume</a></li>
             <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
           </ul>
         </ul>

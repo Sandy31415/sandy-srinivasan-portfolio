@@ -78,10 +78,11 @@
 
       h1 {
         font-family: 'lora';
-        font-size: 4.5em;
+        font-size: 4.25em;
         display: flex;
-        justify-content: left;
-        margin-right: 120px;
+        justify-content:center;
+        text-align:left;
+        
         margin-top: 80px;
         color: #372D35;
       }
@@ -100,7 +101,7 @@
         position: relative;
         width: 100%;
         overflow: hidden;
-        padding: 40px 0;
+        padding: 20px 0;
       }
 
       .carousel-inner {
@@ -111,7 +112,7 @@
         position: relative;
         min-height: 500px;
         transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        padding-left: calc(50% - 190px);
+        padding-left: calc(50% - 300px);
       }
 
       .carousel-item {
@@ -134,7 +135,7 @@
       .carousel-item.center {
         transform: scale(1.1);
         z-index: 2;
-        width: 320px;
+        width: 620px;
         height: 460px;
       }
 
@@ -146,7 +147,7 @@
       }
 
       .carousel-item::after {
-        content: attr(data-label);
+       
         position: absolute;
         bottom: 50px;
         left: 50%;
@@ -285,13 +286,13 @@
           <ul>
             <li><a href="about.html">About</a></li>
             <li><a href="sample-works.html">Works</a></li>
-            <li><a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">Resume</a></li>
+          <li><a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">Resume</a></li>
             <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
           </ul>
         </div>
       </header>
       <h1>
-        Scented Essentials
+        Sunbot- Health Management Design
       </h1>
       <!-- I prompted Claude AI to help me create an image carousel. I put all my image src links into a div and
  pasted that into Clause and prompted it to show me the html and css to style them like an image carousel.-->
@@ -311,6 +312,10 @@
             <span class="indicator" onclick="goToSlide(3)"></span>
             <span class="indicator" onclick="goToSlide(4)"></span>
             <span class="indicator" onclick="goToSlide(5)"></span>
+            <span class="indicator" onclick="goToSlide(6)"></span>
+            <span class="indicator" onclick="goToSlide(7)"></span>
+            <span class="indicator" onclick="goToSlide(8)"></span>
+            
 
           </div>
         </div>
@@ -319,12 +324,12 @@
 
       <div class="description">
         <p>
-          I created these icons as part of a school assignment,
-          where I was prompted to build icons that represent items that
-          play a role in my own life. While creating these icons, my challenge
-          was conveying scents through purely visual
-          means. Using Adobe Illustrator, I designed a clean
-          and cohesive set of icons that captures the essence of items like perfume, diffusers, and lotions.
+          Managing a chronic illness can be challenging, especially for 
+          senior citizens hoping to retain their independence. My team and 
+          I designed SunBot, a smart pill dispenser and tracker with a tactile
+          interface to help elderly Ontario residents manage their medications
+          with ease. 
+          
         </p>
       </div>
 
@@ -360,35 +365,48 @@
     <!-- I used GenAI to help me with the javascript. I prompted it to show me how to style my images in an image carousel..-->
     <script>
       const slides = [{
-          img: 'icon1.png',
-          label: 'perfume',
+          img: 'slide1.jpg',
+          
           color: '#d8a48f'
         },
         {
-          img: 'icon2.png',
-          label: 'lotion',
+          img: 'slide2.jpg',
+        
           color: '#d7ce93'
         },
         {
-          img: 'icon3.png',
-          label: 'diffuser',
+          img: 'slide3.jpg',
+         
           color: '#efebce'
         },
         {
-          img: 'icon4.png',
-          label: 'perfume',
+          img: 'slide4.jpg',
+          
           color: '#a3a380'
         },
         {
-          img: 'icon5.png',
-          label: 'lotion',
+          img: 'slide5.jpg',
+        
           color: '#bb8588'
         },
         {
-          img: 'icon6.png',
-          label: 'diffuser',
+          img: 'slide6.jpg',
+         
           color: '#a5c9b8'
-        }
+        },
+           { img: 'slide7.jpg',
+         
+          color: '#a5c9b8'
+        },
+         { img: 'slide8.jpg',
+         
+          color: '#a5c9b8'
+        },
+       { img: 'slide9.jpg',
+         
+          color: '#a5c9b8'
+        },
+                      
       ];
 
       let currentIndex = 0;
