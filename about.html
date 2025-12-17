@@ -115,7 +115,14 @@
 
 
       }
-
+      .dragon{
+        z-index:-1;
+        position:absolute;
+        margin-top: 50px;
+        margin-left:290px; 
+        width: 400px;
+        opacity:0.55; 
+      }
 
       .container {
         display: flex;
@@ -183,10 +190,7 @@
 
       }
 
-      .photo_reel img {
-        display: block;
-       
-      }
+      
 
       /* I asked Claude AI to generate the animated circular outline for the image. 
 I prompted it by asking it to create an outline around the image that made 1 rotation. -->
@@ -233,6 +237,9 @@ I prompted it by asking it to create an outline around the image that made 1 rot
   </head>
   <body>
     <div class="centered_div">
+      <div class="dragon">
+        <img src="dragon.png" alt="dragon image">
+      </div>
 
       <div class="nav">
         <ul>
@@ -284,10 +291,6 @@ I prompted it by asking it to create an outline around the image that made 1 rot
 
       </div>
 
-      <div class="photo_reel">
-        <img src="reeel.png" alt="reel with images"><img src="reeel.png" alt="reel with images"><img src="reeel.png" alt="reel with images">
-
-      </div>
 
 
       <div class="foot">
