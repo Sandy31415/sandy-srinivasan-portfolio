@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en-CA">
   <head>
@@ -12,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <style>
       body{
-
         padding-bottom: 150px;
         margin-left: 120px;
         margin-right:120px;
@@ -77,7 +72,8 @@
         color:#372D35;
         
       }
-    .foot{position: fixed;
+    .foot{
+        position: fixed;
         background: #8A8D7A;
         left: 0;
         bottom: 0;
@@ -88,8 +84,9 @@
         padding-left: 40px;
         font-family: 'Bubbler One', sans-serif;
         gap: 30px;
-      word-spacing: 100px;
-      text-align: center;
+        word-spacing: 100px;
+        text-align: center;
+        z-index: 1000;
       }
       .foot-item {
   display: flex;
@@ -113,7 +110,7 @@
       display: flex;
       justify-content: center;
       margin: 40px 0;
-      min-height: 650px;
+      min-height: 750px;
     }
 
     .magazine {
@@ -125,7 +122,7 @@
     }
 
     .page {
-  width: 562px;
+  width: 550px;
   height: 750px;
   position: absolute;
   background: white;
@@ -152,17 +149,102 @@
     }
 
    
-    .page:nth-child(1) { z-index: 8; left: 0; }
-    .page:nth-child(2) { z-index: 7; left: 0; }
-    .page:nth-child(3) { z-index: 6; left: 0; }
-    .page:nth-child(4) { z-index: 5; left: 0; }
-    .page:nth-child(5) { z-index: 4; left: 0; }
-    .page:nth-child(6) { z-index: 3; left: 0; }
-    .page:nth-child(7) { z-index: 2; left: 0; }
-    .page:nth-child(8) { z-index: 1; left: 0; }
+    .page:nth-child(1) { z-index: 9; left: 0; }
+    .page:nth-child(2) { z-index: 8; left: 0; }
+    .page:nth-child(3) { z-index: 7; left: 0; }
+    .page:nth-child(4) { z-index: 6; left: 0; }
+    .page:nth-child(5) { z-index: 5; left: 0; }
+    .page:nth-child(6) { z-index: 4; left: 0; }
+    .page:nth-child(7) { z-index: 3; left: 0; }
+    .page:nth-child(8) { z-index: 2; left: 0; }
 
+    .description-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(241, 234, 216, 0.97);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      box-sizing: border-box;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .page:hover .description-overlay {
+      opacity: 1;
+    }
+
+    .description-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(241, 234, 216, 0.97);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      box-sizing: border-box;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+    }
+
+    .page:hover .description-overlay {
+      opacity: 1;
+    }
+
+    .description-page {
+      background: #F1EAD8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      box-sizing: border-box;
+      pointer-events: auto;
+    }
+    
+    .description-page.flipped {
+      pointer-events: none;
+    }
+
+    .description-content {
+      max-width: 420px;
+      max-height: 100%;
+      overflow-y: auto;
+    }
+
+    .description-content h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.8em;
+      color: #372D35;
+      margin-bottom: 15px;
+      margin-top: 0;
+      text-align: center;
+    }
+
+    .description-content p {
+      font-family: 'Bubbler One', sans-serif;
+      font-size: 0.95em;
+      line-height: 1.5;
+      color: #372D35;
+      background: none;
+      padding: 0;
+      margin: 0;
+      box-shadow: none;
+    }
+      
+      
+      
+      
     .back-page {
-      width: 562px;
+      width: 550px;
       height: 750px;
       background: white;
       position: absolute;
@@ -183,6 +265,7 @@
       justify-content: center;
       gap: 15px;
       margin-top: 30px;
+      margin-bottom: 40px;
     }
 
     .controls button {
@@ -218,12 +301,13 @@
   border-radius: 100px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.15);
 }
-      p{
+      .info-text{
         background-color:#8A8D7A;
         color:#FFF;
         padding: 30px;
         font-size:1.5em;
         box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        font-family: 'Bubbler One', sans-serif;
       }
 
 
@@ -284,9 +368,41 @@
         <img src="page7.png" alt="Magazine Page 7">
       </div>
 
-     
       <div class="page" data-page="8">
         <img src="page8.png" alt="Magazine Page 8">
+        <!-- Description overlay -->
+        <div class="description-overlay">
+          <div class="description-content">
+            <h2>About This Project</h2>
+            <p>
+              This magazine was a project I worked on over a fairly long period of time. 
+              The graphics were all images I captured around my current city, Waterloo. I used 
+              a combination of Photoshop, Illustrator, and Indesign, which I properly explored
+              for the first time. I used this magazine as a way to reflect on my first year 
+              in my program, GBDA. I truly believe that my first year in 
+              university was a pivotal time 
+              in my journey as a designer, and I'm glad to have had the opportunity to 
+              express that.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description page -->
+      <div class="page description-page" data-page="9">
+        <div class="description-content">
+          <h2>About This Project</h2>
+          <p>
+            This magazine was a project I worked on over a fairly long period of time. 
+            The graphics were all images I captured around my current city, Waterloo. I used 
+            a combination of Photoshop, Illustrator, and Indesign, which I properly explored
+            for the first time. I used this magazine as a way to reflect on my first year 
+            in my program, GBDA. I truly believe that my first year in 
+            university was a pivotal time 
+            in my journey as a designer, and I'm glad to have had the opportunity to 
+            express that.
+          </p>
+        </div>
       </div>
 
      
@@ -296,24 +412,18 @@
     </div>
     </div>
 
-
-
   <div class="controls">
     <button id="prevBtn">← Previous Page</button>
     <button id="nextBtn">Next Page →</button>
   </div>
-   <hr>
 
-<p>
-  This magazine was a project I worked on over a fairly long period of time. 
-  The graphics were all images I captured around my current city, Waterloo. I used 
-  a combination of Photoshop, Illustrator, and Indesign, which I properly explord
-  for the first time. I used this magazine as a way to reflect on my first year 
-  in my program, GBDA. I truly believe that my first year in 
-  university was a pivotal time 
-  in my journey as a designer, and I'm glad to have had the opportunity to 
-  express that.
-    </p>
+  <hr>
+
+  <p class="info-text">
+    You can flip through all the pages above to see my journey as a designer, 
+    including the final description page that explains the project.
+  </p>
+ 
   
     
     <div class="foot">
@@ -369,7 +479,5 @@
   </body>
   
 </html>
-      
-      
             
       

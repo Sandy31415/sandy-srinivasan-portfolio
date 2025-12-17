@@ -15,7 +15,6 @@
         margin-right: 120px;
       }
 
-
       header {
         width: 100%;
         display: flex;
@@ -123,56 +122,30 @@
         display: block;
       }
 
-      p {
-        font-family: 'Bubbler One';
-        font-size: 1.8em;
-        display: flex;
-        justify-content: right;
-        margin-right: 200px;
-      }
-
-
       .container {
-        column-count: 2;
-        column-gap: 20px;
+        position: relative;
         width: 100%;
         max-width: 1200px;
-        justify-content: space-between;
-        gap: 30px;
-        margin-top: 50px;
-        margin-left: auto;
-        margin-right: auto;
-
-        position: relative;
-
-        z-index: 1;
-
+        margin: 60px auto 0;
       }
 
-      /* I prompted Claude AI to show me how to set up my grid layout like the Pinterest grid layout, and uploaded a screenshot from Pinterest.*/
       .grid-item {
-        break-inside: avoid;
-        margin-bottom: 30px;
+        position: absolute;
+        width: calc(33.333% - 20px);
         background: #f5ebef;
         border-radius: 12px;
-        padding-bottom: 40px;
         overflow: hidden;
         box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.08);
-
-
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
-      /* I prompted Claude AI to show me how to add the hover effect for each grid item*/
       .grid-item:hover {
         transform: translateY(-6px);
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-        transition: all 0.5s ease;
       }
-
 
       .grid-item a {
         display: block;
-        position: relative;
       }
 
       .grid-item img {
@@ -181,14 +154,8 @@
         display: block;
       }
 
-
-
-
       .grid-item-content {
-        margin-top: 30px;
-        margin-bottom: -30px;
-        padding-left: 25px;
-
+        padding: 30px 25px 40px 25px;
       }
 
       .grid-item h2 {
@@ -203,6 +170,22 @@
         font-size: 0.95em;
         color: #666;
       }
+
+      @media (max-width: 900px) {
+        .grid-item {
+          width: calc(50% - 15px);
+        }
+      }
+
+      @media (max-width: 600px) {
+        body {
+          margin-left: 20px;
+          margin-right: 20px;
+        }
+        .grid-item {
+          width: 100%;
+        }
+      }
     </style>
   </head>
   <body>
@@ -214,100 +197,84 @@
             <li><a href="sample-works.html">Works</a></li>
            <li><a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">Resume</a></li>
             <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
-
           </ul>
         </div>
         <h1>
           Selected Work 
         </h1>
-
       </header>
       <hr>
 
-
-      <div class="container">
-        <!-- I prompted Claude AI by asking it to help me set up my grid layout to look like the Pinterest grid, and uploaded a screenshot of pinterest.-->
+      <div class="container" id="masonry-container">
+        <div class="grid-item">
+          <a href="evolution.html">
+            <img src="work3_clear.png" alt="Magazine coverpage with drawn image of street">
+          </a>
+          <div class="grid-item-content">
+            <h2>Evolution of Design Magazine</h2>
+            <span class="bodytext">A magazine chronicling my design story.</span>
+          </div>
+        </div>
 
         
- <div class="grid-item">
-  <a href="evolution.html">
-    <img src="work3_clear.png" alt="Magazine coverpage with drawn image of street">
-  </a>
-  <div class="grid-item-content">
-    <h2>Evolution of Design Magazine</h2>
-    <span class="bodytext">A magazine chronicling my design story.</span>
-  </div>
-</div>
 
-<div class="grid-item">
-  <a href="identity.html">
-    <img src="work1_clear.png" alt="image of a floral poster">
-  </a>
-  <div class="grid-item-content">
-    <h2>Identity Through Design</h2>
-    <span class="bodytext">A poster and logo built to represent a personal identity.</span>
-  </div>
-</div>
-
-<div class="grid-item">
-  <a href="scented-essentials.html">
-    <img src="icon.png" alt="pink perfume icon">
-  </a>
-  <div class="grid-item-content">
-    <h2>Scented Essentials Icon Set</h2>
-    <span class="bodytext">A set of icons representing fresh, scented products.</span>
-  </div>
-</div>
-
-<!-- Sunbot moved here to right column -->
-<div class="grid-item">
-  <a href="sunbot.html">
-    <img src="slide3.jpg" alt="image of a grey robot with a yellow slide background">
-  </a>
-  <div class="grid-item-content">
-    <h2>Sunbot- Health Management Design</h2>
-    <span class="bodytext">A smart pill dispenser and tracker designed for users who are less familiar with technology.</span>
-  </div>
-</div>
-
-<div class="grid-item">
-  <a href="site-redesign.html">
-    <img src="home2.png" alt="Mockup of a website homepage">
-  </a>
-  <div class="grid-item-content">
-    <h2>Reimagining the Aurora Historical Society site</h2>
-    <span class="bodytext">A redesign of the Aurora Historical Society website.</span>
-  </div>
-</div>
-
-<div class="grid-item">
-  <a href="fine-arts.html">
-    <img src="work5_clear.png" alt="digital art of an abstract rollercoaster">
-  </a>
-  <div class="grid-item-content">
-    <h2>Exploring Fine Arts</h2>
-    <span class="bodytext">A collection of my art done in traditional mediums.</span>
-  </div>
-</div>
+        <div class="grid-item">
+          <a href="sunbot.html">
+            <img src="slide3.jpg" alt="image of a grey robot with a yellow slide background">
+          </a>
+          <div class="grid-item-content">
+            <h2>Sunbot- Health Management Design</h2>
+            <span class="bodytext">A smart pill dispenser and tracker designed for users who are less familiar with technology.</span>
+          </div>
+        </div>
         
-    
+          <div class="grid-item">
+          <a href="site-redesign.html">
+            <img src="home2.png" alt="Mockup of a website homepage">
+          </a>
+          <div class="grid-item-content">
+            <h2>Reimagining the Aurora Historical Society site</h2>
+            <span class="bodytext">A redesign of the Aurora Historical Society website.</span>
+          </div>
+        </div>
         
         
-       
+        <div class="grid-item">
+          <a href="identity.html">
+            <img src="work1_clear.png" alt="image of a floral poster">
+          </a>
+          <div class="grid-item-content">
+            <h2>Identity Through Design</h2>
+            <span class="bodytext">A poster and logo built to represent a personal identity.</span>
+          </div>
+        </div>
 
-
-
-
-
+        
 
       
+        
+        <div class="grid-item">
+          <a href="scented-essentials.html">
+            <img src="icon.png" alt="pink perfume icon">
+          </a>
+          <div class="grid-item-content">
+            <h2>Scented Essentials Icon Set</h2>
+            <span class="bodytext">A set of icons representing fresh, scented products.</span>
+          </div>
+        </div>
 
-
-
-
+        <div class="grid-item">
+          <a href="fine-arts.html">
+            <img src="work5_clear.png" alt="digital art of an abstract rollercoaster">
+          </a>
+          <div class="grid-item-content">
+            <h2>Exploring Fine Arts</h2>
+            <span class="bodytext">A collection of my art done in traditional mediums.</span>
+          </div>
+        </div>
+      </div>
     </div>
 
-    </div>
     <div class="foot">
       <div class="foot-item">
         <img src="mail.png" alt="mail icon">
@@ -320,8 +287,76 @@
       </div>
     </div>
 
-
-
+    <script>
+      function layoutMasonry() {
+        const container = document.getElementById('masonry-container');
+        const items = Array.from(container.children);
+        const gap = 30;
+        
+        // Determine number of columns based on screen width
+        let cols = 3;
+        if (window.innerWidth <= 900) cols = 2;
+        if (window.innerWidth <= 600) cols = 1;
+        
+        // Calculate column width
+        const containerWidth = container.offsetWidth;
+        const colWidth = (containerWidth - (gap * (cols - 1))) / cols;
+        
+        // Array to track the height of each column
+        const colHeights = new Array(cols).fill(0);
+        
+        // Position each item
+        items.forEach((item, index) => {
+          // Find shortest column
+          const shortestCol = colHeights.indexOf(Math.min(...colHeights));
+          
+          // Calculate position
+          const x = shortestCol * (colWidth + gap);
+          const y = colHeights[shortestCol];
+          
+          // Set item position and width
+          item.style.left = x + 'px';
+          item.style.top = y + 'px';
+          item.style.width = colWidth + 'px';
+          
+          // Update column height
+          colHeights[shortestCol] += item.offsetHeight + gap;
+        });
+        
+        // Set container height
+        container.style.height = Math.max(...colHeights) + 'px';
+      }
+      
+      // Layout on load
+      window.addEventListener('load', () => {
+        // Wait for images to load
+        const images = document.querySelectorAll('.grid-item img');
+        let loadedImages = 0;
+        
+        images.forEach(img => {
+          if (img.complete) {
+            loadedImages++;
+          } else {
+            img.addEventListener('load', () => {
+              loadedImages++;
+              if (loadedImages === images.length) {
+                layoutMasonry();
+              }
+            });
+          }
+        });
+        
+        if (loadedImages === images.length) {
+          layoutMasonry();
+        }
+      });
+      
+      // Re-layout on window resize
+      let resizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(layoutMasonry, 250);
+      });
+    </script>
   </body>
-
 </html>
