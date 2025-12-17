@@ -159,99 +159,48 @@
     .page:nth-child(8) { z-index: 2; left: 0; }
 
     .description-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(241, 234, 216, 0.97);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
-      box-sizing: border-box;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      pointer-events: none;
-    }
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(241, 234, 216, 0.97);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.page[data-page="8"]:not(.flipped):hover .description-overlay {
+  opacity: 1;
+}
 
     .page:hover .description-overlay {
       opacity: 1;
     }
 
-    .description-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(241, 234, 216, 0.97);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
-      box-sizing: border-box;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      pointer-events: none;
-    }
-
-    .page:hover .description-overlay {
-      opacity: 1;
-    }
-
-    .description-page {
-      background: #F1EAD8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
-      box-sizing: border-box;
-      pointer-events: auto;
-    }
     
-    .description-page.flipped {
-      pointer-events: none;
-    }
 
-    .description-content {
-      max-width: 420px;
-      max-height: 100%;
-      overflow-y: auto;
-    }
+    
 
-    .description-content h2 {
-      font-family: 'Lora', serif;
-      font-size: 1.8em;
-      color: #372D35;
-      margin-bottom: 15px;
-      margin-top: 0;
-      text-align: center;
-    }
-
-    .description-content p {
-      font-family: 'Bubbler One', sans-serif;
-      font-size: 0.95em;
-      line-height: 1.5;
-      color: #372D35;
-      background: none;
-      padding: 0;
-      margin: 0;
-      box-shadow: none;
-    }
       
       
       
-      
-    .back-page {
-      width: 550px;
-      height: 750px;
-      background: white;
-      position: absolute;
-      right: 0;
-      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
-    }
+   .back-page {
+  width: 550px;
+  height: 750px;
+  background: white;
+  position: absolute;
+  right: 0;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 0;
+}
 
     .back-page img {
       width: 100%;
@@ -292,22 +241,14 @@
       cursor: not-allowed;
       transform: none;
     }
-     hr {
-  border: none;
-  height: 4px;
-  width: 85%;
-  margin: 50px auto;
-  background-color: #8A8D7A; 
-  border-radius: 100px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-}
-      .info-text{
-        background-color:#8A8D7A;
-        color:#FFF;
-        padding: 30px;
-        font-size:1.5em;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.15);
-        font-family: 'Bubbler One', sans-serif;
+      
+      .description-content p{
+        font-family:'Bubbler One', sans-serif;
+        font-size: 1.25em;
+      }
+      .description-content h2{
+        font-family:"lora", serif;
+        font-size:2em;
       }
 
 
@@ -389,21 +330,7 @@
       </div>
 
       <!-- Description page -->
-      <div class="page description-page" data-page="9">
-        <div class="description-content">
-          <h2>About This Project</h2>
-          <p>
-            This magazine was a project I worked on over a fairly long period of time. 
-            The graphics were all images I captured around my current city, Waterloo. I used 
-            a combination of Photoshop, Illustrator, and Indesign, which I properly explored
-            for the first time. I used this magazine as a way to reflect on my first year 
-            in my program, GBDA. I truly believe that my first year in 
-            university was a pivotal time 
-            in my journey as a designer, and I'm glad to have had the opportunity to 
-            express that.
-          </p>
-        </div>
-      </div>
+     
 
      
       <div class="back-page">
@@ -417,12 +344,8 @@
     <button id="nextBtn">Next Page →</button>
   </div>
 
-  <hr>
+ 
 
-  <p class="info-text">
-    You can flip through all the pages above to see my journey as a designer, 
-    including the final description page that explains the project.
-  </p>
  
   
     
