@@ -2,12 +2,17 @@
 <html lang="en-CA">
   <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sandy Srinivasan-Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
     <style>
+      * {
+        box-sizing: border-box;
+      }
+
       body {
         padding-bottom: 150px;
         margin: 0;
@@ -127,6 +132,8 @@
         width: 100%;
         max-width: 1200px;
         margin: 60px auto 0;
+        transform:translateX(-50%);
+        left: 50%; 
       }
 
       .grid-item {
@@ -171,19 +178,162 @@
         color: #666;
       }
 
+      /* Tablet Styles */
       @media (max-width: 900px) {
+        body {
+          margin-left: 60px;
+          margin-right: 60px;
+        }
+
+        header {
+          padding: 0px 20px;
+        }
+
+        .nav {
+          top: 30px;
+        }
+
+        .nav ul {
+          font-size: 1.2em;
+          gap: 20px;
+        }
+
+        h1 {
+          font-size: 3.5em;
+          margin-right: 30px;
+          margin-top: 60px;
+        }
+
         .grid-item {
           width: calc(50% - 15px);
         }
       }
 
-      @media (max-width: 600px) {
+      /* Mobile Styles */
+      @media (max-width: 768px) {
         body {
           margin-left: 20px;
           margin-right: 20px;
+          padding-bottom: 180px;
         }
+
+        header {
+          flex-direction: column;
+          padding: 0px 10px;
+          align-items: center;
+        }
+
+        .nav {
+          position: relative;
+          top: 0;
+          right: 0;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          margin-bottom: 20px;
+        }
+
+        .nav ul {
+          font-size: 1em;
+          gap: 15px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .nav img {
+          width: 20px;
+        }
+
+        h1 {
+          font-size: 2.5em;
+          margin: 20px 0;
+          justify-content: center;
+          text-align: center;
+        }
+
+        .centered_div {
+          padding: 0 10px;
+        }
+
+        .container {
+          margin: 40px auto 0;
+        }
+
+        .foot {
+          height: auto;
+          min-height: 75px;
+          flex-direction: column;
+          padding: 15px 20px;
+          gap: 15px;
+          align-items: flex-start;
+        }
+
+        .foot-item {
+          font-size: 0.9em;
+          width: 100%;
+          word-break: break-word;
+        }
+
+        .foot-item span {
+          font-size: 0.85em;
+        }
+      }
+
+      /* Small Mobile */
+      @media (max-width: 600px) {
+        body {
+          margin-left: 15px;
+          margin-right: 15px;
+        }
+
+        .nav ul {
+          font-size: 0.85em;
+          gap: 12px;
+        }
+
+        h1 {
+          font-size: 2em;
+          margin: 15px 0;
+        }
+
         .grid-item {
           width: 100%;
+        }
+
+        .grid-item-content {
+          padding: 20px 18px 30px 18px;
+        }
+
+        .grid-item h2 {
+          font-size: 1.1em;
+        }
+
+        .bodytext {
+          font-size: 0.9em;
+        }
+
+        .foot img {
+          max-width: 25px;
+        }
+
+        .foot-item {
+          font-size: 0.8em;
+        }
+      }
+
+      /* Extra Small Mobile */
+      @media (max-width: 480px) {
+        .nav ul {
+          font-size: 0.75em;
+          gap: 8px;
+        }
+
+        .nav img {
+          width: 18px;
+        }
+
+        h1 {
+          font-size: 1.8em;
         }
       }
     </style>
