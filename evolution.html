@@ -21,7 +21,21 @@
         padding: 10px 40px;
         box-sizing: border-box;
       }
-      
+      header > a {
+  display: inline-block;
+  transition: transform 0.5s ease;
+}
+
+header > a img {
+  width: 40px;
+  height: auto;
+  display: block;
+  cursor: pointer;
+}
+
+header > a:hover {
+  transform: rotate(360deg);
+}
       
       .nav {
         position: absolute;
@@ -257,7 +271,8 @@
   <body>
   <div class="centered_div">
     <header>
-   
+   <a href="sample-works.html"><img src="close.webp" alt="close button"></a>
+      
     <div class="nav">
       <ul>
         <li><a href="about.html">About</a></li>
