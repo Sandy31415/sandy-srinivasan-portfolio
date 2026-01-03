@@ -1,510 +1,498 @@
 <!DOCTYPE html>
 <html lang="en-CA">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <title>Sandy Srinivasan-Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sandy Srinivasan - SunBot Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <style>
-      body {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        padding-bottom: 150px;
-        margin-left: 120px;
-        margin-right: 120px;
-      }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: white;
+            padding: 40px 20px;
+        }
 
-      header {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding: 10px 40px;
-        box-sizing: border-box;
-      }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            z-index: 100;
+            padding: 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
- header > a {
-  display: inline-block;
-  margin-top:30px;
-  transition: transform 0.5s ease;
-}
+        header > a {
+            display: inline-block;
+            transition: transform 0.5s ease;
+        }
 
-header > a img {
-  width: 40px;
-  height: auto;
-  display: block;
-  cursor: pointer;
-}
+        header > a img {
+            width: 40px;
+            height: auto;
+            display: block;
+            cursor: pointer;
+        }
 
-header > a:hover {
-  transform: rotate(360deg);
-}
-      .centered_div {
-        max-width: 1200px;
-        margin: 0 auto;
+        header > a:hover {
+            transform: rotate(360deg);
+        }
 
-        justify-content: center;
+        .nav ul {
+            font-family: 'Bubbler One', sans-serif;
+            font-weight: 300;
+            font-size: 1.2em;
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
 
-      }
+        .nav li {
+            cursor: pointer;
+        }
 
+        .nav img {
+            width: 20px;
+            height: auto;
+            vertical-align: middle;
+        }
 
+        .nav img:hover {
+            opacity: 0.6;
+            transform: scale(1.1);
+            transition: all 0.3s ease;
+        }
 
-      .nav {
-        position: absolute;
-        top: 50px;
-        right: 120px;
-      }
+        a {
+            color: #372D35;
+            text-decoration: none;
+        }
 
-      .nav ul {
-        font-family: 'Bubbler One', sans-serif;
-        font-weight: 300;
-        font-size: 1.4em;
-        list-style: none;
-        display: flex;
-        gap: 30px;
-        margin: 10;
-        padding: 0;
-      }
+        a:hover {
+            color: #9E8299;
+        }
 
-      .nav li {
-        cursor: pointer;
-      }
+        .container {
+            max-width: 1400px;
+            margin: 100px auto 0;
+        }
 
-      .nav img {
-        width: 20px;
-        height: auto;
-        vertical-align: top;
-      }
+        .layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            background: transparent;
+            padding: 60px;
+            border-radius: 0;
+            box-shadow: none;
+        }
 
-      .nav img:hover {
-        opacity: 0.6;
-        transform: scale(1.1);
-        transition: all 0.3s ease;
-      }
+        .text-section {
+            padding-right: 20px;
+        }
 
+        .text-section h1 {
+            font-family: 'Lora', serif;
+            font-size: 3.5em;
+            color: #372D35;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            text-align: left;
+            display: block;
+        }
 
-      a {
-        color: #372D35;
-        text-decoration: none;
-      }
+        .text-section p {
+            font-family: 'Bubbler One', sans-serif;
+            font-size: 1.2em;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            background: none;
+            padding: 0;
+            box-shadow: none;
+        }
 
-      a:hover {
-        color: #9E8299;
-      }
+        .carousel-section {
+            position: relative;
+        }
 
-      h1 {
-        font-family: 'lora';
-        font-size: 4.25em;
-        display: flex;
-        justify-content:center;
-        text-align:center;
-        
-        margin-top: 80px;
-        color: #372D35;
-      }
+        .carousel-wrapper-new {
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-      /* I used Claude AI for the styling for the carousel. I provided it with my image links 
-      and prompted it prompted it to 
-      show me the html and css to style them like an image carousel*/
+        .carousel-wrapper-new.expanded {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+        }
 
-      .carousel-wrapper {
-        width: 100%;
-        max-width: 1200px;
-        position: relative;
-      }
+        .carousel-container {
+            background: linear-gradient(135deg, #8A8D7A 0%, #a3a380 100%);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
 
-      .carousel {
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-        padding: 20px 0;
-      }
+        .expanded .carousel-container {
+            max-width: 1220px;
+            width: 100%;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
 
-      .carousel-inner {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 30px;
-        position: relative;
-        min-height: 500px;
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        padding-left: calc(50% - 300px);
-      }
+        .carousel-slide {
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
 
-      .carousel-item {
-        position: relative;
-        border-radius: 25px;
-        overflow: hidden;
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        flex-shrink: 0;
-        width: 280px;
-        height: 400px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      }
+        .carousel-slide.active {
+            display: block;
+        }
 
-      .carousel-item.side {
-        transform: scale(0.8);
-        opacity: 0.7;
-        z-index: 1;
-      }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-      .carousel-item.center {
-        transform: scale(1.1);
-        z-index: 2;
-        width: 620px;
-        height: 460px;
-      }
+        .slide-image-wrapper {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
 
-      .carousel-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+        .expanded .slide-image-wrapper {
+            max-width: 800px;
+            padding: 30px;
+        }
 
-      }
+        .slide-image-wrapper img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            display: block;
+        }
 
-      .carousel-item::after {
-       
-        position: absolute;
-        bottom: 50px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: white;
-        font-size: 3.5em;
-        font-weight: 300;
-        font-family: 'Bubbler One', sans-serif;
-        text-transform: lowercase;
-        letter-spacing: 2px;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      }
+        .nav-buttons {
+            position: absolute;
+            top: 50%;
+            width: 90%;
+            transform: translateY(-50%);
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+            pointer-events: none;
+        }
 
-      .carousel-arrow {
-        position: absolute;
-        top: 50%;
-        margin-right: 50px;
-        margin-left: 50px;
-        transform: translateY(-60%);
-        background: rgba(255, 255, 255, 0.9);
-        color: #333;
-        border: none;
-        font-size: 24px;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        cursor: pointer;
-        z-index: 10;
-        transition: all 0.3s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      }
+        .nav-btn {
+            background: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            color: #333;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            pointer-events: all;
+            transition: all 0.3s ease;
+        }
 
-      .carousel-arrow:hover {
-        background: white;
-        transform: translateY(-50%) scale(1.1);
-      }
+        .nav-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
 
-      .carousel-arrow.prev {
-        left: -25px;
-      }
+        .dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
 
-      .carousel-arrow.next {
-        right: -25px;
-      }
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-      .carousel-indicators {
-        text-align: center;
-        padding: 20px;
-        margin-top: 20px;
-      }
+        .dot.active {
+            background: white;
+            width: 30px;
+            border-radius: 5px;
+        }
 
-      .indicator {
-        display: inline-block;
-        width: 40px;
-        height: 4px;
-        border-radius: 2px;
-        background: #ccc;
-        margin: 0 5px;
-        cursor: pointer;
-        transition: all 0.3s;
-      }
+        .expand-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            color: #333;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
 
-      .indicator.active {
-        background: #333;
-        width: 50px;
-      }
+        .expand-btn:hover {
+            transform: scale(1.1);
+        }
 
-      hr {
-        border: none;
-        height: 4px;
-        width: 90%;
-        margin: 10px auto;
-        background-color: #8A8D7A;
-        border-radius: 100px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-      }
+        .foot {
+            position: fixed;
+            background: #8A8D7A;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            padding-left: 40px;
+            font-family: 'Bubbler One', sans-serif;
+            gap: 30px;
+            z-index: 99;
+        }
 
+        .foot-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            font-size: 1em;
+        }
 
-      .description {
-        max-width: 1200px;
-        text-align: center;
-        padding: 20px;
-      }
+        .foot img {
+            max-width: 30px;
+            display: block;
+        }
 
-      p {
-        font-family: 'Bubbler One';
-        font-size: 1.5em;
-        line-height: 1.6;
-        color: #FFF;
-        background-color: #8A8D7A;
-        padding: 30px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-      }
+        @media (max-width: 968px) {
+            .layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 40px;
+            }
 
-      .foot {
-        position: fixed;
-        background: #8A8D7A;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 75px;
-        display: flex;
-        align-items: center;
-        padding-left: 40px;
-        font-family: 'Bubbler One', sans-serif;
-        gap: 30px;
-        word-spacing: 100px;
-        text-align: center;
-      }
+            .text-section {
+                padding-right: 0;
+                text-align: center;
+            }
 
-      .foot-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
+            .text-section h1 {
+                font-size: 2em;
+                text-align: center;
+            }
 
-      .foot img {
-        max-width: 30px;
-        display: block;
-      }
+            header {
+                padding: 20px 30px;
+            }
 
-      p {
-        font-family: 'Bubbler One';
-        font-size: 1.5em;
-      }
+            .nav ul {
+                font-size: 1em;
+                gap: 15px;
+            }
+        }
     </style>
-  </head>
-  <body>
-    <div class="centered_div">
-      <header>
-<a href="sample-works.html"><img src="close.webp" alt="close button"></a>
+</head>
+<body>
+    <header>
+        <a href="sample-works.html"><img src="close.webp" alt="close button"></a>
         <div class="nav">
-          <ul>
-            
-            <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="sample-works.html">Works</a></li>
-          <li><a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">Resume</a></li>
-            
-          </ul>
+            <ul>
+                <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="sample-works.html">Works</a></li>
+                <li><a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">Resume</a></li>
+            </ul>
         </div>
-      </header>
-      <h1>
-        SunBot- Health Management Design
-      </h1>
-      <!-- I prompted Claude AI to help me create an image carousel. I put all my image src links into a div and
- pasted that into Clause and prompted it to show me the html and css to style them like an image carousel.-->
-      <div class="carousel-wrapper">
-        <div class="carousel">
-          <div class="carousel-inner" id="carouselInner">
+    </header>
 
-          </div>
+    <div class="container">
+        <div class="layout">
+            <div class="text-section">
+                <h1>SunBot: Health Management Design</h1>
+                <p>Managing a chronic health condition can be challenging, especially for senior citizens hoping to retain their independence.</p>
+                <p>My team and I designed SunBot, a smart pill dispenser and tracker with a tactile, button-focused interface to help elderly users manage their medications and lifestyle adjustments with ease.</p>
+            </div>
 
-          <button class="carousel-arrow prev" onclick="moveSlide(-1)">❮</button>
-          <button class="carousel-arrow next" onclick="moveSlide(1)">❯</button>
+            <div class="carousel-section">
+                <div class="carousel-wrapper-new" id="carouselWrapper">
+                    <button class="expand-btn" id="expandBtn" onclick="toggleExpand()">⛶</button>
+                    
+                    <div class="carousel-container">
+                        <div class="carousel-slide active">
+                            <div class="slide-image-wrapper">
+                                <img src="slide1.jpg" alt="SunBot slide 1">
+                            </div>
+                        </div>
 
-          <div class="carousel-indicators">
-            <span class="indicator active" onclick="goToSlide(0)"></span>
-            <span class="indicator" onclick="goToSlide(1)"></span>
-            <span class="indicator" onclick="goToSlide(2)"></span>
-            <span class="indicator" onclick="goToSlide(3)"></span>
-            <span class="indicator" onclick="goToSlide(4)"></span>
-            <span class="indicator" onclick="goToSlide(5)"></span>
-            <span class="indicator" onclick="goToSlide(6)"></span>
-            <span class="indicator" onclick="goToSlide(7)"></span>
-            <span class="indicator" onclick="goToSlide(8)"></span>
-            
+                        <div class="carousel-slide">
+                            <div class="slide-image-wrapper">
+                                <img src="slide2.jpg" alt="SunBot slide 2">
+                            </div>
+                        </div>
 
-          </div>
+                        <div class="carousel-slide">
+                            <div class="slide-image-wrapper">
+                                <img src="slide3.jpg" alt="SunBot slide 3">
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="slide-image-wrapper">
+                                <img src="slide4.jpg" alt="SunBot slide 4">
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="slide-image-wrapper">
+                                <img src="slide5.jpg" alt="SunBot slide 5">
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="slide-image-wrapper">
+                                <img src="slide6.jpg" alt="SunBot slide 6">
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="slide-image-wrapper">
+                                <img src="slide7.jpg" alt="SunBot slide 7">
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="slide-image-wrapper">
+                                <img src="slide8.jpg" alt="SunBot slide 8">
+                            </div>
+                        </div>
+
+                        <div class="carousel-slide">
+                            <div class="slide-image-wrapper">
+                                <img src="slide9.jpg" alt="SunBot slide 9">
+                            </div>
+                        </div>
+
+                        <div class="nav-buttons">
+                            <button class="nav-btn" onclick="changeSlide(-1)">‹</button>
+                            <button class="nav-btn" onclick="changeSlide(1)">›</button>
+                        </div>
+
+                        <div class="dots" id="dots"></div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <hr>
-
-      <div class="description">
-        <p>
-          Managing a chronic health condition can be challenging, especially for 
-          senior citizens hoping to retain their independence. My team and 
-          I designed SunBot, a smart pill dispenser and tracker with a tactile, button focused
-          interface to help elderly users manage their medications and lifestyle adjustments
-          with ease. 
-          
-        </p>
-      </div>
-
-
-
-
-    
-
-
     </div>
-    
 
-
-
-
-
-    </div>
     <div class="foot">
-      <div class="foot-item">
-        <img src="mail.png" alt="mail icon">
-        <span>sandysri0711@gmail.com</span>
-      </div>
-
-      <div class="foot-item">
-        <img src="linkedin.png" alt="linkedin icon">
-        <span>www.linkedin.com/in/sandy-srinivasan</span>
-      </div>
+        <div class="foot-item">
+            <img src="mail.png" alt="mail icon">
+            <span>sandysri0711@gmail.com</span>
+        </div>
+        <div class="foot-item">
+            <img src="linkedin.png" alt="linkedin icon">
+            <span>www.linkedin.com/in/sandy-srinivasan</span>
+        </div>
     </div>
 
-
-
-    
-    <!-- I used GenAI to help me with the javascript. I prompted it to show me how to style my images in an image carousel..-->
     <script>
-      const slides = [{
-          img: 'slide1.jpg',
-          
-          color: '#d8a48f'
-        },
-        {
-          img: 'slide2.jpg',
-        
-          color: '#d7ce93'
-        },
-        {
-          img: 'slide3.jpg',
-         
-          color: '#efebce'
-        },
-        {
-          img: 'slide4.jpg',
-          
-          color: '#a3a380'
-        },
-        {
-          img: 'slide5.jpg',
-        
-          color: '#bb8588'
-        },
-        {
-          img: 'slide6.jpg',
-         
-          color: '#a5c9b8'
-        },
-           { img: 'slide7.jpg',
-         
-          color: '#a5c9b8'
-        },
-         { img: 'slide8.jpg',
-         
-          color: '#a5c9b8'
-        },
-       { img: 'slide9.jpg',
-         
-          color: '#a5c9b8'
-        },
-                      
-      ];
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dotsContainer = document.getElementById('dots');
 
-      let currentIndex = 0;
-      const indicators = document.querySelectorAll('.indicator');
-      const carouselInner = document.getElementById('carouselInner');
-
-      function initializeCarousel () {
-
-        slides.forEach((slide, index) => {
-          const slideElement = createSlideElement(slide);
-          carouselInner.appendChild(slideElement);
-        });
-        updateCarousel();
-      }
-
-      function createSlideElement (slide) {
-        const div = document.createElement('div');
-        div.className = 'carousel-item';
-        div.setAttribute('data-label', slide.label);
-        div.style.background = `linear-gradient(135deg, ${slide.color}, ${adjustColor(slide.color, -20)})`;
-
-        const img = document.createElement('img');
-        img.src = slide.img;
-        img.alt = slide.label;
-
-        div.appendChild(img);
-        return div;
-      }
-
-      function adjustColor (color, amount) {
-        const num = parseInt(color.replace('#', ''), 16);
-        const r = Math.max(0, Math.min(255, (num >> 16) + amount));
-        const g = Math.max(0, Math.min(255, ((num >> 8) & 0x00FF) + amount));
-        const b = Math.max(0, Math.min(255, (num & 0x0000FF) + amount));
-        return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, '0')}`;
-      }
-
-      function updateCarousel () {
-
-        const cardWidth = 280;
-        const gap = 30;
-        const offset = currentIndex * (cardWidth + gap);
-
-
-        carouselInner.style.transform = `translateX(-${offset}px)`;
-
-
-        const items = carouselInner.querySelectorAll('.carousel-item');
-        items.forEach((item, index) => {
-          item.classList.remove('center', 'side');
-
-          if (index === currentIndex) {
-            item.classList.add('center');
-          } else {
-            item.classList.add('side');
-          }
+        // Create dots
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.className = 'dot';
+            if (index === 0) dot.classList.add('active');
+            dot.onclick = () => goToSlide(index);
+            dotsContainer.appendChild(dot);
         });
 
-        updateIndicators();
-      }
+        const dots = document.querySelectorAll('.dot');
 
-      function moveSlide (direction) {
-        currentIndex = Math.max(0, Math.min(slides.length - 1, currentIndex + direction));
-        updateCarousel();
-      }
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            currentSlide = (n + slides.length) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
 
-      function goToSlide (index) {
-        currentIndex = index;
-        updateCarousel();
-      }
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
 
-      function updateIndicators () {
-        indicators.forEach((ind, idx) => {
-          ind.classList.toggle('active', idx === currentIndex);
+        function goToSlide(index) {
+            showSlide(index);
+        }
+
+        function toggleExpand() {
+            const wrapper = document.getElementById('carouselWrapper');
+            const btn = document.getElementById('expandBtn');
+            
+            if (wrapper.classList.contains('expanded')) {
+                wrapper.classList.remove('expanded');
+                btn.textContent = '⛶';
+                document.body.style.overflow = 'auto';
+            } else {
+                wrapper.classList.add('expanded');
+                btn.textContent = '✕';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const wrapper = document.getElementById('carouselWrapper');
+                if (wrapper.classList.contains('expanded')) {
+                    toggleExpand();
+                }
+            }
         });
-      }
-
-
-      initializeCarousel();
     </script>
-  </body>
-
+</body>
 </html>
