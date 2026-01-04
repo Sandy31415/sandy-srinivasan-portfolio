@@ -19,47 +19,62 @@
             background-color: white;
             padding: 40px 20px;
         }
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 40px 10px;
+  position: relative;
+}
 
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: white;
-            z-index: 100;
-            padding: 20px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+header > a {
+  display: inline-block;
+  transition: transform 0.5s ease;
+}
+  
 
-        header > a {
-            display: inline-block;
-            transition: transform 0.5s ease;
-        }
+.nav {
+  position: absolute;
+  right: 120px;
+}
 
-        header > a img {
-            width: 40px;
-            height: auto;
-            display: block;
-            cursor: pointer;
-        }
+header > a img {
+  width: 40px;
+  height: auto;
+  display: block;
+  cursor: pointer;
+  
+}
 
-        header > a:hover {
-            transform: rotate(360deg);
-        }
+header > a:hover {
+  transform: rotate(360deg);
+}
+
+        
+      
+.centered-div {
+  max-width: 1200px;
+  margin: 0 auto;          /* centers horizontally */
+  padding: 0 24px;         /* safe breathing room on small screens */
+  box-sizing: border-box;
+}
+       .nav {
+        position: absolute;
+        top: 50px;
+        right: 120px;
+      }
 
         .nav ul {
-            font-family: 'Bubbler One', sans-serif;
-            font-weight: 300;
-            font-size: 1.2em;
-            list-style: none;
-            display: flex;
-            gap: 30px;
-            margin: 0;
-            padding: 0;
-        }
-
+        font-family: 'Bubbler One', sans-serif;
+        font-weight: 300;
+        font-size: 1.4em;
+        list-style: none;
+        display: flex;
+        gap: 30px;
+        margin: 10;
+        padding: 0;
+      }
         .nav li {
             cursor: pointer;
         }
@@ -333,18 +348,31 @@
     </style>
 </head>
 <body>
-    <header>
-        <a href="sample-works.html"><img src="close.webp" alt="close button"></a>
-        <div class="nav">
-            <ul>
-                <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="sample-works.html">Works</a></li>
-                <li><a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">Resume</a></li>
-            </ul>
-        </div>
-    </header>
+  
+  
+    
+ 
+ <header class="site-header">
+  <a href="sample-works.html" class="exit-btn">
+    <img src="close.webp" alt="close button">
+  </a>
 
+  <nav class="nav">
+    <ul>
+      <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="sample-works.html">Works</a></li>
+      <li>
+        <a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">
+          Resume
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+
+<div class="centered-div">
     <div class="container">
         <div class="layout">
             <div class="text-section">
@@ -422,6 +450,7 @@
                 </div>
             </div>
         </div>
+       </div>
     </div>
 
     <div class="foot">

@@ -7,27 +7,24 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <style>
-      body{
-        padding-bottom: 150px;
-        margin-left: 120px;
-        margin-right:120px;
-        background-image: url("bg.png");
-      }
-      header{
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding: 10px 40px;
-        box-sizing: border-box;
-      }
-      header > a {
-     
+     body {
+  margin: 0;
+  padding-bottom: 150px;
+}
+      header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 40px 10px;
+  position: relative;
+}
+
+header > a {
   display: inline-block;
-   margin-top:30px;
-      margin-left:-20px;
   transition: transform 0.5s ease;
 }
+
 
 header > a img {
   width: 40px;
@@ -39,12 +36,10 @@ header > a img {
 header > a:hover {
   transform: rotate(360deg);
 }
-      
-      .nav {
-        position: absolute;
-        top: 50px;
-        right: 120px;
-      }
+   .nav {
+  position: absolute;
+  right: 120px;
+}
       .nav ul{
     font-family: 'Bubbler One', sans-serif;
     font-weight: 300;
@@ -78,7 +73,13 @@ header > a:hover {
       a:hover{
         color:#9E8299;
       }
-      
+ .centered-div {
+  max-width: 1200px;
+  margin: 0 auto;          /* centers horizontally */
+  padding: 0 24px;         /* safe breathing room on small screens */
+  box-sizing: border-box;
+}
+   
       h1{
        font-family: 'lora';
         font-size: 4.5em;
@@ -272,21 +273,26 @@ header > a:hover {
     </style>
   </head>
   <body>
-  <div class="centered_div">
-    <header>
-   <a href="sample-works.html"><img src="close.webp" alt="close button"></a>
-      
-    <div class="nav">
-      <ul>
-         <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="sample-works.html">Works</a></li>
-       <li><a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">Resume</a></li>
-       
+  
+   <header class="site-header">
+  <a href="sample-works.html" class="exit-btn">
+    <img src="close.webp" alt="close button">
+  </a>
 
-      </ul>
-    </div>
-    </header>
+  <nav class="nav">
+    <ul>
+      <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="sample-works.html">Works</a></li>
+      <li>
+        <a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">
+          Resume
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+    <div class="centered-div">
     <h1>
       My Evolution As a Designer 
     </h1>

@@ -8,10 +8,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <style>
       body {
-
-        padding-bottom: 150px;
-        margin-left: 120px;
-        margin-right: 120px;
+body {
+  margin: 0;
+  padding-bottom: 150px;
+}
       }
 
       header {
@@ -21,11 +21,14 @@
         align-items: flex-start;
         padding: 10px 40px;
         box-sizing: border-box;
+        position:relative;
       }
+      
+      
        header > a {
   display: inline-block;
   transition: transform 0.5s ease;
-  margin-top: 30px;
+
 }
 
 header > a img {
@@ -41,21 +44,22 @@ header > a:hover {
 }
   
 
-      .centered_div {
-        max-width: 1200px;
-        margin: 0 auto;
-
-        justify-content: center;
-
-      }
-
+     .centered-div {
+  max-width: 1200px;
+  margin: 0 auto;          /* centers horizontally */
+  padding: 0 24px;         /* safe breathing room on small screens */
+  box-sizing: border-box;
+}
 
 
-      .nav {
-        position: absolute;
-        top: 50px;
-        right: 120px;
-      }
+
+  
+
+.nav {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+}
 
       .nav ul {
         font-family: 'Bubbler One', sans-serif;
@@ -427,6 +431,7 @@ header > a:hover {
         gap: 30px;
         word-spacing: 100px;
         text-align: center;
+        z-index: 99;
       }
 
       .foot-item {

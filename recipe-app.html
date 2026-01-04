@@ -48,11 +48,10 @@
         color: #9E8299;
       }
 
-      .nav {
-        position: absolute;
-        top: 50px;
-        right: 80px;
-      }
+     .nav {
+  position: absolute;
+  right: 120px;
+}
 
       .nav ul {
         font-family: 'Bubbler One', sans-serif;
@@ -85,12 +84,17 @@
         margin-top: 40px;
         margin-bottom: 40px;
       }
-      header {
-  padding-top: 45px; /* Adjust as needed */
+     header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 40px 10px;
+  position: relative;
 }
+
 header > a {
   display: inline-block;
-  margin-left: 50px; 
   transition: transform 0.5s ease;
 }
 
@@ -313,23 +317,30 @@ header > a:hover {
   </head>
   <body>
    
-    <div class="centered_div">
     
- <header>
-   <a href="sample-works.html"><img src="close.webp" alt="close button"></a>
-        <div class="nav">
-          <ul>
-             <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="sample-works.html">Works</a></li>
-           <li><a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">Resume</a></li>
-           
-          </ul>
-        </div>
-        <h1>
+    
+<header class="site-header">
+  <a href="sample-works.html" class="exit-btn">
+    <img src="close.webp" alt="close button">
+  </a>
+
+  <nav class="nav">
+    <ul>
+      <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="sample-works.html">Works</a></li>
+      <li>
+        <a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">
+          Resume
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+    <div class="centered_div">
+      <h1>
           RecipeNote: A Recipe App
         </h1>
-      </header>
       <div class="container">
       
       <div class="column">

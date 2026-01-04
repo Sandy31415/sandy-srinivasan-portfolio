@@ -16,13 +16,12 @@
 
       }
 
-      .centered-div {
-        max-width: 1200px;
-        display: flex;
-        justify-content: center;
-        margin: 0 auto;
-        position: relative;
-      }
+    .centered-div {
+  max-width: 1200px;
+  margin: 0 auto;          /* centers horizontally */
+  padding: 0 24px;         /* safe breathing room on small screens */
+  box-sizing: border-box;
+}
 
       .nav {
         position: absolute;
@@ -226,7 +225,7 @@ I prompted it by asking it to create an outline around the image that made 1 rot
     </style>
   </head>
   <body>
-    <div class="centered_div">
+    
       <div class="dragon">
         <img src="dragon.png" alt="dragon image">
       </div>
@@ -241,6 +240,7 @@ I prompted it by asking it to create an outline around the image that made 1 rot
         </ul>
 
       </div>
+    
       <div class="container">
 
         <div class="column">
