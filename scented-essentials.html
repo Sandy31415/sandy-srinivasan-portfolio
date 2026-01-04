@@ -107,7 +107,22 @@ header > a:hover {
       /* I used Claude AI for the styling for the carousel. I provided it with my image links 
       and prompted it prompted it to 
       show me the html and css to style them like an image carousel*/
+     .container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+  margin-top: 40px;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
       .carousel-wrapper {
         width: 100%;
         max-width: 1200px;
@@ -247,8 +262,8 @@ header > a:hover {
 
 
       .description {
-        max-width: 1200px;
-        text-align: center;
+        max-width: 800px;
+        text-align: left;
         padding: 20px;
       }
 
@@ -256,12 +271,148 @@ header > a:hover {
         font-family: 'Bubbler One';
         font-size: 1.5em;
         line-height: 1.6;
-        color: #FFF;
-        background-color: #8A8D7A;
-        padding: 30px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+        color: color: #372D35;
+        
+        padding: 20px;
+  
+      }
+  .expand-button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        color: #333;
+        border: none;
+        font-size: 20px;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 10;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
       }
 
+      .expand-button:hover {
+        background: white;
+        transform: scale(1.1);
+      }
+
+      /* Expanded Modal Styles */
+      .carousel-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 1000;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .carousel-modal.active {
+        display: flex;
+      }
+
+      .modal-content {
+        position: relative;
+        width: 90%;
+        max-width: 1200px;
+        height: 80vh;
+      }
+
+      .modal-carousel {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .modal-carousel-inner {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 40px;
+        position: relative;
+        height: 100%;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        padding-left: calc(50% - 200px);
+      }
+
+      .modal-carousel-item {
+        position: relative;
+        border-radius: 25px;
+        overflow: hidden;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        flex-shrink: 0;
+        width: 350px;
+        height: 500px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      }
+
+      .modal-carousel-item.side {
+        transform: scale(0.85);
+        opacity: 0.6;
+        z-index: 1;
+      }
+
+      .modal-carousel-item.center {
+        transform: scale(1.15);
+        z-index: 2;
+        width: 400px;
+        height: 600px;
+      }
+
+      .modal-carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .modal-carousel-item::after {
+        content: attr(data-label);
+        position: absolute;
+        bottom: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: white;
+        font-size: 4em;
+        font-weight: 300;
+        font-family: 'Bubbler One', sans-serif;
+        text-transform: lowercase;
+        letter-spacing: 2px;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .close-modal {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        background: rgba(255, 255, 255, 0.9);
+        color: #333;
+        border: none;
+        font-size: 30px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 1001;
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .close-modal:hover {
+        background: white;
+        transform: scale(1.1) rotate(90deg);
+      }
       .foot {
         position: fixed;
         background: #8A8D7A;
@@ -289,10 +440,7 @@ header > a:hover {
         display: block;
       }
 
-      p {
-        font-family: 'Bubbler One';
-        font-size: 1.5em;
-      }
+      
     </style>
   </head>
   <body>
@@ -314,28 +462,14 @@ header > a:hover {
       </h1>
       <!-- I prompted Claude AI to help me create an image carousel. I put all my image src links into a div and
  pasted that into Clause and prompted it to show me the html and css to style them like an image carousel.-->
-      <div class="carousel-wrapper">
-        <div class="carousel">
-          <div class="carousel-inner" id="carouselInner">
-
-          </div>
-
-          <button class="carousel-arrow prev" onclick="moveSlide(-1)">❮</button>
-          <button class="carousel-arrow next" onclick="moveSlide(1)">❯</button>
-
-          <div class="carousel-indicators">
-            <span class="indicator active" onclick="goToSlide(0)"></span>
-            <span class="indicator" onclick="goToSlide(1)"></span>
-            <span class="indicator" onclick="goToSlide(2)"></span>
-            <span class="indicator" onclick="goToSlide(3)"></span>
-            <span class="indicator" onclick="goToSlide(4)"></span>
-            <span class="indicator" onclick="goToSlide(5)"></span>
-
-          </div>
-        </div>
-      </div>
-      <hr>
-
+     
+      <div class="container">
+        
+        
+        <div class="column">
+  
+  
+       
       <div class="description">
         <p>
         This icon set allowed me to explore the challenge of representing scents through purely visual means. 
@@ -343,15 +477,36 @@ header > a:hover {
           to form a clean and cohesive collection that captures their essence without relying on fragrance itself.
         </p>
       </div>
-
-
-
-
-    
-
-
+   </div>
+        
+        
+        <div class="column">
+          <div class="carousel-wrapper">
+            <button class="expand-button" onclick="openModal()">⤢</button>
+            <div class="carousel">
+              <div class="carousel-inner" id="carouselInner"></div>
+              <button class="carousel-arrow prev" onclick="moveSlide(-1)">❮</button>
+              <button class="carousel-arrow next" onclick="moveSlide(1)">❯</button>
+              <div class="carousel-indicators" id="indicators"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    
+
+    <!-- Expanded Modal -->
+    <div class="carousel-modal" id="carouselModal">
+      <button class="close-modal" onclick="closeModal()">✕</button>
+      <div class="modal-content">
+        <div class="modal-carousel">
+          <div class="modal-carousel-inner" id="modalCarouselInner"></div>
+          <button class="carousel-arrow prev" onclick="moveModalSlide(-1)">❮</button>
+          <button class="carousel-arrow next" onclick="moveModalSlide(1)">❯</button>
+          <div class="carousel-indicators" id="modalIndicators"></div>
+        </div>
+      </div>
+    </div>
+
 
 
 
@@ -375,116 +530,180 @@ header > a:hover {
     
     <!-- I used GenAI to help me with the javascript. I prompted it to show me how to style my images in an image carousel..-->
     <script>
-      const slides = [{
-          img: 'icon1.png',
-          label: 'perfume',
-          color: '#d8a48f'
-        },
-        {
-          img: 'icon2.png',
-          label: 'lotion',
-          color: '#d7ce93'
-        },
-        {
-          img: 'icon3.png',
-          label: 'diffuser',
-          color: '#efebce'
-        },
-        {
-          img: 'icon4.png',
-          label: 'perfume',
-          color: '#a3a380'
-        },
-        {
-          img: 'icon5.png',
-          label: 'lotion',
-          color: '#bb8588'
-        },
-        {
-          img: 'icon6.png',
-          label: 'diffuser',
-          color: '#a5c9b8'
-        }
-      ];
+  
+  const slides = [{
+      img: 'icon1.png',
+      label: 'perfume',
+      color: '#d8a48f'
+    },
+    {
+      img: 'icon2.png',
+      label: 'lotion',
+      color: '#d7ce93'
+    },
+    {
+      img: 'icon3.png',
+      label: 'diffuser',
+      color: '#efebce'
+    },
+    {
+      img: 'icon4.png',
+      label: 'perfume',
+      color: '#a3a380'
+    },
+    {
+      img: 'icon5.png',
+      label: 'lotion',
+      color: '#bb8588'
+    },
+    {
+      img: 'icon6.png',
+      label: 'diffuser',
+      color: '#a5c9b8'
+    }
+  ];
 
-      let currentIndex = 0;
-      const indicators = document.querySelectorAll('.indicator');
-      const carouselInner = document.getElementById('carouselInner');
+  // Declare all variables at the top
+  let currentIndex = 0;
+  let modalIndex = 0;
+  const carouselInner = document.getElementById('carouselInner');
+  const modalCarouselInner = document.getElementById('modalCarouselInner');
+  const indicatorsContainer = document.getElementById('indicators');
+  const modalIndicatorsContainer = document.getElementById('modalIndicators');
 
-      function initializeCarousel () {
+  function initializeCarousel() {
+    // Create slides for BOTH carousels
+    slides.forEach((slide) => {
+      // Regular carousel
+      carouselInner.appendChild(createSlideElement(slide, false));
+      // Modal carousel
+      modalCarouselInner.appendChild(createSlideElement(slide, true));
+    });
 
-        slides.forEach((slide, index) => {
-          const slideElement = createSlideElement(slide);
-          carouselInner.appendChild(slideElement);
-        });
-        updateCarousel();
-      }
+    // Create indicators for BOTH carousels
+    slides.forEach((_, index) => {
+      // Regular carousel indicators
+      const indicator = document.createElement('span');
+      indicator.className = 'indicator' + (index === 0 ? ' active' : '');
+      indicator.onclick = () => goToSlide(index);
+      indicatorsContainer.appendChild(indicator);
 
-      function createSlideElement (slide) {
-        const div = document.createElement('div');
-        div.className = 'carousel-item';
-        div.setAttribute('data-label', slide.label);
-        div.style.background = `linear-gradient(135deg, ${slide.color}, ${adjustColor(slide.color, -20)})`;
+      // Modal carousel indicators
+      const modalIndicator = document.createElement('span');
+      modalIndicator.className = 'indicator' + (index === 0 ? ' active' : '');
+      modalIndicator.onclick = () => goToModalSlide(index);
+      modalIndicatorsContainer.appendChild(modalIndicator);
+    });
 
-        const img = document.createElement('img');
-        img.src = slide.img;
-        img.alt = slide.label;
+    updateCarousel();
+    updateModalCarousel();
+  }
 
-        div.appendChild(img);
-        return div;
-      }
+  // Add isModal parameter back
+  function createSlideElement(slide, isModal = false) {
+    const div = document.createElement('div');
+    div.className = isModal ? 'modal-carousel-item' : 'carousel-item';
+    div.setAttribute('data-label', slide.label);
+    div.style.background = `linear-gradient(135deg, ${slide.color}, ${adjustColor(slide.color, -20)})`;
 
-      function adjustColor (color, amount) {
-        const num = parseInt(color.replace('#', ''), 16);
-        const r = Math.max(0, Math.min(255, (num >> 16) + amount));
-        const g = Math.max(0, Math.min(255, ((num >> 8) & 0x00FF) + amount));
-        const b = Math.max(0, Math.min(255, (num & 0x0000FF) + amount));
-        return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, '0')}`;
-      }
+    const img = document.createElement('img');
+    img.src = slide.img;
+    img.alt = slide.label;
 
-      function updateCarousel () {
+    div.appendChild(img);
+    return div;
+  }
 
-        const cardWidth = 280;
-        const gap = 30;
-        const offset = currentIndex * (cardWidth + gap);
+  function adjustColor(color, amount) {
+    const num = parseInt(color.replace('#', ''), 16);
+    const r = Math.max(0, Math.min(255, (num >> 16) + amount));
+    const g = Math.max(0, Math.min(255, ((num >> 8) & 0x00FF) + amount));
+    const b = Math.max(0, Math.min(255, (num & 0x0000FF) + amount));
+    return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, '0')}`;
+  }
 
+  function updateCarousel() {
+    const cardWidth = 280;
+    const gap = 30;
+    const offset = currentIndex * (cardWidth + gap);
 
-        carouselInner.style.transform = `translateX(-${offset}px)`;
+    carouselInner.style.transform = `translateX(-${offset}px)`;
 
+    const items = carouselInner.querySelectorAll('.carousel-item');
+    items.forEach((item, index) => {
+      item.classList.remove('center', 'side');
+      item.classList.add(index === currentIndex ? 'center' : 'side');
+    });
 
-        const items = carouselInner.querySelectorAll('.carousel-item');
-        items.forEach((item, index) => {
-          item.classList.remove('center', 'side');
+    // Fix: Query indicators from DOM instead of using old variable
+    const indicators = indicatorsContainer.querySelectorAll('.indicator');
+    indicators.forEach((ind, idx) => {
+      ind.classList.toggle('active', idx === currentIndex);
+    });
+  }
 
-          if (index === currentIndex) {
-            item.classList.add('center');
-          } else {
-            item.classList.add('side');
-          }
-        });
+  function updateModalCarousel() {
+    const cardWidth = 350;
+    const gap = 40;
+    const offset = modalIndex * (cardWidth + gap);
+    modalCarouselInner.style.transform = `translateX(-${offset}px)`;
 
-        updateIndicators();
-      }
+    const items = modalCarouselInner.querySelectorAll('.modal-carousel-item');
+    items.forEach((item, index) => {
+      item.classList.remove('center', 'side');
+      item.classList.add(index === modalIndex ? 'center' : 'side');
+    });
 
-      function moveSlide (direction) {
-        currentIndex = Math.max(0, Math.min(slides.length - 1, currentIndex + direction));
-        updateCarousel();
-      }
+    const indicators = modalIndicatorsContainer.querySelectorAll('.indicator');
+    indicators.forEach((ind, idx) => {
+      ind.classList.toggle('active', idx === modalIndex);
+    });
+  }
 
-      function goToSlide (index) {
-        currentIndex = index;
-        updateCarousel();
-      }
+  function moveSlide(direction) {
+    currentIndex = Math.max(0, Math.min(slides.length - 1, currentIndex + direction));
+    updateCarousel();
+  }
 
-      function updateIndicators () {
-        indicators.forEach((ind, idx) => {
-          ind.classList.toggle('active', idx === currentIndex);
-        });
-      }
+  function moveModalSlide(direction) {
+    modalIndex = Math.max(0, Math.min(slides.length - 1, modalIndex + direction));
+    updateModalCarousel();
+  }
 
+  function goToSlide(index) {
+    currentIndex = index;
+    updateCarousel();
+  }
 
-      initializeCarousel();
-    </script>
+  function goToModalSlide(index) {
+    modalIndex = index;
+    updateModalCarousel();
+  }
+
+  function openModal() {
+    modalIndex = currentIndex;
+    updateModalCarousel();
+    document.getElementById('carouselModal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('carouselModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('carouselModal');
+    if (modal.classList.contains('active')) {
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowLeft') moveModalSlide(-1);
+      if (e.key === 'ArrowRight') moveModalSlide(1);
+    }
+  });
+
+  // Only call once!
+  initializeCarousel();
+</script>
   </body>
 
 </html>
