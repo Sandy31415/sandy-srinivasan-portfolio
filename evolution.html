@@ -170,11 +170,16 @@ h1 {
   width: 550px;
   height: 750px;
   position: absolute;
-  right: 0;
+  left: 560px; /* place it on the right side of the magazine */
+  top: 0;
   background: white;
   box-shadow: 0 2px 15px rgba(0,0,0,0.2);
   overflow: hidden;
-  z-index: 0;
+  transform-style: preserve-3d;
+ * hidden behind last page initially */
+ 
+  transition: transform 0.9s cubic-bezier(0.645, 0.045, 0.355, 1);
+  z-index: 1;
 }
 
 .back-page img {
@@ -182,8 +187,42 @@ h1 {
   height: 100%;
   object-fit: cover;
 }
+      
+      .back-page {
+  position: absolute;
+  right: 0;
+  width: 550px;
+  height: 750px;
+  background: white;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+  overflow: hidden;
+  z-index: 0;
+}
 
-/* DESCRIPTION OVERLAY */
+.info-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: # color: #372D35;;
+  color: #F1EAD8;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.5em;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.info-btn:hover {
+  background: # color: #372D35;;
+  transform: rotate(360deg);
+}
+
 .description-overlay {
   position: absolute;
   top: 0;
@@ -196,14 +235,16 @@ h1 {
   justify-content: center;
   padding: 40px;
   opacity: 0;
-  transition: opacity 0.4s ease;
   pointer-events: none;
-  z-index: 10;
+  z-index: 9;
+  transition: opacity 0.4s ease;
 }
 
-.page:hover .description-overlay {
+.description-overlay.active {
   opacity: 1;
+  pointer-events: all;
 }
+
 
 .description-content h2 {
   font-family: 'Lora', serif;
@@ -324,35 +365,34 @@ h1 {
 
       <h1>My Evolution As a Designer</h1>
 
-      <!-- MAGAZINE SHOWCASE -->
-      <div class="magazine-showcase">
-        <div class="magazine">
-          <div class="page" data-page="1"><img src="page1.png" alt="Page 1"></div>
-          <div class="page" data-page="2"><img src="page2.png" alt="Page 2"></div>
-          <div class="page" data-page="3"><img src="page3.png" alt="Page 3"></div>
-          <div class="page" data-page="4"><img src="page4.png" alt="Page 4"></div>
-          <div class="page" data-page="5"><img src="page5.png" alt="Page 5"></div>
-          <div class="page" data-page="6"><img src="page6.png" alt="Page 6"></div>
-          <div class="page" data-page="7"><img src="page7.png" alt="Page 7"></div>
-          <div class="page" data-page="8">
-            <img src="page8.png" alt="Page 8">
-            <div class="description-overlay">
-              <div class="description-content">
-                <h2>About This Project</h2>
-                <p>This magazine chronicles my first year in GBDA. It features images from the city of Waterloo I photographed myself. 
-                  It became both a technical exploration and a personal reflection on the impact of a very 
-                  pivotal time in my journey as a designer and student. 
-                 </p>
-                <span id="small"> Adobe InDesign, 2025</span>
-                
-                
-              </div>
-            </div>
-          </div>
-          <div class="back-page"><img src="page8.png" alt="Back Page"></div>
+   <div class="magazine-showcase">
+  <div class="magazine">
+    <!-- Flippable pages -->
+    <div class="page" data-page="1"><img src="page1.png" alt="Page 1"></div>
+    <div class="page" data-page="2"><img src="page2.png" alt="Page 2"></div>
+    <div class="page" data-page="3"><img src="page3.png" alt="Page 3"></div>
+    <div class="page" data-page="4"><img src="page4.png" alt="Page 4"></div>
+    <div class="page" data-page="5"><img src="page5.png" alt="Page 5"></div>
+    <div class="page" data-page="6"><img src="page6.png" alt="Page 6"></div>
+    <div class="page" data-page="7"><img src="page7.png" alt="Page 7"></div>
+    <div class="page" data-page="8"><img src="page8.png" alt="Page 8"></div>
+
+    <!-- Static back page -->
+    <div class="back-page">
+      <img src="page8.png" alt="Back Page">
+      <button class="info-btn">i</button>
+      <div class="description-overlay">
+        <div class="description-content">
+          <h2>About This Project</h2>
+          <p>This magazine chronicles my first year in GBDA. It features images from the city of Waterloo I photographed myself. 
+          It became both a technical exploration and a personal reflection on the impact of a very 
+          pivotal time in my journey as a designer and student.</p>
+          <span id="small"> Adobe InDesign, 2025</span>
         </div>
       </div>
-
+    </div>
+  </div>
+</div>
       <!-- CONTROLS -->
       <div class="controls">
         <button id="prevBtn">← Previous Page</button>
@@ -406,6 +446,12 @@ h1 {
       });
 
       updateButtons();
+      const infoBtn = document.querySelector('.back-page .info-btn');
+const backDescription = document.querySelector('.back-page .description-overlay');
+
+infoBtn.addEventListener('click', () => {
+  backDescription.classList.toggle('active');
+});
     </script>
   </body>
 </html>
