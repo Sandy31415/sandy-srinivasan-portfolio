@@ -3,16 +3,42 @@
   <head>
     <meta charset="UTF-8">
     <title>Sandy Srinivasan-Portfolio</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <style>
-     body {
+/* GLOBAL RESET */
+* {
+  box-sizing: border-box;
   margin: 0;
-  padding-bottom: 150px;
+  padding: 0;
 }
-      header {
+
+body {
+  font-family: 'Bubbler One', sans-serif;
+  background: #fff;
+  color: #372D35;
+  padding-bottom: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* CENTERED CONTAINER */
+.centered-container {
+  max-width: 1200px;
   width: 100%;
+  padding: 0 24px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* HEADER */
+header.site-header {
+  width: 100%;
+  max-width: 1200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,7 +51,6 @@ header > a {
   transition: transform 0.5s ease;
 }
 
-
 header > a img {
   width: 40px;
   height: auto;
@@ -36,110 +61,78 @@ header > a img {
 header > a:hover {
   transform: rotate(360deg);
 }
-   .nav {
-  position: absolute;
-  right: 120px;
+
+.nav {
+  display: flex;
 }
-      .nav ul{
-    font-family: 'Bubbler One', sans-serif;
-    font-weight: 300;
-    font-size: 1.4em;
-    list-style: none;
-    display: flex;                  
-    gap: 30px;                     
-    margin: 10;
-    padding: 0;
-      }
-      .nav li{
-      cursor: pointer;
-      
-      }
-      
-       .nav img {
-        width: 20px;
-        height: auto;
-        vertical-align:top;
-      }
-      .nav img:hover {
-  opacity: 0.6;
-  transform: scale(1.1);
+
+.nav ul {
+  font-family: 'Bubbler One', sans-serif;
+  font-weight: 300;
+  font-size: 1.4em;
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav li {
+  cursor: pointer;
+}
+
+.nav li a {
+  color: #372D35;
+  text-decoration: none;
+}
+
+.nav li a:hover {
+  color: #9E8299;
+}
+
+.nav li img {
+  width: 20px;
+  height: auto;
+  vertical-align: top;
   transition: all 0.3s ease;
 }
-      a {
-        color: #372D35;
-        text-decoration: none;
-      }
-      
-      a:hover{
-        color:#9E8299;
-      }
- .centered-div {
-  max-width: 1200px;
-  margin: 0 auto;          /* centers horizontally */
-  padding: 0 24px;         /* safe breathing room on small screens */
-  box-sizing: border-box;
+
+.nav li img:hover {
+  opacity: 0.6;
+  transform: scale(1.1);
 }
-   
-      h1{
-       font-family: 'lora';
-        font-size: 4.5em;
-        display: flex;
-        justify-content:center;
-        
-        margin-top:80px;
-        color:#372D35;
-        
-      }
-    .foot{
-        position: fixed;
-        background: #8A8D7A;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 75px;
-        display: flex;
-        align-items: center;
-        padding-left: 40px;
-        font-family: 'Bubbler One', sans-serif;
-        gap: 30px;
-        word-spacing: 100px;
-        text-align: center;
-        z-index: 1000;
-      }
-      .foot-item {
+
+/* PAGE TITLE */
+h1 {
+  font-family: 'Lora', serif;
+  font-size: clamp(2.9rem, 6vw, 5.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #372D35;
+  text-align: center;
+  margin: 48px 0 28px;
+  width: 100%;
+}
+
+/* MAGAZINE */
+.magazine-showcase {
   display: flex;
-  align-items: center;
-  gap: 10px; 
+  justify-content: center;
+  perspective: 1500px;
+  margin: 40px 0;
+  min-height: 750px;
+  width: 100%;
 }
 
-.foot img {
-  max-width: 30px;
-  display: block;
+.magazine {
+  width: 1100px;
+  height: 750px;
+  position: relative;
+  display: flex;
+  transform-style: preserve-3d;
 }
 
-    
-
-     /* I used Claude AI to arrange the pages into the 
-      book style and create the page flipping animation. 
-      I plugged the pages into divs and prompted 
-      "how might I arrange these magazine pages into a flippable book?" I also uploaded a photo of a rough sketch to show the effect I wanted*/ 
- .magazine-showcase {
-      perspective: 1500px;
-      display: flex;
-      justify-content: center;
-      margin: 40px 0;
-      min-height: 750px;
-    }
-
-    .magazine {
-      width: 1100px;
-      height: 750px;
-      position: relative;
-      transform-style: preserve-3d;
-      display: flex;
-    }
-
-    .page {
+.page {
   width: 560px;
   height: 750px;
   position: absolute;
@@ -147,283 +140,274 @@ header > a:hover {
   transform-origin: left center;
   transition: transform 0.9s cubic-bezier(0.645, 0.045, 0.355, 1);
   transform-style: preserve-3d;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 15px rgba(0,0,0,0.2);
   cursor: pointer;
   overflow: hidden;
-  backface-visibility: hidden;  
+  backface-visibility: hidden;
 }
 
+.page:nth-child(1) { z-index: 9; left: 0; }
+.page:nth-child(2) { z-index: 8; left: 0; }
+.page:nth-child(3) { z-index: 7; left: 0; }
+.page:nth-child(4) { z-index: 6; left: 0; }
+.page:nth-child(5) { z-index: 5; left: 0; }
+.page:nth-child(6) { z-index: 4; left: 0; }
+.page:nth-child(7) { z-index: 3; left: 0; }
+.page:nth-child(8) { z-index: 2; left: 0; }
 
-    .page img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+.page img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    .page.flipped {
-      transform: rotateY(-180deg);
-      pointer-events: none;
-    }
+.page.flipped {
+  transform: rotateY(-180deg);
+  pointer-events: none;
+}
 
-   
-    .page:nth-child(1) { z-index: 9; left: 0; }
-    .page:nth-child(2) { z-index: 8; left: 0; }
-    .page:nth-child(3) { z-index: 7; left: 0; }
-    .page:nth-child(4) { z-index: 6; left: 0; }
-    .page:nth-child(5) { z-index: 5; left: 0; }
-    .page:nth-child(6) { z-index: 4; left: 0; }
-    .page:nth-child(7) { z-index: 3; left: 0; }
-    .page:nth-child(8) { z-index: 2; left: 0; }
+.back-page {
+  width: 550px;
+  height: 750px;
+  position: absolute;
+  right: 0;
+  background: white;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+  overflow: hidden;
+  z-index: 0;
+}
 
-    .description-overlay {
+.back-page img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* DESCRIPTION OVERLAY */
+.description-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(241, 234, 216, 0.97);
+  background: rgba(241,234,216,0.97);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 40px;
-  box-sizing: border-box;
   opacity: 0;
   transition: opacity 0.4s ease;
   pointer-events: none;
   z-index: 10;
 }
 
-.page[data-page="8"]:not(.flipped):hover .description-overlay {
+.page:hover .description-overlay {
   opacity: 1;
 }
 
-    .page:hover .description-overlay {
-      opacity: 1;
-    }
-
-    
-
-    
-
-      
-      
-      
-   .back-page {
-  width: 550px;
-  height: 750px;
-  background: white;
-  position: absolute;
-  right: 0;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  z-index: 0;
+.description-content h2 {
+  font-family: 'Lora', serif;
+  font-size: 2em;
+  margin-bottom: 10px;
 }
 
-    .back-page img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .controls {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 30px;
-      margin-bottom: 40px;
-    }
-
-    .controls button {
-      padding: 12px 30px;
-      background: #8A8D7A;
-      color: #F1EAD8;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      font-family: 'Bubbler One', sans-serif;
-      transition: all 0.3s;
-      box-shadow: 0 2px 10px rgba(138, 141, 122, 0.3);
-    }
-
-    .controls button:hover:not(:disabled) {
-      background: #737563;
-      transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(138, 141, 122, 0.4);
-    }
-
-    .controls button:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-      transform: none;
-    }
-      
-      .description-content p{
-        font-family:'Bubbler One', sans-serif;
-        font-size: 1.25em;
-      }
-      .description-content h2{
-        font-family:"lora", serif;
-        font-size:2em;
+.description-content p {
+  font-size: 1.25em;
+}
+      #small{
+        font-size: 1em;
       }
 
+/* CONTROLS */
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 30px 0 40px;
+  width: 100%;
+}
 
+.controls button {
+  padding: 12px 30px;
+  background: #8A8D7A;
+  color: #F1EAD8;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: 'Bubbler One', sans-serif;
+  transition: all 0.3s;
+}
+
+.controls button:hover:not(:disabled) {
+  background: #737563;
+  transform: translateY(-2px);
+}
+
+.controls button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.foot {
+  position: fixed;
+  background: #8A8D7A;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  font-family: 'Bubbler One', sans-serif;
+  z-index: 1000;
+}
+
+.foot-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.foot img {
+  max-width: 30px;
+  display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .magazine {
+    transform: scale(0.85);
+  }
+}
+
+@media (max-width: 968px) {
+  .magazine {
+    transform: scale(0.7);
+  }
+  
+  header.site-header {
+    padding: 20px 30px;
+  }
+  
+  .nav ul {
+    font-size: 1.2em;
+    gap: 20px;
+  }
+}
     </style>
   </head>
   <body>
-  
-   <header class="site-header">
-  <a href="sample-works.html" class="exit-btn">
-    <img src="close.webp" alt="close button">
-  </a>
-
-  <nav class="nav">
-    <ul>
-      <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="sample-works.html">Works</a></li>
-      <li>
-        <a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">
-          Resume
+    <!-- CENTERED CONTAINER -->
+    <div class="centered-container">
+      <!-- HEADER -->
+      <header class="site-header">
+        <a href="sample-works.html" class="exit-btn">
+          <img src="close.webp" alt="close button">
         </a>
-      </li>
-    </ul>
-  </nav>
-</header>
-    <div class="centered-div">
-    <h1>
-      My Evolution As a Designer 
-    </h1>
-    <!--I used Claude AI to help me create the effect of flipping pages. I plugged the pages into divs and prompted "how might I arrange these magazine pages into a flippable book?" I also uploaded a photo of a rough sketch to show the effect I wanted.--> 
-    <div class="magazine-showcase">
-    <div class="magazine">
-     
-      <div class="page" data-page="1">
-        <img src="page1.png" alt="Magazine Page 1">
-      </div>
 
-     
-      <div class="page" data-page="2">
-        <img src="page2.png" alt="Magazine Page 2">
-      </div>
+        <nav class="nav">
+          <ul>
+            <li><a href="index.html"><img src="home.png" alt="home"></a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="sample-works.html">Works</a></li>
+            <li>
+              <a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">
+                Resume
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-      
-      <div class="page" data-page="3">
-        <img src="page3.png" alt="Magazine Page 3">
-      </div>
+      <h1>My Evolution As a Designer</h1>
 
-     
-      <div class="page" data-page="4">
-        <img src="page4.png" alt="Magazine Page 4">
-      </div>
-
-     
-      <div class="page" data-page="5">
-        <img src="page5.png" alt="Magazine Page 5">
-      </div>
-
-     
-      <div class="page" data-page="6">
-        <img src="page6.png" alt="Magazine Page 6">
-      </div>
-
-     
-      <div class="page" data-page="7">
-        <img src="page7.png" alt="Magazine Page 7">
-      </div>
-
-      <div class="page" data-page="8">
-        <img src="page8.png" alt="Magazine Page 8">
-        <!-- Description overlay -->
-        <div class="description-overlay">
-          <div class="description-content">
-            <h2>About This Project</h2>
-            <p>
-              This magazine chronicles my first year in GBDA, a pivotal 
-              period in my design journey. Working over two months,
-              I photographed locations and landmarks throughout Waterloo. 
-              This magazine was created using a combination of Photoshop, Illustrator, and InDesign.
-              It became both a technical exploration and a personal reflection 
-              on the experiences that shaped me as a designer.
-            </p>
+      <!-- MAGAZINE SHOWCASE -->
+      <div class="magazine-showcase">
+        <div class="magazine">
+          <div class="page" data-page="1"><img src="page1.png" alt="Page 1"></div>
+          <div class="page" data-page="2"><img src="page2.png" alt="Page 2"></div>
+          <div class="page" data-page="3"><img src="page3.png" alt="Page 3"></div>
+          <div class="page" data-page="4"><img src="page4.png" alt="Page 4"></div>
+          <div class="page" data-page="5"><img src="page5.png" alt="Page 5"></div>
+          <div class="page" data-page="6"><img src="page6.png" alt="Page 6"></div>
+          <div class="page" data-page="7"><img src="page7.png" alt="Page 7"></div>
+          <div class="page" data-page="8">
+            <img src="page8.png" alt="Page 8">
+            <div class="description-overlay">
+              <div class="description-content">
+                <h2>About This Project</h2>
+                <p>This magazine chronicles my first year in GBDA. It features images from the city of Waterloo I photographed myself. 
+                  It became both a technical exploration and a personal reflection on the impact of a very 
+                  pivotal time in my journey as a designer and student. 
+                 </p>
+                <span id="small"> Adobe InDesign, 2025</span>
+                
+                
+              </div>
+            </div>
           </div>
+          <div class="back-page"><img src="page8.png" alt="Back Page"></div>
         </div>
       </div>
 
-      <!-- Description page -->
-     
-
-     
-      <div class="back-page">
-        <img src="page8.png" alt="Back Page">
+      <!-- CONTROLS -->
+      <div class="controls">
+        <button id="prevBtn">← Previous Page</button>
+        <button id="nextBtn">Next Page →</button>
       </div>
     </div>
-    </div>
 
-  <div class="controls">
-    <button id="prevBtn">← Previous Page</button>
-    <button id="nextBtn">Next Page →</button>
-  </div>
-
- 
-
- 
-  
-    
     <div class="foot">
-  <div class="foot-item">
-    <img src="mail.png" alt="mail icon">
-    <span>sandysri0711@gmail.com</span>
-  </div>
+      <div class="foot-item">
+        <img src="mail.png" alt="mail icon">
+        <span>sandysri0711@gmail.com</span>
+      </div>
 
-  <div class="foot-item">
-    <img src="linkedin.png" alt="linkedin icon">
-    <span>www.linkedin.com/in/sandy-srinivasan</span>
-  </div>
-</div>
-<!-- I used Claude AI to create the JavaScript for these pages. I plugged the pages into divs and prompted "how might I arrange these magazine pages into a flippable book?" I also uploaded a photo of a rough sketch to show the effect I wanted.-->
-<script>
-    let currentPage = 0;
-    const pages = document.querySelectorAll('.page');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-
-    function updateButtons() {
-      prevBtn.disabled = currentPage === 0;
-      nextBtn.disabled = currentPage === pages.length-1;
-    }
-
-    function flipPage(direction) {
-      if (direction === 'next' && currentPage < pages.length-1) {
-        pages[currentPage].classList.add('flipped');
-        currentPage++;
-      } else if (direction === 'prev' && currentPage > 0) {
-        currentPage--;
-        pages[currentPage].classList.remove('flipped');
-      }
-      updateButtons();
-    }
-
-    nextBtn.addEventListener('click', () => flipPage('next'));
-    prevBtn.addEventListener('click', () => flipPage('prev'));
-
-    pages.forEach((page, index) => {
-      page.addEventListener('click', () => {
-        if (index === currentPage) {
-          flipPage('next');
-        }
-      });
-    });
-
-    updateButtons();
-  </script>
-    
-        
+      <div class="foot-item">
+        <img src="linkedin.png" alt="linkedin icon">
+        <span>www.linkedin.com/in/sandy-srinivasan</span>
+      </div>
     </div>
+
+    <script>
+      let currentPage = 0;
+      const pages = document.querySelectorAll('.page');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+
+      function updateButtons() {
+        prevBtn.disabled = currentPage === 0;
+        nextBtn.disabled = currentPage === pages.length-1;
+      }
+
+      function flipPage(direction) {
+        if (direction === 'next' && currentPage < pages.length-1) {
+          pages[currentPage].classList.add('flipped');
+          currentPage++;
+        } else if (direction === 'prev' && currentPage > 0) {
+          currentPage--;
+          pages[currentPage].classList.remove('flipped');
+        }
+        updateButtons();
+      }
+
+      nextBtn.addEventListener('click', () => flipPage('next'));
+      prevBtn.addEventListener('click', () => flipPage('prev'));
+
+      pages.forEach((page, index) => {
+        page.addEventListener('click', () => {
+          if (index === currentPage) {
+            flipPage('next');
+          }
+        });
+      });
+
+      updateButtons();
+    </script>
   </body>
-  
 </html>
             
       

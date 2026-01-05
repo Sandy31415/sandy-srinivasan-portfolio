@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en-CA">
-
-
   <head>
     <meta charset="UTF-8">
     <title>Sandy Srinivasan-Portfolio</title>
@@ -9,297 +7,312 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <style>
-      body {
-        padding-bottom: 150px;
-
-       
-
-      }
-
-    .centered-div {
-  max-width: 1200px;
-  margin: 0 auto;          /* centers horizontally */
-  padding: 0 24px;         /* safe breathing room on small screens */
+/* GLOBAL RESET */
+* {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-      .nav {
-        position: absolute;
-        top: 30px;
-        right: 120px;
-      }
+body {
+  font-family: 'Bubbler One', sans-serif;
+  background: #fff;
+  color: #372D35;
+  padding-bottom: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-      .nav ul {
-        font-family: 'Bubbler One', sans-serif;
-        font-weight: 300;
-        font-size: 1.4em;
-        list-style: none;
-        display: flex;
-        gap: 30px;
-        margin: 10;
-        padding: 0;
-      }
+/* CENTERED CONTAINER */
+.centered-container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-      .nav li {
-        cursor: pointer;
+/* HEADER */
+header.site-header {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 30px 40px 10px;
+  position: relative;
+}
 
-      }
+.nav {
+  display: flex;
+}
 
-      .nav img {
-        width: 20px;
-        height: auto;
-        vertical-align: top;
-      }
+.nav ul {
+  font-family: 'Bubbler One', sans-serif;
+  font-weight: 300;
+  font-size: 1.4em;
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
 
-      .nav img:hover {
-        opacity: 0.6;
-        transform: scale(1.1);
-        transition: all 0.3s ease;
-      }
+.nav li {
+  cursor: pointer;
+}
 
-      a {
-        color: #372D35;
-        text-decoration: none;
-      }
+.nav img {
+  width: 20px;
+  height: auto;
+  vertical-align: top;
+}
 
-      a:hover {
-        color: #9E8299;
-      }
+.nav img:hover {
+  opacity: 0.6;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
 
-      h1 {
-        font-family: 'lora';
-        font-size: 4.5em;
-        display: flex;
-        justify-content: right;
-        margin-right: 45px;
-        margin-top: 150px;
-        color: #372D35;
+a {
+  color: #372D35;
+  text-decoration: none;
+}
 
-      }
+a:hover {
+  color: #9E8299;
+}
 
+h1 {
+  font-family: 'Lora', serif;
+  font-size: clamp(2.8rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #372D35;
+  text-align: right;
+  margin-bottom: 20px;
+}
 
-      .foot {
-        position: fixed;
-        background: #8A8D7A;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 75px;
-        display: flex;
-        align-items: center;
-        padding-left: 40px;
-        font-family: 'Bubbler One', sans-serif;
-        gap: 30px;
-        word-spacing: 100px;
-        text-align: center;
-      }
+p {
+  font-family: 'Bubbler One';
+  font-size: 1.5em;
+  text-align: right;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
 
-      .foot-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
+.dragon {
+  z-index: -1;
+  position: absolute;
+  margin-top: 50px;
+  margin-left: 240px;
+  width: 400px;
+  opacity: 0.55;
+}
 
-      .foot img {
-        max-width: 30px;
-        display: block;
-      }
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  padding: 10px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 80px auto 0;
+}
 
-      p {
-        font-family: 'Bubbler One';
-        font-size: 1.5em;
-        display: flex;
-        text-align: right;
-        margin-right: 50px;
+.column {
+  flex: 2;
+  min-width: 400px;
+  padding: 10px;
+}
 
+.column:first-child {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
 
-      }
-      .dragon{
-        z-index:-1;
-        position:absolute;
-        margin-top: 50px;
-        margin-left:240px; 
-        width: 400px;
-        opacity:0.55; 
-      }
+.column:last-child {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
-      .container {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 50px;
-        padding: 10px;
-        max-width: 1200px;
-        margin: 0 auto;
+.column hr {
+  width: 100%;
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #372D35;
+}
 
-      }
+#smalltext {
+  font-size: 1.2em;
+  font-weight: bold;
+}
 
-      .column {
-        flex: 2;
-        min-width: 400px;
-        padding: 10px;
+.image-wrapper {
+  position: relative;
+  width: 420px;
+  height: 580px;
+}
 
-      }
+.image-wrapper img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 340px;
+  border-radius: 50%;
+  display: block;
+}
 
-      .column img {
-        margin-top: 120px;
+.circle-outline {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
 
-      }
+.circle-outline circle {
+  fill: none;
+  stroke: #ceadde;
+  stroke-width: 4;
+  stroke-dasharray: 1507;
+  stroke-dashoffset: 1507;
+  animation: trace 2s ease-out forwards;
+}
 
-      .column:first-child {
-        flex: 1;
-        margin-left: 90px;
-      }
+@keyframes trace {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
 
-      .column:last-child {
-        flex: 3;
-      }
-      
+.foot {
+  position: fixed;
+  background: #8A8D7A;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  font-family: 'Bubbler One', sans-serif;
+  z-index: 1000;
+}
 
-      .column hr {
-        width: 100%;
-        margin-left: 0;
-        margin-right: 0;
-        border: none;
-        border-top: 1px solid #372D35;
-      }
+.foot-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-      #smalltext {
-        font-size: 1.2em;
-        justify-content: right;
-        font-weight: bold;
-      }
+.foot img {
+  max-width: 30px;
+  display: block;
+}
 
+/* Responsive adjustments */
+@media (max-width: 968px) {
+  .container {
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 40px;
+  }
 
-      .image-wrapper {
-        position: relative;
-        width: 280px;
-        height: 330px;
+  .column:first-child {
+    order: 2;
+  }
 
-      }
+  .column:last-child {
+    order: 1;
+  }
 
-    
+  h1, p {
+    text-align: center;
+  }
 
-      
+  .dragon {
+    display: none;
+  }
 
-      /* I asked Claude AI to generate the animated circular outline for the image. 
-I prompted it by asking it to create an outline around the image that made 1 rotation. -->
-       <div class="image-wrapper*/
-      .image-wrapper img {
-        position: absolute;
-        top: 250px;
-        left: 210px;
-        transform: translate(-50%, -50%);
-        width: 300px;
-        height: 340px;
-        border-radius: 50%;
-        display: block;
-      }
+  header.site-header {
+    padding: 20px 30px;
+  }
 
-
-      .circle-outline {
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-      }
-
-      /* The animation for the circle was created by Claude AI. 
-      I prompted it to create an animated circle to outline the image that 
-      would make one rotation.*/
-      .circle-outline circle {
-        fill: none;
-        stroke: #ceadde;
-        stroke-width: 4;
-
-
-        stroke-dasharray: 1507;
-        stroke-dashoffset: 1507;
-
-        animation: trace 2s ease-out forwards;
-      }
-
-      @keyframes trace {
-        to {
-          stroke-dashoffset: 0;
-        }
-      }
+  .nav ul {
+    font-size: 1.2em;
+    gap: 20px;
+  }
+}
     </style>
   </head>
   <body>
-    
+    <div class="centered-container">
+      <header class="site-header">
+        <nav class="nav">
+          <ul>
+            <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="sample-works.html">Works</a></li>
+            <li>
+              <a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">
+                Resume
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
       <div class="dragon">
         <img src="dragon.png" alt="dragon image">
       </div>
 
-      <div class="nav">
-        <ul>
-           <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="sample-works.html">Works</a></li>
-          <li><a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">Resume</a></li>
-         
-        </ul>
-
-      </div>
-    
       <div class="container">
-
         <div class="column">
-          <!-- I asked Claude AI to generate the animated circular outline for the image. 
-I prompted it by asking it to create an outline around the image that made 1 rotation. -->
           <div class="image-wrapper">
-
-            <svg class="circle-outline" width="600" height="600">
-              <circle cx="210" cy="370" r="200"></circle>
+            <svg class="circle-outline" width="420" height="580" viewBox="0 0 420 580">
+              <circle cx="210" cy="290" r="200"></circle>
             </svg>
-
             <img src="linkedinphoto.png" alt="circular image of my face and shoulders" class="circlepic">
-
           </div>
-
         </div>
 
         <div class="column">
-
-          <h1>
-            Get to know me!
-          </h1>
-
+          <h1>Get to know me!</h1>
           <p>
-         I'm a designer and student at the University of Waterloo who loves creating work that means something. Whether it's graphic design, UX/UI, or web design, I'm drawn to 
+            I'm a designer and student at the University of Waterloo who loves creating work that means something. Whether it's graphic design, UX/UI, or web design, I'm drawn to 
             projects that bring people together and tell a story.
           </p>
           <p>
-            When I'm not designing, you can find me at the local library with a new book! feel
+            When I'm not designing, you can find me at the local library with a new book! Feel
             free to check out my work and connect with me!
           </p>
           <hr>
           <p id="smalltext">
             connect with me on Linkedin @ www.linkedin.com/in/sandy-srinivasan <br> or
-            by email @ sandysri-711@gmail.com!
+            by email @ sandysri0711@gmail.com!
           </p>
         </div>
-
-
       </div>
+    </div>
 
-
-
-      <div class="foot">
-        <div class="foot-item">
-          <img src="mail.png" alt="mail icon">
-          <span>sandysri0711@gmail.com</span>
-        </div>
-
-        <div class="foot-item">
-          <img src="linkedin.png" alt="linkedin icon">
-          <span>www.linkedin.com/in/sandy-srinivasan</span>
-        </div>
+    <div class="foot">
+      <div class="foot-item">
+        <img src="mail.png" alt="mail icon">
+        <span>sandysri0711@gmail.com</span>
       </div>
-
-
-
+      <div class="foot-item">
+        <img src="linkedin.png" alt="linkedin icon">
+        <span>www.linkedin.com/in/sandy-srinivasan</span>
+      </div>
     </div>
   </body>
-
-
 </html>

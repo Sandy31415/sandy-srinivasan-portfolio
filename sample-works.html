@@ -13,23 +13,21 @@
         box-sizing: border-box;
       }
 
-      body {
-        padding-bottom: 150px;
-        margin: 0;
-        margin-left: 120px;
-        margin-right: 120px;
-      }
+     body {
+  margin: 0;
+  padding-bottom: 150px;
+}
 
-      header {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding: 0px 40px;
-        box-sizing: border-box;
-        position: relative;
-        z-index: 1;
-      }
+    
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 40px 10px;
+  position: relative;
+}
+
 
      .centered-div {
   max-width: 1200px;
@@ -37,7 +35,13 @@
   padding: 0 24px;         /* safe breathing room on small screens */
   box-sizing: border-box;
 }
-
+.site-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 24px 10px;
+  display: flex;
+  justify-content: flex-end;
+}
       .nav li {
         cursor: pointer;
       }
@@ -51,11 +55,9 @@
         color: #9E8299;
       }
 
-      .nav {
-        position: absolute;
-        top: 50px;
-        right: 0px;
-      }
+     .nav {
+  position: relative;
+}
 
       .nav ul {
         font-family: 'Bubbler One', sans-serif;
@@ -84,9 +86,11 @@
         font-family: 'lora';
         font-size: 4.5em;
         display: flex;
-        justify-content: right;
-        margin-left: 0px;
-        margin-top: 80px;
+       
+  text-align: left;
+  justify-content: left;
+
+        margin-top:40px;
         color: #372D35;
       }
 
@@ -337,21 +341,27 @@
     </style>
   </head>
   <body>
-    <div class="centered_div">
-      <header>
-        <div class="nav">
-          <ul>
-            <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="sample-works.html">Works</a></li>
-           <li><a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">Resume</a></li>
-            
-          </ul>
-        </div>
-        <h1>
+    
+      <header class="site-header">
+
+  <nav class="nav">
+    <ul>
+      <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="sample-works.html">Works</a></li>
+      <li>
+        <a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">
+          Resume
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+    <div class="centered-div">
+      
+       <h1>
           Selected Work 
         </h1>
-      </header>
       <hr>
 
       <div class="container" id="masonry-container">

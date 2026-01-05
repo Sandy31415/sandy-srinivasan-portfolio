@@ -7,28 +7,52 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bubbler+One&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
     <style>
-      body {
-body {
-  margin: 0;
-  padding-bottom: 150px;
+html {
+  overflow-y: scroll;
 }
-      }
 
-      header {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding: 10px 40px;
-        box-sizing: border-box;
-        position:relative;
-      }
-      
-      
-       header > a {
+/* GLOBAL RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Bubbler One', sans-serif;
+  background: #fff;
+  color: #372D35;
+  padding-bottom: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* CENTERED CONTAINER */
+.centered-container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 0 24px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* HEADER */
+header.site-header {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 40px 10px;
+  position: relative;
+}
+
+header > a {
   display: inline-block;
   transition: transform 0.5s ease;
-
 }
 
 header > a img {
@@ -36,90 +60,78 @@ header > a img {
   height: auto;
   display: block;
   cursor: pointer;
-  
 }
 
 header > a:hover {
   transform: rotate(360deg);
 }
-  
-
-     .centered-div {
-  max-width: 1200px;
-  margin: 0 auto;          /* centers horizontally */
-  padding: 0 24px;         /* safe breathing room on small screens */
-  box-sizing: border-box;
-}
-
-
-
-  
 
 .nav {
-  position: absolute;
-  top: 30px;
-  right: 40px;
+  display: flex;
 }
 
-      .nav ul {
-        font-family: 'Bubbler One', sans-serif;
-        font-weight: 300;
-        font-size: 1.4em;
-        list-style: none;
-        display: flex;
-        gap: 30px;
-        margin: 10;
-        padding: 0;
-      }
+.nav ul {
+  font-family: 'Bubbler One', sans-serif;
+  font-weight: 300;
+  font-size: 1.4em;
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
 
-      .nav li {
-        cursor: pointer;
-      }
+.nav li {
+  cursor: pointer;
+}
 
-      .nav img {
-        width: 20px;
-        height: auto;
-        vertical-align: top;
-      }
+.nav img {
+  width: 20px;
+  height: auto;
+  vertical-align: top;
+}
 
-      .nav img:hover {
-        opacity: 0.6;
-        transform: scale(1.1);
-        transition: all 0.3s ease;
-      }
+.nav img:hover {
+  opacity: 0.6;
+  transform: scale(1.1);
+  transition: all 0.3s ease;
+}
 
+a {
+  color: #372D35;
+  text-decoration: none;
+}
 
-      a {
-        color: #372D35;
-        text-decoration: none;
-      }
+a:hover {
+  color: #9E8299;
+}
 
-      a:hover {
-        color: #9E8299;
-      }
+h1 {
+  font-family: 'Lora', serif;
+  font-size: clamp(2.9rem, 6vw, 5.25rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: #372D35;
+  margin: 48px 0 28px;
+  text-align: center;
+  width: 100%;
+}
 
-      h1 {
-        font-family: 'lora';
-        font-size: 4.5em;
-        display: flex;
-        justify-content: left;
-        margin-right: 120px;
-        margin-top: 80px;
-        color: #372D35;
-      }
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
 
-      /* I used Claude AI for the styling for the carousel. I provided it with my image links 
-      and prompted it prompted it to 
-      show me the html and css to style them like an image carousel*/
-     .container{
+.container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: start;
   margin-top: 40px;
-  max-width: 1400px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .column {
@@ -127,372 +139,366 @@ header > a:hover {
   flex-direction: column;
   min-width: 0;
 }
-      .carousel-wrapper {
-        width: 100%;
-        max-width: 1200px;
-        position: relative;
+
+.carousel-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 40px 0;
+}
+
+.carousel-inner {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  position: relative;
+  min-height: 500px;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.modal-carousel-inner {
+  display: flex;
+  align-items: flex-end;
+  gap: 30px;
+  position: relative;
+  min-height: 500px;
+  padding-bottom: 50px;
+  transition: transform 0.6s cubic-bezier(0.3, 0, 0.1, 0.8);
+}
+
+.carousel-item {
+  position: relative;
+  border-radius: 25px;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+  width: 280px;
+  height: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-item.side {
+  transform: scale(0.8);
+  opacity: 0.7;
+  z-index: 1;
+}
+
+.carousel-item.center {
+  transform: scale(1.1);
+  z-index: 2;
+  width: 320px;
+  height: 460px;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-item::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 3.5em;
+  font-weight: 300;
+  font-family: 'Bubbler One', sans-serif;
+  text-transform: lowercase;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  margin-right: 50px;
+  margin-left: 50px;
+  transform: translateY(-60%);
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border: none;
+  font-size: 24px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-arrow:hover {
+  background: white;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-arrow.prev {
+  left: -25px;
+}
+
+.carousel-arrow.next {
+  right: -25px;
+}
+
+.carousel-indicators {
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.indicator {
+  display: inline-block;
+  width: 40px;
+  height: 4px;
+  border-radius: 2px;
+  background: #ccc;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.indicator.active {
+  background: #333;
+  width: 50px;
+}
+
+.description {
+  max-width: 800px;
+  text-align: left;
+  padding: 20px;
+}
+
+p {
+  font-family: 'Bubbler One';
+  font-size: 1.5em;
+  line-height: 1.6;
+  color: #372D35;
+  padding: 20px;
+}
+
+.expand-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border: none;
+  font-size: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.expand-button:hover {
+  background: white;
+  transform: scale(1.1) rotate(360deg);
+}
+
+/* Expanded Modal Styles */
+.carousel-modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-modal.active {
+  display: flex;
+}
+
+.modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  height: 80vh;
+}
+
+.modal-carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.modal-carousel-item {
+  position: relative;
+  border-radius: 25px;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+  width: 300px;
+  height: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.modal-carousel-item.side {
+  transform: scale(0.85);
+  opacity: 0.6;
+  z-index: 1;
+}
+
+.modal-carousel-item.center {
+  transform: scale(1.05);
+  width: 300px;
+  height: 400px;
+  z-index: 2;
+}
+
+.modal-carousel-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-carousel-item::after {
+  content: attr(data-label);
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 4em;
+  font-weight: 300;
+  font-family: 'Bubbler One', sans-serif;
+  text-transform: lowercase;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.close-modal {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border: none;
+  font-size: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1001;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close-modal:hover {
+  background: white;
+  transform: scale(1.1) rotate(360deg);
+}
+
+.foot {
+  position: fixed;
+  background: #8A8D7A;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  font-family: 'Bubbler One', sans-serif;
+  z-index: 99;
+}
+
+.foot-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.foot img {
+  max-width: 30px;
+  display: block;
+}
+      #small{
+        font-size: .8em;
       }
 
-      .carousel {
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-        padding: 40px 0;
-      }
-
-      .carousel-inner {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 30px;
-        position: relative;
-        min-height: 500px;
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        padding-left: calc(50% - 190px);
-      }
-
-      .carousel-item {
-        position: relative;
-        border-radius: 25px;
-        overflow: hidden;
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        flex-shrink: 0;
-        width: 280px;
-        height: 400px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      }
-
-      .carousel-item.side {
-        transform: scale(0.8);
-        opacity: 0.7;
-        z-index: 1;
-      }
-
-      .carousel-item.center {
-        transform: scale(1.1);
-        z-index: 2;
-        width: 320px;
-        height: 460px;
-      }
-
-      .carousel-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-
-      }
-
-      .carousel-item::after {
-        content: attr(data-label);
-        position: absolute;
-        bottom: 50px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: white;
-        font-size: 3.5em;
-        font-weight: 300;
-        font-family: 'Bubbler One', sans-serif;
-        text-transform: lowercase;
-        letter-spacing: 2px;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-      }
-
-      .carousel-arrow {
-        position: absolute;
-        top: 50%;
-        margin-right: 50px;
-        margin-left: 50px;
-        transform: translateY(-60%);
-        background: rgba(255, 255, 255, 0.9);
-        color: #333;
-        border: none;
-        font-size: 24px;
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
-        cursor: pointer;
-        z-index: 10;
-        transition: all 0.3s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      }
-
-      .carousel-arrow:hover {
-        background: white;
-        transform: translateY(-50%) scale(1.1);
-      }
-
-      .carousel-arrow.prev {
-        left: -25px;
-      }
-
-      .carousel-arrow.next {
-        right: -25px;
-      }
-
-      .carousel-indicators {
-        text-align: center;
-        padding: 20px;
-        margin-top: 20px;
-      }
-
-      .indicator {
-        display: inline-block;
-        width: 40px;
-        height: 4px;
-        border-radius: 2px;
-        background: #ccc;
-        margin: 0 5px;
-        cursor: pointer;
-        transition: all 0.3s;
-      }
-
-      .indicator.active {
-        background: #333;
-        width: 50px;
-      }
-
-      hr {
-        border: none;
-        height: 4px;
-        width: 90%;
-        margin: 10px auto;
-        background-color: #8A8D7A;
-        border-radius: 100px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-      }
-
-
-      .description {
-        max-width: 800px;
-        text-align: left;
-        padding: 20px;
-      }
-
-      p {
-        font-family: 'Bubbler One';
-        font-size: 1.5em;
-        line-height: 1.6;
-        color: color: #372D35;
-        
-        padding: 20px;
-  
-      }
-  .expand-button {
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        background: rgba(255, 255, 255, 0.9);
-        color: #333;
-        border: none;
-        font-size: 20px;
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
-        cursor: pointer;
-        z-index: 10;
-        transition: all 0.3s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      }
-
-      .expand-button:hover {
-        background: white;
-        transform: scale(1.1);
-      }
-
-      /* Expanded Modal Styles */
-      .carousel-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.9);
-        z-index: 1000;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .carousel-modal.active {
-        display: flex;
-      }
-
-      .modal-content {
-        position: relative;
-        width: 90%;
-        max-width: 1200px;
-        height: 80vh;
-      }
-
-      .modal-carousel {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-      }
-
-      .modal-carousel-inner {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        gap: 40px;
-        position: relative;
-        height: 100%;
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        padding-left: calc(50% - 200px);
-      }
-
-      .modal-carousel-item {
-        position: relative;
-        border-radius: 25px;
-        overflow: hidden;
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        flex-shrink: 0;
-        width: 350px;
-        height: 500px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-      }
-
-      .modal-carousel-item.side {
-        transform: scale(0.85);
-        opacity: 0.6;
-        z-index: 1;
-      }
-
-      .modal-carousel-item.center {
-        transform: scale(1.15);
-        z-index: 2;
-        width: 400px;
-        height: 600px;
-      }
-
-      .modal-carousel-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .modal-carousel-item::after {
-        content: attr(data-label);
-        position: absolute;
-        bottom: 50px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: white;
-        font-size: 4em;
-        font-weight: 300;
-        font-family: 'Bubbler One', sans-serif;
-        text-transform: lowercase;
-        letter-spacing: 2px;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-      }
-
-      .close-modal {
-        position: absolute;
-        top: 30px;
-        right: 30px;
-        background: rgba(255, 255, 255, 0.9);
-        color: #333;
-        border: none;
-        font-size: 30px;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        cursor: pointer;
-        z-index: 1001;
-        transition: all 0.3s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      }
-
-      .close-modal:hover {
-        background: white;
-        transform: scale(1.1) rotate(90deg);
-      }
-      .foot {
-        position: fixed;
-        background: #8A8D7A;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: 75px;
-        display: flex;
-        align-items: center;
-        padding-left: 40px;
-        font-family: 'Bubbler One', sans-serif;
-        gap: 30px;
-        word-spacing: 100px;
-        text-align: center;
-        z-index: 99;
-      }
-
-      .foot-item {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .foot img {
-        max-width: 30px;
-        display: block;
-      }
-
-      
+/* Responsive adjustments */
+@media (max-width: 968px) {
+  .container {
+    grid-template-columns: 1fr;
+  }
+}
     </style>
   </head>
   <body>
-    <div class="centered_div">
-      <header>
- <a href="sample-works.html"><img src="close.webp" alt="close button"></a>
-        <div class="nav">
+    <div class="centered-container">
+      <header class="site-header">
+        <a href="sample-works.html" class="exit-btn">
+          <img src="close.webp" alt="close button">
+        </a>
+
+        <nav class="nav">
           <ul>
             <li><a href="index.html"><img src="home.png" alt="home button"></a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="sample-works.html">Works</a></li>
-            <li><a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">Resume</a></li>
-            
+            <li>
+              <a href="https://drive.google.com/file/d/1L8sqHMsDxPt3LKfOW5OT71EavjOhv48e/view?usp=share_link" target="_blank">
+                Resume
+              </a>
+            </li>
           </ul>
-        </div>
+        </nav>
       </header>
-      <h1>
-        Scented Essentials
-      </h1>
-      <!-- I prompted Claude AI to help me create an image carousel. I put all my image src links into a div and
- pasted that into Clause and prompted it to show me the html and css to style them like an image carousel.-->
+      
+      <div class="content">
+        <h1>Scented Essentials</h1>
      
-      <div class="container">
+        <div class="container">
+          <div class="column">
+            <div class="description">
+              <p>
+                This icon set allowed me to explore the challenge of representing scents through purely visual means. 
+                Each icon depicts an item from my daily life designed in Adobe Illustrator 
+                to form a clean and cohesive collection that captures their essence without relying on fragrance itself.
+                <br>
+                <span id="small"> Adobe Illustrator, 2025</span>
+              </p>
+            </div>
+          </div>
         
-        
-        <div class="column">
-  
-  
-       
-      <div class="description">
-        <p>
-        This icon set allowed me to explore the challenge of representing scents through purely visual means. 
-          Each icon depicts an item from my daily life designed in Adobe Illustrator 
-          to form a clean and cohesive collection that captures their essence without relying on fragrance itself.
-        </p>
-      </div>
-   </div>
-        
-        
-        <div class="column">
-          <div class="carousel-wrapper">
-            <button class="expand-button" onclick="openModal()">⤢</button>
-            <div class="carousel">
-              <div class="carousel-inner" id="carouselInner"></div>
-              <button class="carousel-arrow prev" onclick="moveSlide(-1)">❮</button>
-              <button class="carousel-arrow next" onclick="moveSlide(1)">❯</button>
-              <div class="carousel-indicators" id="indicators"></div>
+          <div class="column">
+            <div class="carousel-wrapper">
+              <button class="expand-button" onclick="openModal()">⤢</button>
+              <div class="carousel">
+                <div class="carousel-inner" id="carouselInner"></div>
+                <button class="carousel-arrow prev" onclick="moveSlide(-1)">❮</button>
+                <button class="carousel-arrow next" onclick="moveSlide(1)">❯</button>
+                <div class="carousel-indicators" id="indicators"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -512,12 +518,6 @@ header > a:hover {
       </div>
     </div>
 
-
-
-
-
-
-    </div>
     <div class="foot">
       <div class="foot-item">
         <img src="mail.png" alt="mail icon">
@@ -530,185 +530,170 @@ header > a:hover {
       </div>
     </div>
 
-
-
-    
-    <!-- I used GenAI to help me with the javascript. I prompted it to show me how to style my images in an image carousel..-->
     <script>
-  
-  const slides = [{
-      img: 'icon1.png',
-      label: 'perfume',
-      color: '#d8a48f'
-    },
-    {
-      img: 'icon2.png',
-      label: 'lotion',
-      color: '#d7ce93'
-    },
-    {
-      img: 'icon3.png',
-      label: 'diffuser',
-      color: '#efebce'
-    },
-    {
-      img: 'icon4.png',
-      label: 'perfume',
-      color: '#a3a380'
-    },
-    {
-      img: 'icon5.png',
-      label: 'lotion',
-      color: '#bb8588'
-    },
-    {
-      img: 'icon6.png',
-      label: 'diffuser',
-      color: '#a5c9b8'
-    }
-  ];
+      const slides = [{
+          img: 'icon1.png',
+          label: 'perfume',
+          color: '#d8a48f'
+        },
+        {
+          img: 'icon2.png',
+          label: 'lotion',
+          color: '#d7ce93'
+        },
+        {
+          img: 'icon3.png',
+          label: 'diffuser',
+          color: '#efebce'
+        },
+        {
+          img: 'icon4.png',
+          label: 'perfume',
+          color: '#a3a380'
+        },
+        {
+          img: 'icon5.png',
+          label: 'lotion',
+          color: '#bb8588'
+        },
+        {
+          img: 'icon6.png',
+          label: 'diffuser',
+          color: '#a5c9b8'
+        }
+      ];
 
-  // Declare all variables at the top
-  let currentIndex = 0;
-  let modalIndex = 0;
-  const carouselInner = document.getElementById('carouselInner');
-  const modalCarouselInner = document.getElementById('modalCarouselInner');
-  const indicatorsContainer = document.getElementById('indicators');
-  const modalIndicatorsContainer = document.getElementById('modalIndicators');
+      let currentIndex = 0;
+      let modalIndex = 0;
+      const carouselInner = document.getElementById('carouselInner');
+      const modalCarouselInner = document.getElementById('modalCarouselInner');
+      const indicatorsContainer = document.getElementById('indicators');
+      const modalIndicatorsContainer = document.getElementById('modalIndicators');
 
-  function initializeCarousel() {
-    // Create slides for BOTH carousels
-    slides.forEach((slide) => {
-      // Regular carousel
-      carouselInner.appendChild(createSlideElement(slide, false));
-      // Modal carousel
-      modalCarouselInner.appendChild(createSlideElement(slide, true));
-    });
+      function initializeCarousel() {
+        slides.forEach((slide) => {
+          carouselInner.appendChild(createSlideElement(slide, false));
+          modalCarouselInner.appendChild(createSlideElement(slide, true));
+        });
 
-    // Create indicators for BOTH carousels
-    slides.forEach((_, index) => {
-      // Regular carousel indicators
-      const indicator = document.createElement('span');
-      indicator.className = 'indicator' + (index === 0 ? ' active' : '');
-      indicator.onclick = () => goToSlide(index);
-      indicatorsContainer.appendChild(indicator);
+        slides.forEach((_, index) => {
+          const indicator = document.createElement('span');
+          indicator.className = 'indicator' + (index === 0 ? ' active' : '');
+          indicator.onclick = () => goToSlide(index);
+          indicatorsContainer.appendChild(indicator);
 
-      // Modal carousel indicators
-      const modalIndicator = document.createElement('span');
-      modalIndicator.className = 'indicator' + (index === 0 ? ' active' : '');
-      modalIndicator.onclick = () => goToModalSlide(index);
-      modalIndicatorsContainer.appendChild(modalIndicator);
-    });
+          const modalIndicator = document.createElement('span');
+          modalIndicator.className = 'indicator' + (index === 0 ? ' active' : '');
+          modalIndicator.onclick = () => goToModalSlide(index);
+          modalIndicatorsContainer.appendChild(modalIndicator);
+        });
 
-    updateCarousel();
-    updateModalCarousel();
-  }
+        updateCarousel();
+        updateModalCarousel();
+      }
 
-  // Add isModal parameter back
-  function createSlideElement(slide, isModal = false) {
-    const div = document.createElement('div');
-    div.className = isModal ? 'modal-carousel-item' : 'carousel-item';
-    div.setAttribute('data-label', slide.label);
-    div.style.background = `linear-gradient(135deg, ${slide.color}, ${adjustColor(slide.color, -20)})`;
+      function createSlideElement(slide, isModal = false) {
+        const div = document.createElement('div');
+        div.className = isModal ? 'modal-carousel-item' : 'carousel-item';
+        div.setAttribute('data-label', slide.label);
+        div.style.background = `linear-gradient(135deg, ${slide.color}, ${adjustColor(slide.color, -20)})`;
 
-    const img = document.createElement('img');
-    img.src = slide.img;
-    img.alt = slide.label;
+        const img = document.createElement('img');
+        img.src = slide.img;
+        img.alt = slide.label;
 
-    div.appendChild(img);
-    return div;
-  }
+        div.appendChild(img);
+        return div;
+      }
 
-  function adjustColor(color, amount) {
-    const num = parseInt(color.replace('#', ''), 16);
-    const r = Math.max(0, Math.min(255, (num >> 16) + amount));
-    const g = Math.max(0, Math.min(255, ((num >> 8) & 0x00FF) + amount));
-    const b = Math.max(0, Math.min(255, (num & 0x0000FF) + amount));
-    return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, '0')}`;
-  }
+      function adjustColor(color, amount) {
+        const num = parseInt(color.replace('#', ''), 16);
+        const r = Math.max(0, Math.min(255, (num >> 16) + amount));
+        const g = Math.max(0, Math.min(255, ((num >> 8) & 0x00FF) + amount));
+        const b = Math.max(0, Math.min(255, (num & 0x0000FF) + amount));
+        return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, '0')}`;
+      }
 
-  function updateCarousel() {
-    const cardWidth = 280;
-    const gap = 30;
-    const offset = currentIndex * (cardWidth + gap);
+      function updateCarousel() {
+        const items = carouselInner.querySelectorAll('.carousel-item');
+        
+        items.forEach((item, index) => {
+          item.classList.remove('center', 'side');
+          item.classList.add(index === currentIndex ? 'center' : 'side');
+        });
 
-    carouselInner.style.transform = `translateX(-${offset}px)`;
+        const containerWidth = carouselInner.parentElement.offsetWidth;
+        const centerItem = items[currentIndex];
+        const offset = centerItem.offsetLeft - (containerWidth / 2 - centerItem.offsetWidth / 2);
+        carouselInner.style.transform = `translateX(-${offset}px)`;
 
-    const items = carouselInner.querySelectorAll('.carousel-item');
-    items.forEach((item, index) => {
-      item.classList.remove('center', 'side');
-      item.classList.add(index === currentIndex ? 'center' : 'side');
-    });
+        const indicators = indicatorsContainer.querySelectorAll('.indicator');
+        indicators.forEach((ind, idx) => {
+          ind.classList.toggle('active', idx === currentIndex);
+        });
+      }
 
-    // Fix: Query indicators from DOM instead of using old variable
-    const indicators = indicatorsContainer.querySelectorAll('.indicator');
-    indicators.forEach((ind, idx) => {
-      ind.classList.toggle('active', idx === currentIndex);
-    });
-  }
+      function updateModalCarousel() {
+        const items = modalCarouselInner.querySelectorAll('.modal-carousel-item');
+        items.forEach((item, index) => {
+          item.classList.remove('center', 'side');
+          item.classList.add(index === modalIndex ? 'center' : 'side');
+        });
 
-  function updateModalCarousel() {
-    const cardWidth = 350;
-    const gap = 40;
-    const offset = modalIndex * (cardWidth + gap);
-    modalCarouselInner.style.transform = `translateX(-${offset}px)`;
+        const containerWidth = modalCarouselInner.parentElement.offsetWidth;
+        const centerItem = items[modalIndex];
+        const offset = centerItem.offsetLeft - (containerWidth / 2 - centerItem.offsetWidth / 2);
+        modalCarouselInner.style.transform = `translateX(-${offset}px)`;
 
-    const items = modalCarouselInner.querySelectorAll('.modal-carousel-item');
-    items.forEach((item, index) => {
-      item.classList.remove('center', 'side');
-      item.classList.add(index === modalIndex ? 'center' : 'side');
-    });
+        const indicators = modalIndicatorsContainer.querySelectorAll('.indicator');
+        indicators.forEach((ind, idx) => {
+          ind.classList.toggle('active', idx === modalIndex);
+        });
+      }
 
-    const indicators = modalIndicatorsContainer.querySelectorAll('.indicator');
-    indicators.forEach((ind, idx) => {
-      ind.classList.toggle('active', idx === modalIndex);
-    });
-  }
+      function moveSlide(direction) {
+        currentIndex = Math.max(0, Math.min(slides.length - 1, currentIndex + direction));
+        updateCarousel();
+      }
 
-  function moveSlide(direction) {
-    currentIndex = Math.max(0, Math.min(slides.length - 1, currentIndex + direction));
-    updateCarousel();
-  }
+      function moveModalSlide(direction) {
+        modalIndex = Math.max(0, Math.min(slides.length - 1, modalIndex + direction));
+        updateModalCarousel();
+      }
 
-  function moveModalSlide(direction) {
-    modalIndex = Math.max(0, Math.min(slides.length - 1, modalIndex + direction));
-    updateModalCarousel();
-  }
+      function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+      }
 
-  function goToSlide(index) {
-    currentIndex = index;
-    updateCarousel();
-  }
+      function goToModalSlide(index) {
+        modalIndex = index;
+        updateModalCarousel();
+      }
 
-  function goToModalSlide(index) {
-    modalIndex = index;
-    updateModalCarousel();
-  }
+      function openModal() {
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+        document.body.style.overflow = 'hidden';
+        document.getElementById('carouselModal').classList.add('active');
+      }
 
-  function openModal() {
-    modalIndex = currentIndex;
-    updateModalCarousel();
-    document.getElementById('carouselModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
+      function closeModal() {
+        document.body.style.paddingRight = '';
+        document.body.style.overflow = 'auto';
+        document.getElementById('carouselModal').classList.remove('active');
+      }
 
-  function closeModal() {
-    document.getElementById('carouselModal').classList.remove('active');
-    document.body.style.overflow = 'auto';
-  }
+      document.addEventListener('keydown', (e) => {
+        const modal = document.getElementById('carouselModal');
+        if (modal.classList.contains('active')) {
+          if (e.key === 'Escape') closeModal();
+          if (e.key === 'ArrowLeft') moveModalSlide(-1);
+          if (e.key === 'ArrowRight') moveModalSlide(1);
+        }
+      });
 
-  document.addEventListener('keydown', (e) => {
-    const modal = document.getElementById('carouselModal');
-    if (modal.classList.contains('active')) {
-      if (e.key === 'Escape') closeModal();
-      if (e.key === 'ArrowLeft') moveModalSlide(-1);
-      if (e.key === 'ArrowRight') moveModalSlide(1);
-    }
-  });
-
-  // Only call once!
-  initializeCarousel();
-</script>
+      initializeCarousel();
+    </script>
   </body>
-
 </html>
