@@ -139,13 +139,15 @@ hr {
 }
 
 .item {
-  opacity: 1;
-  transition: opacity 0.6s ease-out;
-  margin-bottom: 10px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: opacity, transform;
 }
 
-.item.fading {
-  opacity: 0.3;
+.item.in-view {
+  opacity: 1;
+  transform: translateY(24px);
 }
 
 .item img {
@@ -199,6 +201,14 @@ hr {
   .nav ul {
     font-size: 1.2em;
     gap: 20px;
+  }
+  
+}
+      @media (prefers-reduced-motion: reduce) {
+  .item {
+    transition: none;
+    transform: none;
+    opacity: 1;
   }
 }
     </style>
@@ -277,5 +287,29 @@ hr {
         <span>www.linkedin.com/in/sandy-srinivasan</span>
       </div>
     </div>
+    <script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        } else {
+          entry.target.classList.remove('in-view');
+        }
+      });
+    },
+    {
+      threshold: 0.15,
+      rootMargin: '0px 0px -80px 0px'
+    }
+  );
+document.querySelectorAll('.item').forEach((item, index) => {
+  item.style.transitionDelay = `${index * 0.08}s`;
+  observer.observe(item);
+});
+  document.querySelectorAll('.item').forEach(item => {
+    observer.observe(item);
+  });
+</script>
   </body>
 </html>

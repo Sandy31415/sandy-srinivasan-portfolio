@@ -310,6 +310,17 @@ hr {
     font-size: 1.8em;
   }
 }
+      
+     .grid-inner {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.grid-item.in-view .grid-inner {
+  opacity: 1;
+  transform: translateY(0);
+}
     </style>
   </head>
   <body>
@@ -334,6 +345,7 @@ hr {
 
       <div class="container" id="masonry-container">
         <div class="grid-item">
+          <div class="grid-inner">
           <a href="evolution.html">
             <img src="work3_clear.png" alt="Magazine coverpage with drawn image of street">
           </a>
@@ -341,19 +353,23 @@ hr {
             <h2>Evolution of Design Magazine</h2>
             <span class="bodytext">A magazine chronicling my design story.</span>
           </div>
+          </div>
         </div>
 
         <div class="grid-item">
+          <div class="grid-inner">
           <a href="sunbot.html">
             <img src="slide3.jpg" alt="image of a grey robot with a yellow slide background">
           </a>
           <div class="grid-item-content">
             <h2>Sunbot- Health Management Design</h2>
             <span class="bodytext">A smart pill dispenser and tracker designed for users who are less familiar with technology.</span>
-          </div>
+            </div>
+            </div>
         </div>
         
         <div class="grid-item">
+          <div class="grid-inner">
           <a href="site-redesign.html">
             <img src="home2.png" alt="Mockup of a website homepage">
           </a>
@@ -361,9 +377,11 @@ hr {
             <h2>Reimagining the Aurora Historical Society site</h2>
             <span class="bodytext">A redesign of the Aurora Historical Society website.</span>
           </div>
+          </div>
         </div>
         
        <div class="grid-item">
+         <div class="grid-inner">
           <a href="recipe-app.html">
             <img src="recipe1.png" alt="app login page" style="max-height: 400px; object-fit: cover;">
           </a>
@@ -371,9 +389,11 @@ hr {
             <h2>RecipeNote- A Recipe App</h2>
             <span class="bodytext">An app for indecisive users.</span>
           </div>
+         </div>
         </div>
         
         <div class="grid-item">
+          <div class="grid-inner">
           <a href="scented-essentials.html">
             <img src="icon.png" alt="pink perfume icon">
           </a>
@@ -381,15 +401,18 @@ hr {
             <h2>Scented Essentials Icon Set</h2>
             <span class="bodytext">A set of icons representing fresh, scented products.</span>
           </div>
+          </div>
         </div>
 
         <div class="grid-item">
+          <div class="grid-inner">
           <a href="fine-arts.html">
             <img src="work5_clear.png" alt="digital art of an abstract rollercoaster">
           </a>
           <div class="grid-item-content">
             <h2>Exploring Fine Arts</h2>
             <span class="bodytext">A collection of my art done in traditional mediums.</span>
+          </div>
           </div>
         </div>
       </div>
@@ -448,28 +471,53 @@ hr {
       }
       
       // Layout on load
-      window.addEventListener('load', () => {
-        // Wait for images to load
-        const images = document.querySelectorAll('.grid-item img');
-        let loadedImages = 0;
-        
-        images.forEach(img => {
-          if (img.complete) {
-            loadedImages++;
-          } else {
-            img.addEventListener('load', () => {
-              loadedImages++;
-              if (loadedImages === images.length) {
-                layoutMasonry();
-              }
-            });
-          }
-        });
-        
+     window.addEventListener('load', () => {
+  const images = document.querySelectorAll('.grid-item img');
+  let loadedImages = 0;
+
+  images.forEach(img => {
+    if (img.complete) {
+      loadedImages++;
+    } else {
+      img.addEventListener('load', () => {
+        loadedImages++;
         if (loadedImages === images.length) {
-          layoutMasonry();
+          initMasonryAndObserver();
         }
       });
+    }
+  });
+
+  if (loadedImages === images.length) {
+    initMasonryAndObserver();
+  }
+});
+      function initMasonryAndObserver() {
+  layoutMasonry();
+
+  // wait one frame so layout is painted
+  requestAnimationFrame(() => {
+   const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      } else {
+        entry.target.classList.remove('in-view');
+      }
+    });
+  },
+  {
+    threshold: 0.15,
+    rootMargin: '0px 0px -80px 0px'
+  }
+);
+
+    document.querySelectorAll('.grid-item').forEach(item => {
+      observer.observe(item);
+    });
+  });
+}
       
       // Re-layout on window resize
       let resizeTimer;
@@ -477,6 +525,9 @@ hr {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(layoutMasonry, 250);
       });
+      
+      
+    
     </script>
   </body>
 </html>
