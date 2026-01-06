@@ -161,6 +161,8 @@ h1 {
   position: relative;
   min-height: 500px;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    padding-left: calc(50% - 160px);
+  padding-right: calc(50% - 160px);
 }
 
 .modal-carousel-inner {
@@ -171,17 +173,22 @@ h1 {
   min-height: 500px;
   padding-bottom: 50px;
   transition: transform 0.6s cubic-bezier(0.3, 0, 0.1, 0.8);
+  padding-left: calc(50% - 150px);
+  padding-right: calc(50% - 150px);
 }
 
 .carousel-item {
   position: relative;
   border-radius: 25px;
   overflow: hidden;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   flex-shrink: 0;
   width: 280px;
   height: 400px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.6s ease;
+  transform: scale(0.75);
+  opacity: 0.6;
 }
 
 .carousel-item.side {
@@ -192,11 +199,9 @@ h1 {
 
 .carousel-item.center {
   transform: scale(1.1);
-  z-index: 2;
-  width: 320px;
-  height: 460px;
+  width: 280px;
 }
-
+      
 .carousel-item img {
   width: 100%;
   height: 100%;
@@ -359,7 +364,7 @@ p {
 
 .modal-carousel-item.side {
   transform: scale(0.85);
-  opacity: 0.6;
+ 
   z-index: 1;
 }
 
@@ -367,6 +372,7 @@ p {
   transform: scale(1.05);
   width: 300px;
   height: 400px;
+  
   z-index: 2;
 }
 
@@ -531,169 +537,148 @@ p {
     </div>
 
     <script>
-      const slides = [{
-          img: 'icon1.png',
-          label: 'perfume',
-          color: '#d8a48f'
-        },
-        {
-          img: 'icon2.png',
-          label: 'lotion',
-          color: '#d7ce93'
-        },
-        {
-          img: 'icon3.png',
-          label: 'diffuser',
-          color: '#efebce'
-        },
-        {
-          img: 'icon4.png',
-          label: 'perfume',
-          color: '#a3a380'
-        },
-        {
-          img: 'icon5.png',
-          label: 'lotion',
-          color: '#bb8588'
-        },
-        {
-          img: 'icon6.png',
-          label: 'diffuser',
-          color: '#a5c9b8'
-        }
-      ];
 
-      let currentIndex = 0;
-      let modalIndex = 0;
-      const carouselInner = document.getElementById('carouselInner');
-      const modalCarouselInner = document.getElementById('modalCarouselInner');
-      const indicatorsContainer = document.getElementById('indicators');
-      const modalIndicatorsContainer = document.getElementById('modalIndicators');
+const slides = [
+  { img: 'icon1.png', label: 'perfume',  color: '#d8a48f' },
+  { img: 'icon2.png', label: 'lotion',   color: '#d7ce93' },
+  { img: 'icon3.png', label: 'diffuser', color: '#efebce' },
+  { img: 'icon4.png', label: 'perfume',  color: '#a3a380' },
+  { img: 'icon5.png', label: 'lotion',   color: '#bb8588' },
+  { img: 'icon6.png', label: 'diffuser', color: '#a5c9b8' }
+];
 
-      function initializeCarousel() {
-        slides.forEach((slide) => {
-          carouselInner.appendChild(createSlideElement(slide, false));
-          modalCarouselInner.appendChild(createSlideElement(slide, true));
-        });
+const SLIDE_WIDTH = 280;
+const SLIDE_GAP = 30;
+const STEP = SLIDE_WIDTH + SLIDE_GAP;
 
-        slides.forEach((_, index) => {
-          const indicator = document.createElement('span');
-          indicator.className = 'indicator' + (index === 0 ? ' active' : '');
-          indicator.onclick = () => goToSlide(index);
-          indicatorsContainer.appendChild(indicator);
+let currentIndex = 0;
+let modalIndex = 0;
 
-          const modalIndicator = document.createElement('span');
-          modalIndicator.className = 'indicator' + (index === 0 ? ' active' : '');
-          modalIndicator.onclick = () => goToModalSlide(index);
-          modalIndicatorsContainer.appendChild(modalIndicator);
-        });
+const carouselInner = document.getElementById('carouselInner');
+const modalCarouselInner = document.getElementById('modalCarouselInner');
+const indicatorsContainer = document.getElementById('indicators');
+const modalIndicatorsContainer = document.getElementById('modalIndicators');
 
-        updateCarousel();
-        updateModalCarousel();
-      }
+/* ---------- INIT ---------- */
+document.addEventListener('DOMContentLoaded', initializeCarousel);
 
-      function createSlideElement(slide, isModal = false) {
-        const div = document.createElement('div');
-        div.className = isModal ? 'modal-carousel-item' : 'carousel-item';
-        div.setAttribute('data-label', slide.label);
-        div.style.background = `linear-gradient(135deg, ${slide.color}, ${adjustColor(slide.color, -20)})`;
+function initializeCarousel() {
+  slides.forEach(slide => {
+    carouselInner.appendChild(createSlide(slide, false));
+    modalCarouselInner.appendChild(createSlide(slide, true));
+  });
 
-        const img = document.createElement('img');
-        img.src = slide.img;
-        img.alt = slide.label;
+  slides.forEach((_, i) => {
+    indicatorsContainer.appendChild(createIndicator(i, false));
+    modalIndicatorsContainer.appendChild(createIndicator(i, true));
+  });
 
-        div.appendChild(img);
-        return div;
-      }
+  updateCarousel();
+  updateModalCarousel();
+}
 
-      function adjustColor(color, amount) {
-        const num = parseInt(color.replace('#', ''), 16);
-        const r = Math.max(0, Math.min(255, (num >> 16) + amount));
-        const g = Math.max(0, Math.min(255, ((num >> 8) & 0x00FF) + amount));
-        const b = Math.max(0, Math.min(255, (num & 0x0000FF) + amount));
-        return `#${((r << 16) | (g << 8) | b).toString(16).padStart(6, '0')}`;
-      }
+/* ---------- BUILDERS ---------- */
+function createSlide(slide, modal) {
+  const div = document.createElement('div');
+  div.className = modal ? 'modal-carousel-item' : 'carousel-item';
+  div.dataset.label = slide.label;
+  div.style.background =
+    `linear-gradient(135deg, ${slide.color}, ${adjustColor(slide.color, -20)})`;
 
-      function updateCarousel() {
-        const items = carouselInner.querySelectorAll('.carousel-item');
-        
-        items.forEach((item, index) => {
-          item.classList.remove('center', 'side');
-          item.classList.add(index === currentIndex ? 'center' : 'side');
-        });
+  const img = document.createElement('img');
+  img.src = slide.img;
+  img.alt = slide.label;
 
-        const containerWidth = carouselInner.parentElement.offsetWidth;
-        const centerItem = items[currentIndex];
-        const offset = centerItem.offsetLeft - (containerWidth / 2 - centerItem.offsetWidth / 2);
-        carouselInner.style.transform = `translateX(-${offset}px)`;
+  div.appendChild(img);
+  return div;
+}
 
-        const indicators = indicatorsContainer.querySelectorAll('.indicator');
-        indicators.forEach((ind, idx) => {
-          ind.classList.toggle('active', idx === currentIndex);
-        });
-      }
+function createIndicator(index, modal) {
+  const span = document.createElement('span');
+  span.className = 'indicator';
+  span.onclick = () =>
+    modal ? goToModalSlide(index) : goToSlide(index);
+  return span;
+}
 
-      function updateModalCarousel() {
-        const items = modalCarouselInner.querySelectorAll('.modal-carousel-item');
-        items.forEach((item, index) => {
-          item.classList.remove('center', 'side');
-          item.classList.add(index === modalIndex ? 'center' : 'side');
-        });
+/* ---------- UPDATES ---------- */
+function updateCarousel() {
+  const items = carouselInner.children;
 
-        const containerWidth = modalCarouselInner.parentElement.offsetWidth;
-        const centerItem = items[modalIndex];
-        const offset = centerItem.offsetLeft - (containerWidth / 2 - centerItem.offsetWidth / 2);
-        modalCarouselInner.style.transform = `translateX(-${offset}px)`;
+  [...items].forEach((item, i) => {
+    item.classList.toggle('center', i === currentIndex);
+    item.classList.toggle('side', i !== currentIndex);
+  });
 
-        const indicators = modalIndicatorsContainer.querySelectorAll('.indicator');
-        indicators.forEach((ind, idx) => {
-          ind.classList.toggle('active', idx === modalIndex);
-        });
-      }
+  carouselInner.style.transform =
+    `translateX(${-currentIndex * STEP}px)`;
 
-      function moveSlide(direction) {
-        currentIndex = Math.max(0, Math.min(slides.length - 1, currentIndex + direction));
-        updateCarousel();
-      }
+  updateIndicators(indicatorsContainer, currentIndex);
+}
 
-      function moveModalSlide(direction) {
-        modalIndex = Math.max(0, Math.min(slides.length - 1, modalIndex + direction));
-        updateModalCarousel();
-      }
+function updateModalCarousel() {
+  const items = modalCarouselInner.children;
 
-      function goToSlide(index) {
-        currentIndex = index;
-        updateCarousel();
-      }
+  [...items].forEach((item, i) => {
+    item.classList.toggle('center', i === modalIndex);
+    item.classList.toggle('side', i !== modalIndex);
+  });
 
-      function goToModalSlide(index) {
-        modalIndex = index;
-        updateModalCarousel();
-      }
+  modalCarouselInner.style.transform =
+    `translateX(${-modalIndex * STEP}px)`;
 
-      function openModal() {
-        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-        document.body.style.paddingRight = `${scrollbarWidth}px`;
-        document.body.style.overflow = 'hidden';
-        document.getElementById('carouselModal').classList.add('active');
-      }
+  updateIndicators(modalIndicatorsContainer, modalIndex);
+}
 
-      function closeModal() {
-        document.body.style.paddingRight = '';
-        document.body.style.overflow = 'auto';
-        document.getElementById('carouselModal').classList.remove('active');
-      }
+function updateIndicators(container, index) {
+  [...container.children].forEach((dot, i) =>
+    dot.classList.toggle('active', i === index)
+  );
+}
 
-      document.addEventListener('keydown', (e) => {
-        const modal = document.getElementById('carouselModal');
-        if (modal.classList.contains('active')) {
-          if (e.key === 'Escape') closeModal();
-          if (e.key === 'ArrowLeft') moveModalSlide(-1);
-          if (e.key === 'ArrowRight') moveModalSlide(1);
-        }
-      });
+/* ---------- CONTROLS ---------- */
+function moveSlide(dir) {
+  currentIndex = (currentIndex + dir + slides.length) % slides.length;
+  updateCarousel();
+}
 
-      initializeCarousel();
-    </script>
+function moveModalSlide(dir) {
+  modalIndex = (modalIndex + dir + slides.length) % slides.length;
+  updateModalCarousel();
+}
+
+function goToSlide(index) {
+  currentIndex = index;
+  updateCarousel();
+}
+
+function goToModalSlide(index) {
+  modalIndex = index;
+  updateModalCarousel();
+}
+
+/* ---------- UTIL ---------- */
+function adjustColor(color, amount) {
+  const num = parseInt(color.slice(1), 16);
+  const r = Math.min(255, Math.max(0, (num >> 16) + amount));
+  const g = Math.min(255, Math.max(0, ((num >> 8) & 255) + amount));
+  const b = Math.min(255, Math.max(0, (num & 255) + amount));
+  return `#${(r << 16 | g << 8 | b).toString(16).padStart(6, '0')}`;
+}
+      
+      const carouselModal = document.getElementById('carouselModal');
+
+function openModal() {
+  carouselModal.classList.add('active');
+  modalIndex = currentIndex;      // sync modal with main carousel
+  updateModalCarousel();
+}
+
+function closeModal() {
+  carouselModal.classList.remove('active');
+}
+</script>
+
+
   </body>
 </html>
