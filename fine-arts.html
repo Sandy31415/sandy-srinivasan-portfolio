@@ -138,17 +138,7 @@ hr {
   gap: 50px;
 }
 
-.item {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-  will-change: opacity, transform;
-}
 
-.item.in-view {
-  opacity: 1;
-  transform: translateY(24px);
-}
 
 .item img {
   width: 100%;
@@ -183,6 +173,66 @@ hr {
   display: block;
 }
 
+      /* MODAL OVERLAY */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 2000;
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-image {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 6px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* CLOSE BUTTON */
+.modal-close {
+    position: absolute;
+  top: 30px;
+  right: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+  border: none;
+  font-size: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 1001;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close:hover {
+  background: white;
+  transform: scale(1.1) rotate(360deg);
+}
+      
+
+
+
+/* Make artworks feel clickable */
+.item img {
+  cursor: zoom-in;
+}
+
 /* Responsive adjustments */
 @media (max-width: 968px) {
   .container {
@@ -204,14 +254,7 @@ hr {
   }
   
 }
-      @media (prefers-reduced-motion: reduce) {
-  .item {
-    transition: none;
-    transform: none;
-    opacity: 1;
-  }
-}
-    </style>
+   </style>
   </head>
   <body>
     <div class="centered-container">
@@ -287,29 +330,43 @@ hr {
         <span>www.linkedin.com/in/sandy-srinivasan</span>
       </div>
     </div>
+  <div class="modal" id="imageModal" aria-hidden="true">
+  <button class="modal-close" aria-label="Close image">&times;</button>
+  <img class="modal-image" src="" alt="">
+</div>
     <script>
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-        } else {
-          entry.target.classList.remove('in-view');
-        }
-      });
-    },
-    {
-      threshold: 0.15,
-      rootMargin: '0px 0px -80px 0px'
-    }
-  );
-document.querySelectorAll('.item').forEach((item, index) => {
-  item.style.transitionDelay = `${index * 0.08}s`;
-  observer.observe(item);
-});
-  document.querySelectorAll('.item').forEach(item => {
-    observer.observe(item);
+  const modal = document.getElementById("imageModal");
+  const modalImage = modal.querySelector(".modal-image");
+  const closeButton = modal.querySelector(".modal-close");
+
+  document.querySelectorAll(".item img").forEach(img => {
+    img.addEventListener("click", () => {
+      modalImage.src = img.src;
+      modalImage.alt = img.alt;
+      modal.classList.add("active");
+      modal.setAttribute("aria-hidden", "false");
+    });
+  });
+
+  function closeModal() {
+    modal.classList.remove("active");
+    modal.setAttribute("aria-hidden", "true");
+    modalImage.src = "";
+  }
+
+  closeButton.addEventListener("click", closeModal);
+
+  modal.addEventListener("click", e => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeModal();
   });
 </script>
+
+    
+    
+    
   </body>
 </html>
